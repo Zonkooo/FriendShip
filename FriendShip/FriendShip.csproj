@@ -47,14 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="GameCore.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Room.cs" />
     <Compile Include="RoomLink.cs" />
-    <Compile Include="Player.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="Player.cs" />
+    <Compile Include="GameCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
