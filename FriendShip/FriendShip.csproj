@@ -52,6 +52,9 @@
     </Compile>
     <Compile Include="Room.cs" />
     <Compile Include="RoomLink.cs" />
+    <Compile Include="Player.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
