@@ -51,6 +51,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Room.cs" />
+    <Compile Include="RoomLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />

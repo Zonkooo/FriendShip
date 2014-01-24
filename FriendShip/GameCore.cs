@@ -42,6 +42,9 @@ namespace FriendShip
 
 			_rooms.Add(new Room (this, new Vector2 (10, 10)));
 			_rooms.Add(new Room (this, new Vector2 (100, 10)));
+
+			_rooms [(int)Rooms.LEFT].Exits.Add (new RoomLink (_rooms [(int)Rooms.RIGHT], new Rectangle (69, 10, 1, 30)));
+			_rooms [(int)Rooms.RIGHT].Exits.Add (new RoomLink (_rooms [(int)Rooms.LEFT], new Rectangle (100, 10, 1, 30)));
 		}
 
 		/// <summary>
@@ -118,7 +121,7 @@ namespace FriendShip
 		/// </summary>
 		public void DrawHitBox(Rectangle r)
 		{
-			//spriteBatch.Draw(OneWhitePixel, this.ToDrawPosition(new Vector2(r.X, r.Y), Ground.Position), null, new Color(255, 0, 0, 8), (float) Angle, new Vector2(), new Vector2(r.Width, r.Height), SpriteEffects.None, 0);
+			spriteBatch.Draw(OneWhitePixel, r, new Color(255, 0, 0, 8));
 		}
 	}
 }
