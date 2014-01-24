@@ -1,0 +1,36 @@
+# Criteo generated directories
+
+# NuGet packages
+# one folder per built solution in build_all_min.cmd
+/src/packages/
+*.nupkg
+
+# + one folder at root for "dev repository"
+/packages/
+
+# All projects have an "obj/" and "bin/" directory when built
+obj/
+bin/
+criteo-bin/
+
+# User-specific project settings
+*.user
+*.suo
+*.docstates
+
+# VS extensions
+*.vs10x
+_ReSharper.*/
+*.sln.docstates
+
+# CBS
+.cbs/
+main.sln
+logs/
+cbs.log
+
+###################################################################################
+# If you want to add anything in this file, make sure this is useful for EVERYONE #
+# If you need to specifically ignore some stuff for yourself, just use the        #
+# .git/info/exclude file.                                                         #
+###################################################################################
