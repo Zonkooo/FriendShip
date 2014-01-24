@@ -48,17 +48,6 @@ namespace FriendShip
 		}
 
 		/// <summary>
-		/// Allows the game to perform any initialization it needs to before starting to run.
-		/// This is where it can query for any required services and load any non-graphic
-		/// related content.  Calling base.Initialize will enumerate through any components
-		/// and initialize them as well.
-		/// </summary>
-		protected override void Initialize()
-		{
-			base.Initialize();
-		}
-
-		/// <summary>
 		/// LoadContent will be called once per game and is the place to load
 		/// all of your content.
 		/// </summary>
@@ -73,6 +62,11 @@ namespace FriendShip
 			{
 				room.Texture = OneWhitePixel;
 			}
+
+			var cireman = Content.Load<Texture2D>("Players/cireman");
+			var player = new Player (this, cireman);
+			player.Position = new Vector2 (10, 40);
+
 		}
 
 		/// <summary>
