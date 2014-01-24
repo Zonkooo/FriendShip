@@ -23,11 +23,8 @@ criteo-bin/
 _ReSharper.*/
 *.sln.docstates
 
-# CBS
-.cbs/
-main.sln
-logs/
-cbs.log
+*.userprefs
+*~
 
 ###################################################################################
 # If you want to add anything in this file, make sure this is useful for EVERYONE #
