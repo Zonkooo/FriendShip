@@ -37,10 +37,20 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Compile Include="Players\cireman.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cireman</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="onewhitepixel.png">
       <Importer>TextureImporter</Importer>
       <Name>onewhitepixel</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Players\">
+      <Name>Players</Name>
+    </Folder>
   </ItemGroup>
 </Project>
