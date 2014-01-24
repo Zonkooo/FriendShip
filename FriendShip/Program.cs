@@ -1,5 +1,3 @@
-using System;
-
 namespace FriendShip
 {
 	static class Program

@@ -11,6 +11,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace FriendShip
 {
+	enum Rooms
+	{
+		LEFT = 0,
+		RIGHT = 1,
+	}
+
 	/// <summary>
 	/// This is the main type for your game
 	/// </summary>
@@ -19,6 +25,8 @@ namespace FriendShip
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
 		public Texture2D OneWhitePixel;
+
+		private List<Room> _rooms = new List<Room>();
 
 		public GameCore()
 		{
@@ -30,6 +38,10 @@ namespace FriendShip
 			//IsMouseVisible = true;
 
 			Content.RootDirectory = "Content";
+
+
+			_rooms.Add(new Room (this, new Vector2 (10, 10)));
+			_rooms.Add(new Room (this, new Vector2 (100, 10)));
 		}
 
 		/// <summary>
@@ -53,6 +65,11 @@ namespace FriendShip
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
+
+			foreach(var room in _rooms)
+			{
+				room.Texture = OneWhitePixel;
+			}
 		}
 
 		/// <summary>
