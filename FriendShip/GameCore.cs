@@ -58,6 +58,8 @@ namespace FriendShip
 		public SpriteFont font;
 		public SoundManager SoundManager;
 
+		private Dictionary<GameEndings, Texture2D> _gameOverTex = new Dictionary<GameEndings, Texture2D> ();
+
 		public Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
 		public List<Wall> Walls = new List<Wall>();
 		public List<Player> Players = new List<Player>();
@@ -105,6 +107,12 @@ namespace FriendShip
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
 			Cling = Content.Load<Texture2D>("clig");
 			font = Content.Load<SpriteFont>("font");
+
+			_gameOverTex[GameEndings.WIN] = Content.Load<Texture2D>("game_over");
+			_gameOverTex[GameEndings.ALL_DEAD] = Content.Load<Texture2D>("game_over");
+			_gameOverTex[GameEndings.EXPLODE] = Content.Load<Texture2D>("game_over");
+			_gameOverTex[GameEndings.DERIVE] = Content.Load<Texture2D>("game_over");
+			_gameOverTex[GameEndings.SHARE_GOLD] = Content.Load<Texture2D>("game_over");
 
 			InitHelper.LoadAndSetRoomTextures (_rooms, Content);
 
@@ -192,6 +200,7 @@ namespace FriendShip
 		}
 
 		bool ended = false;
+		GameEndings? _ending = null;
 		private void EndGame(GameEndings ending)
 		{
 			foreach (var component in Components)
@@ -201,6 +210,7 @@ namespace FriendShip
 					c.Enabled = false;
 			}
 			ended = true;
+			_ending = ending;
 		}
 
 		/// <summary>
@@ -216,20 +226,26 @@ namespace FriendShip
 			if(spriteBatch != null)
 			{
 				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-                spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 40, (int)(health * 1000), 40), Color.IndianRed); //barre de vie
-				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 90, (int)(derive*1000), 40), Color.CornflowerBlue); //barre de dérive
-
-				//timer
-				spriteBatch.DrawString(font, _deathCounter.ToString("mm\\:ss"), new Vector2(40, 40), Color.White); //barre de dérive
-
-				foreach(var @event in Events)
+				if (ended)
+					spriteBatch.Draw (_gameOverTex [_ending.Value], new Vector2 (), Color.White);
+				else
 				{
-					if (@event.Enabled)
-						@event.DrawText (spriteBatch);
-				}
 
-				foreach (var wall in Walls)
-					DrawHitBox (wall._boundingBox);
+					spriteBatch.Draw (OneWhitePixel, new Rectangle (400, 40, (int)(health * 1000), 40), Color.IndianRed); //barre de vie
+					spriteBatch.Draw (OneWhitePixel, new Rectangle (400, 90, (int)(derive * 1000), 40), Color.CornflowerBlue); //barre de dérive
+
+					//timer
+					spriteBatch.DrawString (font, _deathCounter.ToString ("mm\\:ss"), new Vector2 (40, 40), Color.White); //barre de dérive
+
+					foreach (var @event in Events)
+					{
+						if (@event.Enabled)
+							@event.DrawText (spriteBatch);
+					}
+
+					foreach (var wall in Walls)
+						DrawHitBox (wall._boundingBox);
+				}
 
 				spriteBatch.End();
 			}
