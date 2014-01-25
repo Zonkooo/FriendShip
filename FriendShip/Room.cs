@@ -44,17 +44,21 @@ namespace FriendShip
 			_game.Components.Add (this);
 			this.Enabled = true;
 			this.Visible = true;
+			DrawOrder = 100;
 		}
 
 		/// <returns>true if a trap was triggered</returns>
 		public void PlayerEnters()
 		{
 			nbPlayersInRoom++;
+			DrawOrder = 100;
 		}
 
 		public void PlayerLeaves()
 		{
 			nbPlayersInRoom--;
+			if (nbPlayersInRoom == 0)
+				DrawOrder = 300;
 			if (nbPlayersInRoom == 0 && _traps.Count > 0)
 				foreach (var trap in _traps)
 					trap.Enable ();

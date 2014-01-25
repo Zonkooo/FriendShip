@@ -55,6 +55,8 @@ namespace FriendShip
 			Visible = true;
 			Enabled = true;
 			game.Components.Add (this);
+
+			DrawOrder = 200;
 		}
 
 		bool trapKeyWasDown = false;
@@ -128,7 +130,7 @@ namespace FriendShip
 			if (Position != prevPos)
 				currentState = PlayerState.WALK;
 			else
-			currentState = PlayerState.STILL;
+				currentState = PlayerState.STILL;
 
 			//check traps
 			if (currentRoom.CheckTraps (Position))
