@@ -216,6 +216,7 @@ namespace FriendShip
 				{ Direction.UP, Keys.Up },
 				{ Direction.DOWN, Keys.Down },
 				{ Direction.TRAP, Keys.End },
+				{ Direction.ACTION, Keys.PageDown },
 			};
 
 			Players.Add(new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls));
@@ -237,6 +238,7 @@ namespace FriendShip
 				{ Direction.UP, Keys.W },
 				{ Direction.DOWN, Keys.S },
 				{ Direction.TRAP, Keys.Q },
+				{ Direction.ACTION, Keys.E },
 			};
 			Players.Add(new Player (this, mecanoTextures, _rooms[RoomType.BRIDGE], player2Controls));
 

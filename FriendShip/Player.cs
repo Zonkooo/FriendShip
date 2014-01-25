@@ -16,6 +16,7 @@ namespace FriendShip
 		RIGHT,
 		LEFT,
 		TRAP,
+		ACTION,
 	}
 
 	public enum PlayerState
@@ -101,6 +102,11 @@ namespace FriendShip
 				if(currentRoom.MoveType == RoomMovementType.VERTICAL)
 					delta.Y = moveSpeed;
 				directions.Add (Direction.DOWN);
+			}
+
+			if (currentKeyState.IsKeyDown (controls [Direction.ACTION]))
+			{
+				currentRoom.Actionned = true;
 			}
 
 			if (currentKeyState.IsKeyDown (controls [Direction.TRAP]))

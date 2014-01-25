@@ -119,5 +119,11 @@ namespace FriendShip
 			}
 			base.Draw (gameTime);
 		}
+
+		public bool Actionned;
+		public void EnableAction ()
+		{
+			Actionned = false;
+		}
 	}
 }
