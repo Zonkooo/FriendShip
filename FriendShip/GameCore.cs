@@ -40,8 +40,8 @@ namespace FriendShip
 			Content.RootDirectory = "Content";
 
 
-			_rooms.Add(new Room (this, new Vector2 (10, 10)));
-			_rooms.Add(new Room (this, new Vector2 (100, 10)));
+			_rooms.Add(new Room (this, new Vector2 (10, 10), new Vector2 (10, 10)));
+			_rooms.Add(new Room (this, new Vector2 (100, 10), new Vector2 (100, 10)));
 
 			_rooms [(int)Rooms.LEFT].Exits.Add (new RoomLink (_rooms [(int)Rooms.RIGHT], new Rectangle (69, 10, 1, 30)));
 			_rooms [(int)Rooms.RIGHT].Exits.Add (new RoomLink (_rooms [(int)Rooms.LEFT], new Rectangle (100, 10, 1, 30)));

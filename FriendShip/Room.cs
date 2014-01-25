@@ -17,11 +17,15 @@ namespace FriendShip
 		public Texture2D Texture;
 		public List<RoomLink> Exits { get; private set;}
 
-		public Room (GameCore game, Vector2 position)
+		/// <summary> the position where the player should spawn at the begining of the game </summary>
+		public Vector2 SpawnPosition {get; private set;}
+
+		public Room (GameCore game, Vector2 position, Vector2 spawnPoint)
 			: base(game)
 		{
 			_game = game;
 			Position = position;
+			SpawnPosition = spawnPoint;
 			Exits = new List<RoomLink> ();
 
 			_game.Components.Add (this);
@@ -35,7 +39,7 @@ namespace FriendShip
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				_game.spriteBatch.Draw(Texture, new Rectangle((int)Position.X, (int)Position.Y, 60, 30), null, Color.White);
+				_game.spriteBatch.Draw(Texture, Position, Color.White);
 
 				foreach (var exit in Exits)
 					exit.DrawHitBox (_game.spriteBatch, _game.OneWhitePixel);
