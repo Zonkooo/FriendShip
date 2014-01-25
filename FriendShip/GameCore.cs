@@ -137,18 +137,32 @@ namespace FriendShip
 			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
 			var cale = Content.Load<Texture2D>("Rooms/entrepot");
 			var chambre = Content.Load<Texture2D>("Rooms/chambre");
-//			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
-//			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
-//			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
+			var echelleMid = Content.Load<Texture2D>("Rooms/echelle_court_milieu");
+			var echelleLeft = Content.Load<Texture2D>("Rooms/echelle_court_gauche");
+			var echelleRight = Content.Load<Texture2D>("Rooms/echelle_court_droite");
+			var echelleLong = Content.Load<Texture2D>("Rooms/echelle_long");
 
 			_rooms [RoomType.COMMANDS].Texture = pilotage;
-			_rooms [RoomType.HALL_1].Texture = couloir1;
 			_rooms[RoomType.MACHINE].Texture = machines;
-			_rooms[RoomType.HALL_2].Texture = couloir1;
 			_rooms[RoomType.BRIDGE].Texture = cuisine;
 			_rooms[RoomType.KITCHEN].Texture = cuisine;
 			_rooms[RoomType.CALE].Texture = cale;
 			_rooms[RoomType.CHAMBRE].Texture = chambre;
+
+			_rooms [RoomType.HALL_1].Texture = couloir1;
+			_rooms[RoomType.HALL_2].Texture = couloir1;
+			_rooms[RoomType.HALL_3].Texture = couloir1;
+			_rooms[RoomType.HALL_4].Texture = couloir1;
+			_rooms[RoomType.HALL_5].Texture = couloir1;
+			_rooms[RoomType.HALL_6].Texture = couloir1;
+			_rooms[RoomType.HALL_7].Texture = couloir1;
+			_rooms[RoomType.HALL_8].Texture = couloir1;
+
+			_rooms [RoomType.LADDER_1].Texture = echelleLeft;
+			_rooms [RoomType.LADDER_3].Texture = echelleMid;
+			_rooms [RoomType.LADDER_5].Texture = echelleRight;
+			_rooms [RoomType.LADDER_2].Texture = echelleLong;
+			_rooms [RoomType.LADDER_4].Texture = echelleLong;
 
 			var cire = Content.Load<Texture2D>("Players/cireman");
 
