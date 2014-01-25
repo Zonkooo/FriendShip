@@ -66,7 +66,8 @@ namespace FriendShip
 
 		public void AddTrap(Trap trap)
 		{
-			_traps.Add (trap);
+			if(nbPlayersInRoom == 1)
+				_traps.Add (trap);
 		}
 
 		public bool CheckTraps(Vector2 playerPos)
