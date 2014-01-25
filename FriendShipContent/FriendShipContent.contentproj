@@ -203,6 +203,11 @@
       <Name>font</Name>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="clig.png">
+      <Importer>TextureImporter</Importer>
+      <Name>clig</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
