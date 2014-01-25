@@ -84,14 +84,17 @@ namespace FriendShip
 
 		public override void Draw (GameTime gameTime)
 		{
-			if (Texture != null && _game.spriteBatch != null)
+			if (_game.spriteBatch != null)
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				if(_lightOn)
-					_game.spriteBatch.Draw(Texture, Position, Color.White);
-				else
-					_game.spriteBatch.Draw(_game.OneWhitePixel, new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height), Color.Black);
+                if (Texture != null)
+                {
+                    if (_lightOn)
+                        _game.spriteBatch.Draw(Texture, Position, Color.White);
+                    else
+                        _game.spriteBatch.Draw(_game.OneWhitePixel, new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height), Color.Black);
+                }
 
 				foreach (var exit in Exits)
 					exit.DrawHitBox (_game.spriteBatch, _game.OneWhitePixel);

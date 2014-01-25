@@ -32,7 +32,7 @@ namespace FriendShip
 		public AllToMachineRoom (GameCore game)
 			:base(game, "Everyone in the engine room !")
 		{
-			_target = _game._rooms [RoomType.MACHINES];
+			_target = _game._rooms [RoomType.MACHINE];
 		}
 
 		public override void Update (GameTime gameTime)
@@ -61,7 +61,7 @@ namespace FriendShip
 		public MustDriveShip (GameCore game, string text)
 			:base(game, text)
 		{
-			_target = _game._rooms [RoomType.PILOTAGE];
+			_target = _game._rooms [RoomType.COMMANDS];
 			Enabled = true; //always enabled
 		}
 
