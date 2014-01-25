@@ -125,8 +125,8 @@ namespace FriendShip
 			Walls.Add (new Wall (new Rectangle (253/*that's the only important thing*/, 0, 1, 1080)));
 			Walls.Add (new Wall (new Rectangle (1904/*that's the only important thing*/, 0, 1, 1080)));
 
-			Events.Add (new MustDriveShip (this, "Someone must drive the ship"));
-			Events.Add (new AllToMachineRoom (this));
+			Events.Add (new MustDriveShip (this, "Someone must drive this ship !"));
+			Events.Add (new AllToCale (this));
 //			Events [0].Enabled = true;
 		}
 
@@ -277,8 +277,15 @@ namespace FriendShip
 				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 40, (int)(health*1000), 40), Color.IndianRed); //barre de vie
 				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 90, (int)(derive*1000), 40), Color.CornflowerBlue); //barre de dérive
 
+				foreach(var @event in Events)
+				{
+					if (@event.Enabled)
+						@event.DrawText (spriteBatch);
+				}
+
 				foreach (var wall in Walls)
 					DrawHitBox (wall._boundingBox);
+
 				spriteBatch.End();
 			}
 		}
