@@ -23,8 +23,7 @@ namespace FriendShip
 			_timings = timings;
 			Texture = tex;
 			_nbFrames = nbFrames;
-			index = nbFrames - 1;
-			currentTime = timings != null ? timings [nbFrames - 1] : 0;
+			Reset ();
 		}
 
 		public void Update(double time)
@@ -38,6 +37,12 @@ namespace FriendShip
 				index = Math.Abs((index - 1)%_nbFrames); //sprites are reversed
 				currentTime = _timings [index] - currentTime;
 			}
+		}
+
+		public void Reset()
+		{
+			index = _nbFrames - 1;
+			currentTime = _timings != null ? _timings [_nbFrames - 1] : 0;
 		}
 
 		public Rectangle GetRectangle()

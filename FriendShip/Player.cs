@@ -139,7 +139,8 @@ namespace FriendShip
 				else
 				{
 					currentState = PlayerState.HIT;
-					hitTime = 500;
+					_textures [currentState].Reset ();
+					hitTime = 800;
 				}
 			}
 
