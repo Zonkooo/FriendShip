@@ -78,6 +78,16 @@
       <Name>capitaine_run</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Players\mecano_run.png">
+      <Importer>TextureImporter</Importer>
+      <Name>mecano_run</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\mecano.png">
+      <Importer>TextureImporter</Importer>
+      <Name>Mécano</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
