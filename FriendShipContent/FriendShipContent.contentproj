@@ -210,7 +210,12 @@
     </Compile>
     <Compile Include="game_over.png">
       <Importer>TextureImporter</Importer>
-      <Name>game over</Name>
+      <Name>game_over</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\capitaine_degats.png">
+      <Importer>TextureImporter</Importer>
+      <Name>capitaine_degats</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
