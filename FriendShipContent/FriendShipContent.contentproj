@@ -198,6 +198,11 @@
       <Name>couloir_m4</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="font.spritefont">
+      <Importer>FontDescriptionImporter</Importer>
+      <Name>font</Name>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
