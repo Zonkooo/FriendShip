@@ -158,6 +158,46 @@
       <Name>cuisto</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Rooms\couloir_bas_droite.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_bas_droite</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\couloir_bas_gauche.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_bas_gauche</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\couloir_haut_droite.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_haut_droite</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\couloir_haut_gauche.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_haut_gauche</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\couloir_m1.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_m1</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\couloir_m2.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_m2</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\couloir_m3.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_m3</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\couloir_m4.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir_m4</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
