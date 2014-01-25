@@ -13,17 +13,34 @@ namespace FriendShip
 	{
 		public readonly Texture2D Texture;
 		private int _nbFrames;
+		private double[] _timings;
+		private int index = 0;
+		private double currentTime;
 
-		public MyTexture2D (Texture2D tex, int nbFrames)
+		public MyTexture2D (Texture2D tex, int nbFrames, double[] timings = null)
 		{
+			_timings = timings;
 			Texture = tex;
 			_nbFrames = nbFrames;
 		}
 
-		public Rectangle GetRectangle(int i)
+		public void Update(double time)
+		{
+			if (_timings == null)
+				return;
+
+			currentTime -= time;
+			if(currentTime < 0)
+			{
+				index = (index + 1)%_nbFrames;
+				currentTime = _timings [index] - currentTime;
+			}
+		}
+
+		public Rectangle GetRectangle()
 		{
 			return new Rectangle (
-				(Texture.Width / _nbFrames) * i,
+				(Texture.Width / _nbFrames) * index,
 				0,
 				(Texture.Width / _nbFrames),
 				Texture.Height);

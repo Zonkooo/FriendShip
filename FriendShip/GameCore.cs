@@ -100,7 +100,7 @@ namespace FriendShip
 			var captainTextures = new Dictionary<PlayerState, MyTexture2D>
 			{
 				{PlayerState.STILL, new MyTexture2D(captain, 1)},
-				{PlayerState.WALK, new MyTexture2D(captainRun, 4)},
+				{PlayerState.WALK, new MyTexture2D(captainRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
 			};
 			var player1Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.Left },

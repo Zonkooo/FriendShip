@@ -32,7 +32,7 @@ namespace FriendShip
 		public Vector2 Position;
 		private Room currentRoom;
 		private PlayerState currentState = PlayerState.STILL;
-		private bool flipHorizontally = false;
+		private bool flipHorizontally = true;
 
 		private Dictionary<Direction, Keys> controls;
 		private Dictionary<PlayerState, MyTexture2D> _textures;
@@ -68,14 +68,14 @@ namespace FriendShip
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
 					delta.X = -moveSpeed;
 				directions.Add (Direction.LEFT);
-				flipHorizontally = true;
+				flipHorizontally = false;
 			}
 			if (currentKeyState.IsKeyDown (controls [Direction.RIGHT]))
 			{
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
 					delta.X = moveSpeed;
 				directions.Add (Direction.RIGHT);
-				flipHorizontally = false;
+				flipHorizontally = true;
 			}
 			if (currentKeyState.IsKeyDown (controls [Direction.UP]))
 			{
@@ -131,6 +131,8 @@ namespace FriendShip
 				}
 			}
 
+			_textures [currentState].Update (gameTime.ElapsedGameTime.TotalMilliseconds);
+
             base.Update(gameTime);
         }
 
@@ -150,7 +152,7 @@ namespace FriendShip
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				_game.spriteBatch.Draw(_textures[currentState].Texture, Position, null, Color.White, 0f, new Vector2(), new Vector2(1), flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+				_game.spriteBatch.Draw(_textures[currentState].Texture, Position, _textures[currentState].GetRectangle(), Color.White, 0f, new Vector2(), new Vector2(1), flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
 				_game.spriteBatch.End();
 			}
