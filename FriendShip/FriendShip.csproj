@@ -175,4 +175,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\game_over.xnb" />
+  </ItemGroup>
 </Project>

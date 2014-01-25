@@ -208,6 +208,11 @@
       <Name>clig</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="game_over.png">
+      <Importer>TextureImporter</Importer>
+      <Name>game over</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
