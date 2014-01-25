@@ -143,7 +143,7 @@ namespace FriendShip
 
 		private Rectangle GetBoundingBox()
 		{
-			return new Rectangle ((int)Position.X, (int)Position.Y, 31, 56);
+			return new Rectangle ((int)Position.X, (int)Position.Y, 66, 112);
 		}
 
 		public override void Draw (GameTime gameTime)
