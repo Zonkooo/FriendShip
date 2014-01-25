@@ -58,6 +58,16 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Rooms\couloir1.png">
+      <Importer>TextureImporter</Importer>
+      <Name>couloir1</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\cuisine.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cuisine</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
