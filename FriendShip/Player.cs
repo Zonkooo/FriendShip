@@ -35,10 +35,10 @@ namespace FriendShip
 		private bool flipHorizontally = false;
 
 		private Dictionary<Direction, Keys> controls;
-		private Dictionary<PlayerState, Texture2D> _textures;
+		private Dictionary<PlayerState, MyTexture2D> _textures;
 		private GameCore _game;
 
-		public Player (GameCore game, Dictionary<PlayerState, Texture2D> textures, Room startRoom, Dictionary<Direction, Keys> controls)
+		public Player (GameCore game, Dictionary<PlayerState, MyTexture2D> textures, Room startRoom, Dictionary<Direction, Keys> controls)
 			: base(game)
 		{
 			this.controls = controls;
@@ -150,7 +150,7 @@ namespace FriendShip
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				_game.spriteBatch.Draw(_textures[currentState], Position, null, Color.White, 0f, new Vector2(), new Vector2(1), flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+				_game.spriteBatch.Draw(_textures[currentState].Texture, Position, null, Color.White, 0f, new Vector2(), new Vector2(1), flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
 				_game.spriteBatch.End();
 			}

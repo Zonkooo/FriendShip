@@ -97,10 +97,10 @@ namespace FriendShip
 
 			var captain = Content.Load<Texture2D>("Players/capitaine");
 			var captainRun = Content.Load<Texture2D>("Players/capitaine_run");
-			var captainTextures = new Dictionary<PlayerState, Texture2D>
+			var captainTextures = new Dictionary<PlayerState, MyTexture2D>
 			{
-				{PlayerState.STILL, captain},
-				{PlayerState.WALK, captainRun},
+				{PlayerState.STILL, new MyTexture2D(captain, 1)},
+				{PlayerState.WALK, new MyTexture2D(captainRun, 4)},
 			};
 			var player1Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.Left },
