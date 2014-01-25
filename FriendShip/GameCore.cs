@@ -103,7 +103,6 @@ namespace FriendShip
             _rooms[RoomType.HALL_8] = new Room(this, new Vector2(1167, 590 + 74), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.MACHINE] = new Room(this, new Vector2(1385, 590), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
 
-            //Les portes Etage 1
 			_rooms[RoomType.COMMANDS].Exits.Add(new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(600, 211, 1, 200), Direction.RIGHT, new Vector2(605, 290)));
 			_rooms[RoomType.HALL_1].Exits.Add(new RoomLink(_rooms[RoomType.COMMANDS], new Rectangle(603, 211, 1, 200), Direction.LEFT, new Vector2(560, 290)));
 			_rooms[RoomType.HALL_1].Exits.Add(new RoomLink(_rooms[RoomType.KITCHEN], new Rectangle(817, 211, 1, 200), Direction.RIGHT, new Vector2(825, 290)));
@@ -114,7 +113,6 @@ namespace FriendShip
             _rooms[RoomType.BRIDGE].Exits.Add(new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1388, 211, 1, 200), Direction.LEFT, new Vector2(1330, 290)));
 			_rooms[RoomType.HALL_1].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_2], new Rectangle(672, 390, 100, 1), Direction.DOWN, new Vector2(680, 450)));
             _rooms[RoomType.LADDER_2].Exits.Add(new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(672, 410, 100, 1), Direction.UP, new Vector2(680, 295)));
-            //Portes étage 2
             _rooms[RoomType.COMMANDS].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_1], new Rectangle(393, 390, 100, 1), Direction.DOWN, new Vector2(420, 410)));
             _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.COMMANDS], new Rectangle(393, 393, 100, 1), Direction.UP, new Vector2(420, 290)));
             _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.HALL_3], new Rectangle(446, 211+232, 1, 130), Direction.RIGHT, new Vector2(500, 445)));
@@ -133,9 +131,14 @@ namespace FriendShip
             _rooms[RoomType.HALL_8].Exits.Add(new RoomLink(_rooms[RoomType.CHAMBRE], new Rectangle(1168, 670, 1, 130), Direction.LEFT, new Vector2(1080, 670)));
             _rooms[RoomType.HALL_8].Exits.Add(new RoomLink(_rooms[RoomType.MACHINE], new Rectangle(1381, 670, 1, 130), Direction.RIGHT, new Vector2(1410, 670)));
             _rooms[RoomType.MACHINE].Exits.Add(new RoomLink(_rooms[RoomType.HALL_8], new Rectangle(1386, 670, 1, 130), Direction.LEFT, new Vector2(1290, 670)));
-
             _rooms[RoomType.HALL_7].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_2], new Rectangle(672, 770, 100, 1), Direction.UP, new Vector2(672, 500)));
             _rooms[RoomType.LADDER_2].Exits.Add(new RoomLink(_rooms[RoomType.HALL_7], new Rectangle(672, 650, 100, 1), Direction.DOWN, new Vector2(672, 671)));
+            _rooms[RoomType.HALL_4].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_3], new Rectangle(960, 443, 1, 130), Direction.RIGHT, new Vector2(980, 443)));
+            _rooms[RoomType.LADDER_3].Exits.Add(new RoomLink(_rooms[RoomType.HALL_4], new Rectangle(980, 443, 1, 130), Direction.LEFT, new Vector2(890, 443)));
+            _rooms[RoomType.LADDER_3].Exits.Add(new RoomLink(_rooms[RoomType.KITCHEN], new Rectangle(960, 410, 100, 1), Direction.UP, new Vector2(960, 295)));
+            _rooms[RoomType.KITCHEN].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_3], new Rectangle(960, 390, 100, 1), Direction.DOWN, new Vector2(960, 443)));
+            _rooms[RoomType.CHAMBRE].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_3], new Rectangle(960, 770, 100, 1), Direction.UP, new Vector2(960, 443)));
+            _rooms[RoomType.LADDER_3].Exits.Add(new RoomLink(_rooms[RoomType.CHAMBRE], new Rectangle(960, 580, 100, 1), Direction.DOWN, new Vector2(960, 671)));
 
 
 
@@ -306,8 +309,7 @@ namespace FriendShip
 			if(spriteBatch != null)
 			{
 				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-
-				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 40, (int)(health*1000), 40), Color.IndianRed); //barre de vie
+                spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 40, (int)(health * 1000), 40), Color.IndianRed); //barre de vie
 				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 90, (int)(derive*1000), 40), Color.CornflowerBlue); //barre de dérive
 
 				//timer
