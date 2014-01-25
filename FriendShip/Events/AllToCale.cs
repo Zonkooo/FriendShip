@@ -18,7 +18,7 @@ namespace FriendShip
 		public AllToCale (GameCore game)
 			:base(game, "Everyone in the storage room !")
 		{
-			_target = _game._rooms [RoomType.MACHINE];
+			_target = _game._rooms [RoomType.CALE];
 		}
 
 		public override void Update (GameTime gameTime)
