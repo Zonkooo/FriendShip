@@ -47,10 +47,24 @@
       <Name>onewhitepixel</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Rooms\machines.png">
+      <Importer>TextureImporter</Importer>
+      <Name>machines</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\pilotage.png">
+      <Importer>TextureImporter</Importer>
+      <Name>pilotage</Name>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
       <Name>Players</Name>
+    </Folder>
+    <Folder Include="Rooms\">
+      <Name>Rooms</Name>
     </Folder>
   </ItemGroup>
 </Project>
