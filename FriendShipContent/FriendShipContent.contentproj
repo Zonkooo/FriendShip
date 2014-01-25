@@ -123,6 +123,41 @@
       <Name>entrepot</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Players\capitaine_mort.png">
+      <Importer>TextureImporter</Importer>
+      <Name>capitaine_mort</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\cireman_mort.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cireman_mort</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\cireman_run.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cireman_run</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\cuisto_mort.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cuisto_mort</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\cuisto_run.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cuisto_run</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\mecano_mort.png">
+      <Importer>TextureImporter</Importer>
+      <Name>mecano_mort</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\cuisto.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cuisto</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
