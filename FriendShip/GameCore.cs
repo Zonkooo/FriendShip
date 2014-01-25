@@ -59,6 +59,7 @@ namespace FriendShip
 		public SoundManager SoundManager;
 
 		private Dictionary<GameEndings, Texture2D> _gameOverTex = new Dictionary<GameEndings, Texture2D> ();
+		public Texture2D _backGnd;
 
 		public Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
 		public List<Wall> Walls = new List<Wall>();
@@ -106,7 +107,11 @@ namespace FriendShip
 
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
 			Cling = Content.Load<Texture2D>("clig");
+			_backGnd = Content.Load<Texture2D>("Interface/fond");
 			font = Content.Load<SpriteFont>("font");
+
+			var bg = new TemporaryEffect (this, new Vector2 (), new MyTexture2D (_backGnd, 1), 1E20 /*beaucoup*/);
+			bg.DrawOrder = -10;
 
 			_gameOverTex[GameEndings.WIN] = Content.Load<Texture2D>("game_over");
 			_gameOverTex[GameEndings.ALL_DEAD] = Content.Load<Texture2D>("game_over");

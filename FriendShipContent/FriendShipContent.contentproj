@@ -253,6 +253,11 @@
       <Name>pont</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Interface\fond.png">
+      <Importer>TextureImporter</Importer>
+      <Name>fond</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
