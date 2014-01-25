@@ -56,6 +56,7 @@ namespace FriendShip
 		public Texture2D OneWhitePixel;
 		public Texture2D Cling;
 		public SpriteFont font;
+		public SoundManager SoundManager;
 
 		public Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
 		public List<Wall> Walls = new List<Wall>();
@@ -159,6 +160,8 @@ namespace FriendShip
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
+			SoundManager = new SoundManager (this);
+
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
 			Cling = Content.Load<Texture2D>("clig");
 			font = Content.Load<SpriteFont>("font");
@@ -236,6 +239,8 @@ namespace FriendShip
 				{ Direction.TRAP, Keys.Q },
 			};
 			Players.Add(new Player (this, mecanoTextures, _rooms[RoomType.BRIDGE], player2Controls));
+
+			SoundManager.Play ();
 		}
 
 		private TimeSpan _deathCounter = TimeSpan.FromMinutes(2);
