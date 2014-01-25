@@ -18,12 +18,12 @@ namespace FriendShip
 		public SoundManager (Game game)
 			: base(game)
 		{
-			music = game.Content.Load<Song> ("theme");
+			//music = game.Content.Load<Song> ("theme");
 		}
 
 		public void Play()
 		{
-			MediaPlayer.Play (music);
+			//MediaPlayer.Play (music);
 		}
 	}
 }
