@@ -100,7 +100,7 @@ namespace FriendShip
             _rooms[RoomType.HALL_2].Exits.Add(new RoomLink(_rooms[RoomType.KITCHEN], new Rectangle(1168, 211, 1, 200), Direction.LEFT, new Vector2(1120, 290)));
             _rooms[RoomType.HALL_2].Exits.Add(new RoomLink(_rooms[RoomType.BRIDGE], new Rectangle(1385, 211, 1, 200), Direction.RIGHT, new Vector2(1395, 290)));
             _rooms[RoomType.BRIDGE].Exits.Add(new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1388, 211, 1, 200), Direction.LEFT, new Vector2(1330, 290)));
-            //Portes étage 2
+            //Portes Ã©tage 2
             _rooms[RoomType.COMMANDS].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_1], new Rectangle(393, 390, 100, 1), Direction.DOWN, new Vector2(393, 410)));
             _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.COMMANDS], new Rectangle(393, 393, 100, 1), Direction.UP, new Vector2(393, 290)));
             _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.HALL_3], new Rectangle(446, 211+232, 1, 130), Direction.RIGHT, new Vector2(500, 445)));
@@ -135,12 +135,20 @@ namespace FriendShip
 			var pilotage = Content.Load<Texture2D>("Rooms/pilotage");
 			var couloir1 = Content.Load<Texture2D>("Rooms/couloir1");
 			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
+			var cale = Content.Load<Texture2D>("Rooms/entrepot");
+			var chambre = Content.Load<Texture2D>("Rooms/chambre");
+//			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
+//			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
+//			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
 
 			_rooms [RoomType.COMMANDS].Texture = pilotage;
 			_rooms [RoomType.HALL_1].Texture = couloir1;
             _rooms[RoomType.KITCHEN].Texture = machines;
 			_rooms[RoomType.HALL_2].Texture = couloir1;
 			_rooms[RoomType.BRIDGE].Texture = cuisine;
+			_rooms[RoomType.KITCHEN].Texture = cuisine;
+			_rooms[RoomType.CALE].Texture = cale;
+			_rooms[RoomType.CHAMBRE].Texture = chambre;
 
 			var cire = Content.Load<Texture2D>("Players/cireman");
 
