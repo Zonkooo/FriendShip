@@ -260,7 +260,7 @@ namespace FriendShip
 		/// </summary>
 		public void DrawHitBox(Rectangle r)
 		{
-			spriteBatch.Draw(OneWhitePixel, r, new Color(255, 0, 255));
+			//spriteBatch.Draw(OneWhitePixel, r, new Color(255, 0, 255));
 		}
 	}
 

@@ -41,7 +41,7 @@ namespace FriendShip
 
 		public void DrawHitBox(SpriteBatch sb, Texture2D pixel)
 		{
-			sb.Draw(pixel, _triggerZone, new Color(255, 0, 255));
+			//sb.Draw(pixel, _triggerZone, new Color(255, 0, 255));
 		}
 	}
 }
