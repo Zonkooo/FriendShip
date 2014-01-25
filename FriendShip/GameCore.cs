@@ -32,19 +32,23 @@ namespace FriendShip
 		{
 			graphics = new GraphicsDeviceManager(this)
 			{
-				PreferredBackBufferHeight = 720,
-				PreferredBackBufferWidth = 1280,
+				PreferredBackBufferHeight = 1080,
+				PreferredBackBufferWidth = 1920,
+                IsFullScreen = true,
 			};
 			//IsMouseVisible = true;
 
 			Content.RootDirectory = "Content";
 
+            _rooms.Add(new Room (this, new Vector2 (253, 211), new Vector2()));//room 1
+			//_rooms.Add(new Room (this, new Vector2 (601, 211)));//hall 1
+            _rooms.Add(new Room(this, new Vector2(819, 211), new Vector2()));//room 2
+           // _rooms.Add(new Room(this, new Vector2(1167, 211)));// hall 2
+            _rooms.Add(new Room(this, new Vector2(1385, 211), new Vector2()));//room 3
 
-			_rooms.Add(new Room (this, new Vector2 (10, 10), new Vector2 (10, 10)));
-			_rooms.Add(new Room (this, new Vector2 (100, 10), new Vector2 (100, 10)));
-
-			_rooms [(int)Rooms.LEFT].Exits.Add (new RoomLink (_rooms [(int)Rooms.RIGHT], new Rectangle (69, 10, 1, 30), new Vector2(102, 10)));
-			_rooms [(int)Rooms.RIGHT].Exits.Add (new RoomLink (_rooms [(int)Rooms.LEFT], new Rectangle (100, 10, 1, 30), new Vector2(68-31, 10)));
+            _rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(357, 10, 1, 200), new Vector2()));
+            _rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.LEFT], new Rectangle(576, 10, 1, 200), new Vector2()));
+            _rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(924, 10, 1, 200), new Vector2()));
 		}
 
 		/// <summary>
