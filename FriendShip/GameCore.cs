@@ -47,6 +47,7 @@ namespace FriendShip
 
 		//ship related properties
 		public float health = 1.0f;
+		public float derive = 1.0f;
 
 		public GameCore()
 		{
@@ -95,7 +96,8 @@ namespace FriendShip
 			Walls.Add (new Wall (new Rectangle (253/*that's the only important thing*/, 0, 1, 1080)));
 			Walls.Add (new Wall (new Rectangle (1904/*that's the only important thing*/, 0, 1, 1080)));
 
-			Events.Add (new AllToMachineRoom (this, "Everyone in the engine room !"));
+			Events.Add (new MustDriveShip (this, "Someone must drive the ship"));
+			Events.Add (new AllToMachineRoom (this));
 //			Events [0].Enabled = true;
 		}
 
@@ -173,9 +175,11 @@ namespace FriendShip
 
 			if (health < 0) //ship explodes
 				; //TODO
+			if (derive < 0) //lost
+				; //TODO
 			if (Players.Count (p => p.Enabled) == 0) //everyone is dead
 				;
-			if(/*timer runs out*/)
+			if(/*timer runs out*/false)
 			{
 				if(Players.Count (p => p.Enabled) == 1)
 					; //TODO win
@@ -200,7 +204,8 @@ namespace FriendShip
 			{
 				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 50, (int)(health*1000), 40), new Color(0, 255, 0)); //barre de vie
+				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 40, (int)(health*1000), 40), Color.IndianRed); //barre de vie
+				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 90, (int)(derive*1000), 40), Color.CornflowerBlue); //barre de dérive
 
 				foreach (var wall in Walls)
 					DrawHitBox (wall._boundingBox);

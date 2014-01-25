@@ -29,8 +29,8 @@ namespace FriendShip
 	{
 		private readonly Room _target;
 
-		public AllToMachineRoom (GameCore game, string text)
-			:base(game, text)
+		public AllToMachineRoom (GameCore game)
+			:base(game, "Everyone in the engine room !")
 		{
 			_target = _game._rooms [RoomType.MACHINES];
 		}
@@ -51,6 +51,36 @@ namespace FriendShip
 				_game.health -= 0.0001f;
 			else
 				this.Enabled = false;
+		}
+	}
+
+	public class MustDriveShip : EventBase
+	{
+		private readonly Room _target;
+
+		public MustDriveShip (GameCore game, string text)
+			:base(game, text)
+		{
+			_target = _game._rooms [RoomType.PILOTAGE];
+			Enabled = true; //always enabled
+		}
+
+		public override void Update (GameTime gameTime)
+		{
+			bool missingPlayer = true;
+			foreach(var player in _game.Players)
+			{
+				if (player.Enabled && player.currentRoom == _target)
+				{
+					missingPlayer = false;
+					break;
+				}
+			}
+
+			if (missingPlayer)
+				_game.derive -= 0.001f;
+			else
+				_game.derive = Math.Min(_game.derive + 0.0005f, 1f);
 		}
 	}
 }
