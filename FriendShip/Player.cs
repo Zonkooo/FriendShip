@@ -31,7 +31,7 @@ namespace FriendShip
 		public const int moveSpeed = 5;
 
 		public Vector2 Position;
-		private Room currentRoom;
+		public Room currentRoom;
 		private PlayerState currentState = PlayerState.STILL;
 		private double hitTime;
 		private bool flipHorizontally = true;

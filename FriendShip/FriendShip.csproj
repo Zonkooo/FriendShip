@@ -55,11 +55,13 @@
     <Compile Include="Wall.cs" />
     <Compile Include="MyTexture2D.cs" />
     <Compile Include="Trap.cs" />
+    <Compile Include="Events\EventBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Content\Players\" />
     <Folder Include="Content\Rooms\" />
+    <Folder Include="Events\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\onewhitepixel.xnb">
