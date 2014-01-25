@@ -57,7 +57,7 @@ namespace FriendShip
 			rooms[RoomType.HALL_3]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_2], 	new Rectangle(663,  443, 1,   130), Direction.RIGHT, new Vector2(680,  443)){needBreak = true});
 			rooms[RoomType.LADDER_2]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_3], 	new Rectangle(682,  443, 1,   130), Direction.LEFT,  new Vector2(600,  443)));
 			rooms[RoomType.LADDER_2]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_4], 	new Rectangle(745,  443, 1,   130), Direction.RIGHT, new Vector2(782,  443)));
-			rooms[RoomType.HALL_4]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_2], 	new Rectangle(770,  443, 1,   130), Direction.LEFT,  new Vector2(672,  443)){needBreak = true});
+			rooms[RoomType.HALL_4]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_2], 	new Rectangle(770,  443, 1,   130), Direction.LEFT,  new Vector2(680,  443)){needBreak = true});
 			rooms[RoomType.CALE]		.Exits.Add(new RoomLink(rooms[RoomType.HALL_7], 	new Rectangle(597,  670, 1,   130), Direction.RIGHT, new Vector2(620,  670)));
 			rooms[RoomType.HALL_7]		.Exits.Add(new RoomLink(rooms[RoomType.CALE], 		new Rectangle(605,  670, 1,   130), Direction.LEFT,  new Vector2(530,  670)));
 			rooms[RoomType.HALL_7]		.Exits.Add(new RoomLink(rooms[RoomType.CHAMBRE], 	new Rectangle(815,  670, 1,   130), Direction.RIGHT, new Vector2(830,  670)));
@@ -69,7 +69,7 @@ namespace FriendShip
 			rooms[RoomType.HALL_7]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_2], 	new Rectangle(672,  770, 100, 1),   Direction.UP,    new Vector2(672,  500)));
 			rooms[RoomType.LADDER_2]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_7], 	new Rectangle(672,  650, 100, 1),   Direction.DOWN,  new Vector2(672,  671)));
 			rooms[RoomType.HALL_4]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_3], 	new Rectangle(960,  443, 1,   130), Direction.RIGHT, new Vector2(980,  443)) { needBreak = true });
-			rooms[RoomType.LADDER_3]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_4],	new Rectangle(980,  443, 1,   130), Direction.LEFT,  new Vector2(890,  443)) { needBreak = true });
+			rooms[RoomType.LADDER_3]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_4], 	new Rectangle(980,  443, 1,   130), Direction.LEFT,  new Vector2(890,  443)) { needBreak = true });
 			rooms[RoomType.LADDER_3]	.Exits.Add(new RoomLink(rooms[RoomType.KITCHEN], 	new Rectangle(960,  410, 100, 1),   Direction.UP,    new Vector2(980,  295)));
 			rooms[RoomType.KITCHEN]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_3], 	new Rectangle(960,  390, 100, 1),   Direction.DOWN,  new Vector2(980,  443)) { needBreak = true });
 			rooms[RoomType.CHAMBRE]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_3], 	new Rectangle(960,  770, 100, 1),   Direction.UP,    new Vector2(980,  443)) { needBreak = true });
@@ -90,6 +90,7 @@ namespace FriendShip
 			rooms[RoomType.MACHINE]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_5], 	new Rectangle(1600, 770, 100, 1),   Direction.UP,    new Vector2(1600, 470)));
 			rooms[RoomType.LADDER_5]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_6], 	new Rectangle(1600, 443, 1,   130), Direction.LEFT,  new Vector2(1500, 443)));
 			rooms[RoomType.HALL_6]		.Exits.Add(new RoomLink(rooms[RoomType.LADDER_5], 	new Rectangle(1590, 443, 1,   130), Direction.RIGHT, new Vector2(1600, 443)) { needBreak = true });
+
 		}
 
 		public static void LoadAndSetRoomTextures(Dictionary<RoomType, Room> rooms, ContentManager content)
