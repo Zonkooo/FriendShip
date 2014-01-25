@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace FriendShip
 {
-	enum RoomType
+	public enum RoomType
 	{
 		PILOTAGE,
 		HALL_1,
@@ -40,8 +40,13 @@ namespace FriendShip
 		public SpriteBatch spriteBatch;
 		public Texture2D OneWhitePixel;
 
-		private Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
+		public Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
 		public List<Wall> Walls = new List<Wall>();
+		public List<Player> Players = new List<Player>();
+		public List<EventBase> Events = new List<EventBase>();
+
+		//ship related properties
+		public float health = 1.0f;
 
 		public GameCore()
 		{
@@ -89,6 +94,9 @@ namespace FriendShip
 
 			Walls.Add (new Wall (new Rectangle (253/*that's the only important thing*/, 0, 1, 1080)));
 			Walls.Add (new Wall (new Rectangle (1904/*that's the only important thing*/, 0, 1, 1080)));
+
+			Events.Add (new AllToMachineRoom (this, "Everyone in the engine room !"));
+//			Events [0].Enabled = true;
 		}
 
 		/// <summary>
@@ -130,7 +138,7 @@ namespace FriendShip
 				{ Direction.DOWN, Keys.Down },
 				{ Direction.TRAP, Keys.End },
 			};
-			var player1 = new Player (this, captainTextures, _rooms[RoomType.PILOTAGE], player1Controls);
+			Players.Add(new Player (this, captainTextures, _rooms[RoomType.PILOTAGE], player1Controls));
 
 
 			var mecano = Content.Load<Texture2D>("Players/mecano");
@@ -148,15 +156,7 @@ namespace FriendShip
 				{ Direction.DOWN, Keys.S },
 				{ Direction.TRAP, Keys.Q },
 			};
-			var player2 = new Player (this, mecanoTextures, _rooms[RoomType.CUISINE], player2Controls);
-		}
-
-		/// <summary>
-		/// UnloadContent will be called once per game and is the place to unload
-		/// all content.
-		/// </summary>
-		protected override void UnloadContent()
-		{
+			Players.Add(new Player (this, mecanoTextures, _rooms[RoomType.CUISINE], player2Controls));
 		}
 
 		/// <summary>
@@ -169,6 +169,18 @@ namespace FriendShip
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape) || GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 			{
 				this.Exit();
+			}
+
+			if (health < 0) //ship explodes
+				; //TODO
+			if (Players.Count (p => p.Enabled) == 0) //everyone is dead
+				;
+			if(/*timer runs out*/)
+			{
+				if(Players.Count (p => p.Enabled) == 1)
+					; //TODO win
+				else
+					; //TODO lose
 			}
 
 			base.Update(gameTime);
@@ -187,6 +199,9 @@ namespace FriendShip
 			if(spriteBatch != null)
 			{
 				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+
+				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 50, (int)(health*1000), 40), new Color(0, 255, 0)); //barre de vie
+
 				foreach (var wall in Walls)
 					DrawHitBox (wall._boundingBox);
 				spriteBatch.End();
