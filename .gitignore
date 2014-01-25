@@ -25,6 +25,7 @@ _ReSharper.*/
 
 *.userprefs
 *~
+*.so
 
 ###################################################################################
 # If you want to add anything in this file, make sure this is useful for EVERYONE #
