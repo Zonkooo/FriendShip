@@ -44,11 +44,10 @@ namespace FriendShip
 
 			Content.RootDirectory = "Content";
 
-            _rooms.Add(new Room (this, new Vector2 (253, 211), new Vector2()));//room 1
-            _rooms.Add(new Room(this, new Vector2(601, 211), new Vector2()));//hall1
-            _rooms.Add(new Room(this, new Vector2(819, 211), new Vector2()));//room 2
-            _rooms.Add(new Room(this, new Vector2(1167, 211), new Vector2()));//room 2
-
+			_rooms.Add(new Room (this, new Vector2 (253, 211), new Vector2(), RoomMovementType.HORIZONTAL));//room 1
+			_rooms.Add(new Room(this, new Vector2(601, 211), new Vector2(), RoomMovementType.HORIZONTAL));//hall1
+			_rooms.Add(new Room(this, new Vector2(819, 211), new Vector2(), RoomMovementType.HORIZONTAL));//room 2
+			_rooms.Add(new Room(this, new Vector2(1167, 211), new Vector2(), RoomMovementType.HORIZONTAL));//room 2
 
 			_rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(600, 211, 1, 200), new Vector2(605,361)));// Premiere porte(salle1) , gauche droite
 			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.LEFT], new Rectangle(603, 211, 1, 200), new Vector2(560,361)));// Deuxieme porte (couloir1),droite gauche

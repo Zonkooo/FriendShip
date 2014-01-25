@@ -9,9 +9,16 @@ using System.Collections.Generic;
 
 namespace FriendShip
 {
+	public enum RoomMovementType
+	{
+		VERTICAL,
+		HORIZONTAL,
+	}
+
 	public class Room : DrawableGameComponent
 	{
 		public Vector2 Position { get; private set; }
+		public RoomMovementType MoveType { get; private set; }
 		readonly GameCore _game;
 
 		public Texture2D Texture;
@@ -22,12 +29,14 @@ namespace FriendShip
 		/// <summary> the position where the player should spawn at the begining of the game </summary>
 		public Vector2 SpawnPosition {get; private set;}
 
-		public Room (GameCore game, Vector2 position, Vector2 spawnPoint)
+		public Room (GameCore game, Vector2 position, Vector2 spawnPoint, RoomMovementType moveType)
 			: base(game)
 		{
 			_game = game;
 			Position = position;
 			SpawnPosition = spawnPoint;
+			MoveType = moveType;
+
 			Exits = new List<RoomLink> ();
 
 			_game.Components.Add (this);
@@ -44,6 +53,7 @@ namespace FriendShip
 		public void PlayerLeaves()
 		{
 			nbPlayersInRoom--;
+			//TODO : activate traps if no players left
 		}
 
 		public override void Draw (GameTime gameTime)

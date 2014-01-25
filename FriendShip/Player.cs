@@ -36,18 +36,23 @@ namespace FriendShip
         public override void Update(GameTime gameTime)
         {
             KeyboardState currentKeyState = Keyboard.GetState();
+
             var Delta = new Vector2();
-            if (currentKeyState.IsKeyDown(Keys.Left))
-                Delta.X = -moveSpeed;
+			if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
+			{
+				if (currentKeyState.IsKeyDown (Keys.Left))
+					Delta.X = -moveSpeed;
+				if (currentKeyState.IsKeyDown (Keys.Right))
+					Delta.X = moveSpeed;
+			}
+			else //if movement == vertical
+			{
+				if (currentKeyState.IsKeyDown (Keys.Up))
+					Delta.Y = -moveSpeed;
+				if (currentKeyState.IsKeyDown (Keys.Down))
+					Delta.Y = moveSpeed;
+			}
 
-            if (currentKeyState.IsKeyDown(Keys.Right))
-                Delta.X = moveSpeed;
-
-            if (currentKeyState.IsKeyDown(Keys.Up))
-                Delta.Y = -moveSpeed;
-
-            if (currentKeyState.IsKeyDown(Keys.Down))
-                Delta.Y = moveSpeed;
             Position = Position + Delta;
 
 			//check collision with room exits
