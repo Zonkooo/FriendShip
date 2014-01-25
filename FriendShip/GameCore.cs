@@ -150,7 +150,7 @@ namespace FriendShip
 			{
 				{PlayerState.STILL, new MyTexture2D(mecano, 1)},
 				{PlayerState.WALK, new MyTexture2D(mecanoRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
-				{PlayerState.HIT, new MyTexture2D(mecanoDegats, 7, new double[]{60, 60, 60, 60, 60, 60, 250})},
+				{PlayerState.HIT, new MyTexture2D(mecanoDegats, 9, new double[]{60, 60, 60, 60, 60, 60, 1000.0/12, 1000.0/12, 1000.0/12})},
 			};
 			var player2Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.A },
