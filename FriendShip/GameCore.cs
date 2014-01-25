@@ -145,11 +145,12 @@ namespace FriendShip
 
 			var mecano = Content.Load<Texture2D>("Players/mecano");
 			var mecanoRun = Content.Load<Texture2D>("Players/mecano_run");
+			var mecanoDegats = Content.Load<Texture2D>("Players/mecano_degats");
 			var mecanoTextures = new Dictionary<PlayerState, MyTexture2D>
 			{
 				{PlayerState.STILL, new MyTexture2D(mecano, 1)},
 				{PlayerState.WALK, new MyTexture2D(mecanoRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
-				{PlayerState.HIT, new MyTexture2D(cire, 1)},
+				{PlayerState.HIT, new MyTexture2D(mecanoDegats, 7, new double[]{60, 60, 60, 60, 60, 60, 250})},
 			};
 			var player2Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.A },

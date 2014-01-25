@@ -15,7 +15,7 @@ namespace FriendShip
 		public readonly Texture2D Texture;
 		private int _nbFrames;
 		private double[] _timings;
-		private int index = 0;
+		private int index;
 		private double currentTime;
 
 		public MyTexture2D (Texture2D tex, int nbFrames, double[] timings = null)
@@ -23,6 +23,8 @@ namespace FriendShip
 			_timings = timings;
 			Texture = tex;
 			_nbFrames = nbFrames;
+			index = nbFrames - 1;
+			currentTime = timings != null ? timings [nbFrames - 1] : 0;
 		}
 
 		public void Update(double time)

@@ -63,6 +63,8 @@ namespace FriendShip
 			if(hitTime > 0)
 			{
 				hitTime -= gameTime.ElapsedGameTime.TotalMilliseconds;
+				_textures [currentState].Update (gameTime.ElapsedGameTime.TotalMilliseconds);
+
 				return;
 			}
 
