@@ -26,6 +26,7 @@ namespace FriendShip
 
 			Position = startRoom.SpawnPosition;
 			currentRoom = startRoom;
+			startRoom.PlayerEnters ();
 
 			Visible = true;
 			Enabled = true;
@@ -55,7 +56,9 @@ namespace FriendShip
 			{
 				if (exit.Collides (boundingBox))
 				{
+					this.currentRoom.PlayerLeaves ();
 					this.currentRoom = exit.NextRoom;
+					this.currentRoom.PlayerEnters ();
 					this.Position = exit.SpawPoint;
 				}
 			}

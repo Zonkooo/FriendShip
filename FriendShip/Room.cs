@@ -16,6 +16,8 @@ namespace FriendShip
 
 		public Texture2D Texture;
 		public List<RoomLink> Exits { get; private set;}
+		private int nbPlayersInRoom = 0;
+		private bool _lightOn { get { return nbPlayersInRoom > 0; } }
 
 		/// <summary> the position where the player should spawn at the begining of the game </summary>
 		public Vector2 SpawnPosition {get; private set;}
@@ -33,13 +35,27 @@ namespace FriendShip
 			this.Visible = true;
 		}
 
+		public void PlayerEnters()
+		{
+			nbPlayersInRoom++;
+			//TODO check traps
+		}
+
+		public void PlayerLeaves()
+		{
+			nbPlayersInRoom--;
+		}
+
 		public override void Draw (GameTime gameTime)
 		{
 			if (Texture != null && _game.spriteBatch != null)
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				_game.spriteBatch.Draw(Texture, Position, Color.White);
+				if(_lightOn)
+					_game.spriteBatch.Draw(Texture, Position, Color.White);
+				else
+					_game.spriteBatch.Draw(_game.OneWhitePixel, new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height), Color.Black);
 
 				foreach (var exit in Exits)
 					exit.DrawHitBox (_game.spriteBatch, _game.OneWhitePixel);
