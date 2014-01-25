@@ -85,11 +85,11 @@ namespace FriendShip
             _rooms[RoomType.HALL_6] = new Room(this, new Vector2(1370, 443), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.LADDER_5] = new Room(this, new Vector2(1597, 415), new Vector2(), RoomMovementType.VERTICAL);
             //Etage 3
-            _rooms[RoomType.MACHINE] = new Room (this, new Vector2 (253, 660), new Vector2(427,290), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.CALE] = new Room (this, new Vector2 (253, 660), new Vector2(427,290), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.HALL_7] = new Room(this, new Vector2(601, 660+74), new Vector2(), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.CHAMBRE] = new Room(this, new Vector2(819, 660), new Vector2(), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.HALL_8] = new Room(this, new Vector2(1167, 660 + 73), new Vector2(), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.CALE] = new Room(this, new Vector2(1385, 660), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.MACHINE] = new Room(this, new Vector2(1385, 660), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
 
             //Les portes Etage 1
 			_rooms[RoomType.COMMANDS].Exits.Add(new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(600, 211, 1, 200), Direction.RIGHT, new Vector2(605, 290)));
