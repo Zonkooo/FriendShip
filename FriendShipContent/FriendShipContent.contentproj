@@ -218,6 +218,36 @@
       <Name>capitaine_degats</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Interface\bombe.png">
+      <Importer>TextureImporter</Importer>
+      <Name>bombe</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\cap.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cap</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\coeur.png">
+      <Importer>TextureImporter</Importer>
+      <Name>coeur</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\cuisto.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cuisto</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\mecano.png">
+      <Importer>TextureImporter</Importer>
+      <Name>mecano</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\pecheur.png">
+      <Importer>TextureImporter</Importer>
+      <Name>pecheur</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
@@ -225,6 +255,9 @@
     </Folder>
     <Folder Include="Rooms\">
       <Name>Rooms</Name>
+    </Folder>
+    <Folder Include="Interface\">
+      <Name>New Folder</Name>
     </Folder>
   </ItemGroup>
 </Project>
