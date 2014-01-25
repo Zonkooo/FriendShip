@@ -88,6 +88,11 @@
       <Name>Mécano</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Players\mecano_degats.png">
+      <Importer>TextureImporter</Importer>
+      <Name>mecano_degats</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
