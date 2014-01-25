@@ -14,29 +14,29 @@ namespace FriendShip
 
 	public static class InitHelper
 	{
-		public static void InitRooms(Dictionary<RoomType, Room> rooms)
+		public static void InitRooms(GameCore game, Dictionary<RoomType, Room> rooms)
 		{
-			rooms[RoomType.COMMANDS] = new Room(this, new Vector2(253,  211), new Vector2(427,290),   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.HALL_1]   = new Room(this, new Vector2(601,  284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.KITCHEN]  = new Room(this, new Vector2(819,  211), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.HALL_2]   = new Room(this, new Vector2(1167, 284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.BRIDGE]   = new Room(this, new Vector2(1385, 211), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.COMMANDS] = new Room(game, new Vector2(253,  211), new Vector2(427,290),   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.HALL_1]   = new Room(game, new Vector2(601,  284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.KITCHEN]  = new Room(game, new Vector2(819,  211), new Vector2(), 		   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.HALL_2]   = new Room(game, new Vector2(1167, 284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.BRIDGE]   = new Room(game, new Vector2(1385, 211), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
 			//Etage 2
-			rooms[RoomType.LADDER_1] = new Room(this, new Vector2(393,  415), new Vector2(), RoomMovementType.VERTICAL);
-			rooms[RoomType.HALL_3]   = new Room(this, new Vector2(494,  443), new Vector2(), RoomMovementType.HORIZONTAL);
-			rooms[RoomType.LADDER_2] = new Room(this, new Vector2(667,  415), new Vector2(), RoomMovementType.VERTICAL);
-			rooms[RoomType.HALL_4]   = new Room(this, new Vector2(766,  443), new Vector2(), RoomMovementType.HORIZONTAL);
-			rooms[RoomType.LADDER_3] = new Room(this, new Vector2(960,  415), new Vector2(), RoomMovementType.VERTICAL);
-			rooms[RoomType.HALL_5]   = new Room(this, new Vector2(1061, 443), new Vector2(), RoomMovementType.HORIZONTAL);
-			rooms[RoomType.LADDER_4] = new Room(this, new Vector2(1267, 415), new Vector2(), RoomMovementType.VERTICAL);
-			rooms[RoomType.HALL_6]   = new Room(this, new Vector2(1368, 443), new Vector2(), RoomMovementType.HORIZONTAL);
-			rooms[RoomType.LADDER_5] = new Room(this, new Vector2(1597, 415), new Vector2(), RoomMovementType.VERTICAL);
+			rooms[RoomType.LADDER_1] = new Room(game, new Vector2(393,  415), new Vector2(), RoomMovementType.VERTICAL);
+			rooms[RoomType.HALL_3]   = new Room(game, new Vector2(494,  443), new Vector2(), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.LADDER_2] = new Room(game, new Vector2(667,  415), new Vector2(), RoomMovementType.VERTICAL);
+			rooms[RoomType.HALL_4]   = new Room(game, new Vector2(766,  443), new Vector2(), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.LADDER_3] = new Room(game, new Vector2(960,  415), new Vector2(), RoomMovementType.VERTICAL);
+			rooms[RoomType.HALL_5]   = new Room(game, new Vector2(1061, 443), new Vector2(), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.LADDER_4] = new Room(game, new Vector2(1267, 415), new Vector2(), RoomMovementType.VERTICAL);
+			rooms[RoomType.HALL_6]   = new Room(game, new Vector2(1368, 443), new Vector2(), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.LADDER_5] = new Room(game, new Vector2(1597, 415), new Vector2(), RoomMovementType.VERTICAL);
 			//Etage 3
-			rooms[RoomType.CALE]    = new Room(this, new Vector2(253,  590),      new Vector2(427,290),   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.HALL_7]  = new Room(this, new Vector2(601,  590 + 74), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.CHAMBRE] = new Room(this, new Vector2(819,  590), 	   new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.HALL_8]  = new Room(this, new Vector2(1167, 590 + 74), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.MACHINE] = new Room(this, new Vector2(1385, 590), 	   new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.CALE]    = new Room(game, new Vector2(253,  590),      new Vector2(427,290),   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.HALL_7]  = new Room(game, new Vector2(601,  590 + 74), new Vector2(), 		   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.CHAMBRE] = new Room(game, new Vector2(819,  590), 	   new Vector2(), 		   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.HALL_8]  = new Room(game, new Vector2(1167, 590 + 74), new Vector2(), 		   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.MACHINE] = new Room(game, new Vector2(1385, 590), 	   new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
 
 			rooms[RoomType.COMMANDS]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_1], 	new Rectangle(600,  211, 1,   200), Direction.RIGHT, new Vector2(605,  290)));
 			rooms[RoomType.HALL_1]		.Exits.Add(new RoomLink(rooms[RoomType.COMMANDS], 	new Rectangle(603,  211, 1,   200), Direction.LEFT,  new Vector2(560,  290)));
