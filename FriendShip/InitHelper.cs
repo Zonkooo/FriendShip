@@ -20,7 +20,7 @@ namespace FriendShip
 			rooms[RoomType.HALL_1]   = new Room(game, new Vector2(601,  284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
 			rooms[RoomType.KITCHEN]  = new Room(game, new Vector2(819,  211), new Vector2(), 		   RoomMovementType.HORIZONTAL);
 			rooms[RoomType.HALL_2]   = new Room(game, new Vector2(1167, 284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.BRIDGE]   = new Room(game, new Vector2(1385, 211), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.BRIDGE]   = new Room(game, new Vector2(1385, 211), new Vector2(1600, 290), RoomMovementType.HORIZONTAL);
 			//Etage 2
 			rooms[RoomType.LADDER_1] = new Room(game, new Vector2(393,  415), new Vector2(), RoomMovementType.VERTICAL);
 			rooms[RoomType.HALL_3]   = new Room(game, new Vector2(494,  443), new Vector2(), RoomMovementType.HORIZONTAL);
