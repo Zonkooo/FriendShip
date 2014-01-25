@@ -137,7 +137,7 @@ namespace FriendShip
 				{ Direction.RIGHT, Keys.Right },
 				{ Direction.UP, Keys.Up },
 				{ Direction.DOWN, Keys.Down },
-				{ Direction.TRAP, Keys.End },
+				{ Direction.TRAP, Keys.NumPad0 },
 				{ Direction.ACTION, Keys.PageDown },
 			};
 
@@ -155,14 +155,56 @@ namespace FriendShip
 				{PlayerState.DEAD, new MyTexture2D(mecanoDead, 1)},
 			};
 			var player2Controls = new Dictionary<Direction, Keys> {
-				{ Direction.LEFT, Keys.A },
+				{ Direction.LEFT, Keys.Q },
 				{ Direction.RIGHT, Keys.D },
-				{ Direction.UP, Keys.W },
+				{ Direction.UP, Keys.Z },
 				{ Direction.DOWN, Keys.S },
-				{ Direction.TRAP, Keys.Q },
-				{ Direction.ACTION, Keys.E },
+				{ Direction.TRAP, Keys.E },
+				{ Direction.ACTION, Keys.A },
 			};
-			Players.Add(new Player (this, mecanoTextures, _rooms[RoomType.BRIDGE], player2Controls));
+			Players.Add(new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls));
+
+            var cuisto = Content.Load<Texture2D>("Players/cuisto");
+            var cuistoRun = Content.Load<Texture2D>("Players/cuisto_run");
+            var cuistoDead = Content.Load<Texture2D>("Players/cuisto_mort");
+            var cuistoTextures = new Dictionary<PlayerState, MyTexture2D>
+			{
+				{PlayerState.STILL, new MyTexture2D(cuisto, 1)},
+				{PlayerState.WALK, new MyTexture2D(cuistoRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
+                {PlayerState.HIT, new MyTexture2D(mecanoDegats, 9, new double[]{60, 60, 60, 60, 60, 60, 1000.0/12, 1000.0/12, 1000.0/12})},
+				{PlayerState.DEAD, new MyTexture2D(cuistoDead, 1)},
+			};
+            var player3Controls = new Dictionary<Direction, Keys> {
+				{ Direction.LEFT, Keys.NumPad4 },
+				{ Direction.RIGHT, Keys.NumPad6},
+				{ Direction.UP, Keys.NumPad8 },
+				{ Direction.DOWN, Keys.NumPad5 },
+				{ Direction.TRAP, Keys.NumPad9 },
+				{ Direction.ACTION, Keys.NumPad7},
+			};
+
+            Players.Add(new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls));
+
+            var cireman = Content.Load<Texture2D>("Players/cireman");
+            var ciremanRun = Content.Load<Texture2D>("Players/cireman_run");
+            var ciremanDead = Content.Load<Texture2D>("Players/cireman_mort");
+            var ciremanTextures = new Dictionary<PlayerState, MyTexture2D>
+			{
+				{PlayerState.STILL, new MyTexture2D(cireman, 1)},
+				{PlayerState.WALK, new MyTexture2D(ciremanRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
+                {PlayerState.HIT, new MyTexture2D(mecanoDegats, 9, new double[]{60, 60, 60, 60, 60, 60, 1000.0/12, 1000.0/12, 1000.0/12})},
+				{PlayerState.DEAD, new MyTexture2D(ciremanDead, 1)},
+			};
+            var player4Controls = new Dictionary<Direction, Keys> {
+				{ Direction.LEFT, Keys.K },
+				{ Direction.RIGHT, Keys.M},
+				{ Direction.UP, Keys.O },
+				{ Direction.DOWN, Keys.L },
+				{ Direction.TRAP, Keys.P },
+				{ Direction.ACTION, Keys.I},
+			};
+
+            Players.Add(new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls));
 
 			SoundManager.Play ();
 		}

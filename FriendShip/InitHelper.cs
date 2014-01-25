@@ -18,7 +18,7 @@ namespace FriendShip
 		{
 			rooms[RoomType.COMMANDS] = new Room(game, new Vector2(253,  211), new Vector2(427,290),   RoomMovementType.HORIZONTAL);
 			rooms[RoomType.HALL_1]   = new Room(game, new Vector2(601,  284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.KITCHEN]  = new Room(game, new Vector2(819,  211), new Vector2(), 		   RoomMovementType.HORIZONTAL);
+			rooms[RoomType.KITCHEN]  = new Room(game, new Vector2(819,  211), new Vector2(870,290), 		   RoomMovementType.HORIZONTAL);
 			rooms[RoomType.HALL_2]   = new Room(game, new Vector2(1167, 284), new Vector2(), 		   RoomMovementType.HORIZONTAL);
 			rooms[RoomType.BRIDGE]   = new Room(game, new Vector2(1385, 211), new Vector2(1600, 290), RoomMovementType.HORIZONTAL);
 			//Etage 2
@@ -36,7 +36,7 @@ namespace FriendShip
 			rooms[RoomType.HALL_7]  = new Room(game, new Vector2(601,  590 + 74), new Vector2(), 		   RoomMovementType.HORIZONTAL);
 			rooms[RoomType.CHAMBRE] = new Room(game, new Vector2(819,  590), 	   new Vector2(), 		   RoomMovementType.HORIZONTAL);
 			rooms[RoomType.HALL_8]  = new Room(game, new Vector2(1167, 590 + 74), new Vector2(), 		   RoomMovementType.HORIZONTAL);
-			rooms[RoomType.MACHINE] = new Room(game, new Vector2(1385, 590), 	   new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
+			rooms[RoomType.MACHINE] = new Room(game, new Vector2(1385, 590), 	   new Vector2(1600, 671), RoomMovementType.HORIZONTAL);
 
 			rooms[RoomType.COMMANDS]	.Exits.Add(new RoomLink(rooms[RoomType.HALL_1], 	new Rectangle(600,  211, 1,   200), Direction.RIGHT, new Vector2(605,  290)));
 			rooms[RoomType.HALL_1]		.Exits.Add(new RoomLink(rooms[RoomType.COMMANDS], 	new Rectangle(603,  211, 1,   200), Direction.LEFT,  new Vector2(560,  290)));
