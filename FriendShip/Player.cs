@@ -154,6 +154,8 @@ namespace FriendShip
 					this.currentRoom = exit.NextRoom;
 					this.currentRoom.PlayerEnters ();
 					this.Position = exit.SpawPoint;
+					if (exit.needBreak && hitTime <= 0)
+						hitTime = 100; //force the player to stop so that he can change directions
 				}
 			}
 

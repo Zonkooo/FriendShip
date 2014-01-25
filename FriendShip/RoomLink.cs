@@ -11,6 +11,12 @@ namespace FriendShip
 {
 	public class RoomLink
 	{
+		/// <summary>
+		/// true if we need to stop the player after taking this link
+		/// because he would otherwise go through the room in one frame
+		/// </summary>
+		public bool needBreak;
+
 		public Room NextRoom { get; private set; }
 		private Rectangle _triggerZone;
 		public Vector2 SpawPoint { get; private set;}

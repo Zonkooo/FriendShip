@@ -18,6 +18,8 @@ namespace FriendShip
 
 	public class Room : DrawableGameComponent
 	{
+		public bool isSpecialRoom;
+
 		public Vector2 Position { get; private set; }
 		public RoomMovementType MoveType { get; private set; }
 		readonly GameCore _game;
