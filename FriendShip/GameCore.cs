@@ -89,7 +89,7 @@ namespace FriendShip
 			var couloir1 = Content.Load<Texture2D>("Rooms/couloir1");
 			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
 
-			_rooms [RoomType.ROOM_1].Texture = machines;
+			_rooms [RoomType.ROOM_1].Texture = pilotage;
 			_rooms [RoomType.HALL_1].Texture = couloir1;
             _rooms[RoomType.ROOM_2].Texture = machines;
 			_rooms[RoomType.HALL_2].Texture = couloir1;
@@ -101,6 +101,7 @@ namespace FriendShip
 				{ Direction.RIGHT, Keys.Right },
 				{ Direction.UP, Keys.Up },
 				{ Direction.DOWN, Keys.Down },
+				{ Direction.TRAP, Keys.End },
 			};
 			var player = new Player (this, cireman, _rooms[RoomType.ROOM_1], player1Controls);
 		}

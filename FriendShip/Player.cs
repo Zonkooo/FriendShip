@@ -15,6 +15,7 @@ namespace FriendShip
 		DOWN,
 		RIGHT,
 		LEFT,
+		TRAP,
 	}
 
 	public class Player : DrawableGameComponent
@@ -44,6 +45,7 @@ namespace FriendShip
 			game.Components.Add (this);
 		}
 
+		bool trapKeyWasDown = false;
         public override void Update(GameTime gameTime)
         {
             KeyboardState currentKeyState = Keyboard.GetState();
@@ -76,6 +78,15 @@ namespace FriendShip
 				directions.Add (Direction.DOWN);
 			}
 
+			if (currentKeyState.IsKeyDown (controls [Direction.TRAP]))
+			{
+				if (!trapKeyWasDown)
+					LayTrap ();
+				trapKeyWasDown = true;
+			}
+			else
+				trapKeyWasDown = false;
+
             Position = Position + delta;
 
 			//check collision with room exits
@@ -95,13 +106,20 @@ namespace FriendShip
 				{
 					this.currentRoom.PlayerLeaves ();
 					this.currentRoom = exit.NextRoom;
-					this.currentRoom.PlayerEnters ();
+					bool trapTriggered = this.currentRoom.PlayerEnters ();
 					this.Position = exit.SpawPoint;
+					if (trapTriggered)
+						Visible = false; //TODO : play damage animation
 				}
 			}
 
             base.Update(gameTime);
         }
+
+		void LayTrap ()
+		{
+			currentRoom.AddTrap ();
+		}
 
 		private Rectangle GetBoundingBox()
 		{

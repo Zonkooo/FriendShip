@@ -25,6 +25,8 @@ namespace FriendShip
 		public List<RoomLink> Exits { get; private set;}
 		private int nbPlayersInRoom = 0;
 		private bool _lightOn { get { return nbPlayersInRoom > 0; } }
+		private bool hasTrap = false;
+		private bool trapEnabled = false;
 
 		/// <summary> the position where the player should spawn at the begining of the game </summary>
 		public Vector2 SpawnPosition {get; private set;}
@@ -44,16 +46,30 @@ namespace FriendShip
 			this.Visible = true;
 		}
 
-		public void PlayerEnters()
+		/// <returns>true if a trap was triggered</returns>
+		public bool PlayerEnters()
 		{
 			nbPlayersInRoom++;
-			//TODO check traps
+			if (hasTrap && trapEnabled)
+			{
+				hasTrap = false;
+				trapEnabled = false;
+				return true;
+			}
+			return false;
 		}
 
 		public void PlayerLeaves()
 		{
 			nbPlayersInRoom--;
-			//TODO : activate traps if no players left
+			if (nbPlayersInRoom == 0 && hasTrap)
+				trapEnabled = true;
+		}
+
+		public void AddTrap()
+		{
+			hasTrap = true;
+			trapEnabled = false;
 		}
 
 		public override void Draw (GameTime gameTime)
