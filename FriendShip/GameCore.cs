@@ -37,6 +37,15 @@ namespace FriendShip
         CALE,
 	}
 
+	enum GameEndings
+	{
+		EXPLODE,
+		DERIVE,
+		SHARE_GOLD,
+		ALL_DEAD,
+		WIN,
+	}
+
 	/// <summary>
 	/// This is the main type for your game
 	/// </summary>
@@ -220,20 +229,34 @@ namespace FriendShip
 			}
 
 			if (health < 0) //ship explodes
-				; //TODO
+				EndGame(GameEndings.EXPLODE);
 			if (derive < 0) //lost
-				; //TODO
+				EndGame(GameEndings.DERIVE);
 			if (Players.Count (p => p.Enabled) == 0) //everyone is dead
-				;
+				EndGame(GameEndings.ALL_DEAD);
 			if(/*timer runs out*/false)
 			{
 				if(Players.Count (p => p.Enabled) == 1)
-					; //TODO win
+					EndGame(GameEndings.WIN);
 				else
-					; //TODO lose
+					EndGame(GameEndings.SHARE_GOLD);
 			}
 
 			base.Update(gameTime);
+		}
+
+		bool ended = false;
+		private void EndGame(GameEndings ending)
+		{
+			if (!ended)
+			{
+				foreach (var component in Components)
+				{
+					var c = component as GameComponent;
+					if (c != null)
+						c.Enabled = false;
+				}
+			}
 		}
 
 		/// <summary>
