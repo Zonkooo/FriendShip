@@ -11,12 +11,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace FriendShip
 {
-	enum Rooms
+	enum RoomType
 	{
-		LEFT = 0,
-		RIGHT = 1,
-        DOWN_LEFT = 2,
-        DOWN_RIGHT = 3,
+		LEFT,
+		RIGHT,
+        DOWN_LEFT,
+        DOWN_RIGHT,
 	}
 
 	/// <summary>
@@ -28,7 +28,7 @@ namespace FriendShip
 		public SpriteBatch spriteBatch;
 		public Texture2D OneWhitePixel;
 
-		private List<Room> _rooms = new List<Room>();
+		private Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
 		public List<Wall> Walls = new List<Wall>();
 
 		public GameCore()
@@ -45,16 +45,16 @@ namespace FriendShip
 
 			Content.RootDirectory = "Content";
 
-			_rooms.Add(new Room (this, new Vector2 (253, 211), new Vector2(), RoomMovementType.HORIZONTAL));//room 1
-			_rooms.Add(new Room(this, new Vector2(601, 211), new Vector2(), RoomMovementType.HORIZONTAL));//hall1
-			_rooms.Add(new Room(this, new Vector2(819, 211), new Vector2(), RoomMovementType.HORIZONTAL));//room 2
-			_rooms.Add(new Room(this, new Vector2(1167, 211), new Vector2(), RoomMovementType.HORIZONTAL));//room 2
+			_rooms[RoomType.LEFT] = new Room (this, new Vector2 (253, 211), new Vector2(), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.RIGHT] = new Room(this, new Vector2(601, 211), new Vector2(), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.DOWN_LEFT] = new Room(this, new Vector2(819, 211), new Vector2(), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.DOWN_RIGHT] = new Room(this, new Vector2(1167, 211), new Vector2(), RoomMovementType.HORIZONTAL);
 
-			_rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(600, 211, 1, 200), new Vector2(605,361)));// Premiere porte(salle1) , gauche droite
-			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.LEFT], new Rectangle(603, 211, 1, 200), new Vector2(560,361)));// Deuxieme porte (couloir1),droite gauche
-			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.DOWN_LEFT], new Rectangle(817, 211, 1, 200), new Vector2(825,361)));// Troisieme porte (couloir1)gauche droite
-            _rooms[(int)Rooms.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(820, 211, 1, 200), new Vector2(750, 361)));// quatrieme porte (salle2)droite gauche
-            _rooms[(int)Rooms.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.DOWN_RIGHT], new Rectangle(1165, 211, 1, 200), new Vector2(1172, 361)));// cinquieme porte (salle2)gauche droite
+			_rooms[RoomType.LEFT].Exits.Add(new RoomLink(_rooms[RoomType.RIGHT], new Rectangle(600, 211, 1, 200), new Vector2(605,361)));// Premiere porte(salle1) , gauche droite
+			_rooms[RoomType.RIGHT].Exits.Add(new RoomLink(_rooms[RoomType.LEFT], new Rectangle(603, 211, 1, 200), new Vector2(560,361)));// Deuxieme porte (couloir1),droite gauche
+			_rooms[RoomType.RIGHT].Exits.Add(new RoomLink(_rooms[RoomType.DOWN_LEFT], new Rectangle(817, 211, 1, 200), new Vector2(825,361)));// Troisieme porte (couloir1)gauche droite
+            _rooms[RoomType.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[RoomType.RIGHT], new Rectangle(820, 211, 1, 200), new Vector2(750, 361)));// quatrieme porte (salle2)droite gauche
+            _rooms[RoomType.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[RoomType.DOWN_RIGHT], new Rectangle(1165, 211, 1, 200), new Vector2(1172, 361)));// cinquieme porte (salle2)gauche droite
 
 			Walls.Add (new Wall (new Rectangle (10/*that's the only important thing*/, 0, 1, 1080)));
 			Walls.Add (new Wall (new Rectangle (1900/*that's the only important thing*/, 0, 1, 1080)));
@@ -74,12 +74,12 @@ namespace FriendShip
 			var machines = Content.Load<Texture2D>("Rooms/machines");
 			var pilotage = Content.Load<Texture2D>("Rooms/pilotage");
 
-			_rooms [(int)Rooms.LEFT].Texture = machines;
-			_rooms [(int)Rooms.RIGHT].Texture = pilotage;
-            _rooms[(int)Rooms.DOWN_LEFT].Texture = machines;
+			_rooms [RoomType.LEFT].Texture = machines;
+			_rooms [RoomType.RIGHT].Texture = pilotage;
+            _rooms[RoomType.DOWN_LEFT].Texture = machines;
 
 			var cireman = Content.Load<Texture2D>("Players/cireman");
-			var player = new Player (this, cireman, _rooms[(int)Rooms.LEFT]);
+			var player = new Player (this, cireman, _rooms[(int)RoomType.LEFT]);
 			player.Position = new Vector2 (10, 40);
 
 		}
