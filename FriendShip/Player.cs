@@ -5,22 +5,34 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Collections.Generic;
 
 namespace FriendShip
 {
+	public enum Direction
+	{
+		UP,
+		DOWN,
+		RIGHT,
+		LEFT,
+	}
 
 	public class Player : DrawableGameComponent
 	{
 		public const int moveSpeed = 5;
 
 		public Vector2 Position;
+		private Room currentRoom;
+		public readonly List<Direction> Directions = new List<Direction>();
+
+		private Dictionary<Direction, Keys> controls;
 		private Texture2D _texture;
 		private GameCore _game;
-		private Room currentRoom;
 
-		public Player (GameCore game, Texture2D texture, Room startRoom)
+		public Player (GameCore game, Texture2D texture, Room startRoom, Dictionary<Direction, Keys> controls)
 			: base(game)
 		{
+			this.controls = controls;
 			_game = game;
 			_texture = texture;
 
@@ -38,19 +50,31 @@ namespace FriendShip
             KeyboardState currentKeyState = Keyboard.GetState();
 
             var Delta = new Vector2();
-			if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
+			Directions.Clear ();
+
+			if (currentKeyState.IsKeyDown (controls [Direction.LEFT]))
 			{
-				if (currentKeyState.IsKeyDown (Keys.Left))
+				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
 					Delta.X = -moveSpeed;
-				if (currentKeyState.IsKeyDown (Keys.Right))
-					Delta.X = moveSpeed;
+				Directions.Add (Direction.LEFT);
 			}
-			else //if movement == vertical
+			if (currentKeyState.IsKeyDown (controls [Direction.RIGHT]))
 			{
-				if (currentKeyState.IsKeyDown (Keys.Up))
+				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
+					Delta.X = moveSpeed;
+				Directions.Add (Direction.RIGHT);
+			}
+			if (currentKeyState.IsKeyDown (controls [Direction.UP]))
+			{
+				if(currentRoom.MoveType == RoomMovementType.VERTICAL)
 					Delta.Y = -moveSpeed;
-				if (currentKeyState.IsKeyDown (Keys.Down))
+				Directions.Add (Direction.UP);
+			}
+			if (currentKeyState.IsKeyDown (controls [Direction.DOWN]))
+			{
+				if(currentRoom.MoveType == RoomMovementType.VERTICAL)
 					Delta.Y = moveSpeed;
+				Directions.Add (Direction.DOWN);
 			}
 
             Position = Position + Delta;

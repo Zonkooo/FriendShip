@@ -86,9 +86,13 @@ namespace FriendShip
             _rooms[RoomType.ROOM_3].Texture = machines;
 
 			var cireman = Content.Load<Texture2D>("Players/cireman");
-			var player = new Player (this, cireman, _rooms[RoomType.ROOM_1]);
-			
-
+			var player1Controls = new Dictionary<Direction, Keys> {
+				{ Direction.LEFT, Keys.Left },
+				{ Direction.RIGHT, Keys.Right },
+				{ Direction.UP, Keys.Up },
+				{ Direction.DOWN, Keys.Down },
+			};
+			var player = new Player (this, cireman, _rooms[RoomType.ROOM_1], player1Controls);
 		}
 
 		/// <summary>
