@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
+using System;
 
 namespace FriendShip
 {
@@ -32,7 +33,7 @@ namespace FriendShip
 			currentTime -= time;
 			if(currentTime < 0)
 			{
-				index = (index + 1)%_nbFrames;
+				index = Math.Abs((index - 1)%_nbFrames); //sprites are reversed
 				currentTime = _timings [index] - currentTime;
 			}
 		}
