@@ -58,6 +58,7 @@
     <Compile Include="Events\EventBase.cs" />
     <Compile Include="Events\MustDriveShip.cs" />
     <Compile Include="Events\AllToCale.cs" />
+    <Compile Include="TemporaryEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />

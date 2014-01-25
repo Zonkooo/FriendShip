@@ -54,6 +54,7 @@ namespace FriendShip
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
 		public Texture2D OneWhitePixel;
+		public Texture2D Cling;
 		public SpriteFont font;
 
 		public Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
@@ -159,6 +160,7 @@ namespace FriendShip
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
+			Cling = Content.Load<Texture2D>("clig");
 			font = Content.Load<SpriteFont>("font");
 
 			var machines = Content.Load<Texture2D>("Rooms/machines");

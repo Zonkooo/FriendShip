@@ -66,8 +66,17 @@ namespace FriendShip
 
 		public void AddTrap(Trap trap)
 		{
-			if(nbPlayersInRoom == 1)
+			if (nbPlayersInRoom == 1)
+			{
 				_traps.Add (trap);
+				new TemporaryEffect (_game, trap.Position + new Vector2 (33, 100),
+					new MyTexture2D (_game.Cling, 3,
+						new double[] {
+							100,
+							100,
+							100
+						}), 300);
+			}
 		}
 
 		public bool CheckTraps(Vector2 playerPos)
