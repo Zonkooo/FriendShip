@@ -248,6 +248,11 @@
       <Name>pecheur</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Rooms\pont.png">
+      <Importer>TextureImporter</Importer>
+      <Name>pont</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
@@ -257,7 +262,7 @@
       <Name>Rooms</Name>
     </Folder>
     <Folder Include="Interface\">
-      <Name>New Folder</Name>
+      <Name>Interface</Name>
     </Folder>
   </ItemGroup>
 </Project>

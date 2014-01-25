@@ -98,6 +98,7 @@ namespace FriendShip
 			var machines = content.Load<Texture2D>("Rooms/machines");
 			var pilotage = content.Load<Texture2D>("Rooms/pilotage");
 			var cuisine = content.Load<Texture2D>("Rooms/cuisine");
+			var pont = content.Load<Texture2D>("Rooms/pont");
 			var cale = content.Load<Texture2D>("Rooms/entrepot");
 			var chambre = content.Load<Texture2D>("Rooms/chambre");
 			var echelleMid = content.Load<Texture2D>("Rooms/echelle_court_milieu");
@@ -107,7 +108,7 @@ namespace FriendShip
 
 			rooms [RoomType.COMMANDS].Texture = pilotage;
 			rooms[RoomType.MACHINE].Texture = machines;
-			rooms[RoomType.BRIDGE].Texture = cuisine;
+			rooms[RoomType.BRIDGE].Texture = pont;
 			rooms[RoomType.KITCHEN].Texture = cuisine;
 			rooms[RoomType.CALE].Texture = cale;
 			rooms[RoomType.CHAMBRE].Texture = chambre;
