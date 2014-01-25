@@ -24,8 +24,11 @@ namespace FriendShip
 			Enabled = false;
 		}
 
+		public virtual void Enable()
+		{
+			Enabled = true;
+		}
+
 		public abstract void DrawText (SpriteBatch sb);
 	}
-
-
 }
