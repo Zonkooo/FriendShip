@@ -15,6 +15,8 @@ namespace FriendShip
 	{
 		LEFT = 0,
 		RIGHT = 1,
+        DOWN_LEFT = 2,
+        DOWN_RIGHT = 3,
 	}
 
 	/// <summary>
@@ -36,19 +38,23 @@ namespace FriendShip
 				PreferredBackBufferWidth = 1920,
                 IsFullScreen = true,
 			};
+            //graphics.CreateDevice();
+            //graphics.ApplyChanges();'
 			//IsMouseVisible = true;
 
 			Content.RootDirectory = "Content";
 
             _rooms.Add(new Room (this, new Vector2 (253, 211), new Vector2()));//room 1
-			//_rooms.Add(new Room (this, new Vector2 (601, 211)));//hall 1
+            _rooms.Add(new Room(this, new Vector2(601, 211), new Vector2()));//hall1
             _rooms.Add(new Room(this, new Vector2(819, 211), new Vector2()));//room 2
-           // _rooms.Add(new Room(this, new Vector2(1167, 211)));// hall 2
-            _rooms.Add(new Room(this, new Vector2(1385, 211), new Vector2()));//room 3
+            _rooms.Add(new Room(this, new Vector2(1167, 211), new Vector2()));//room 2
 
-			_rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(357, 211, 1, 200), new Vector2()));
-			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.LEFT], new Rectangle(576, 211, 1, 200), new Vector2()));
-			_rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(924, 211, 1, 200), new Vector2()));
+
+			_rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(600, 211, 1, 200), new Vector2(605,361)));// Premiere porte(salle1) , gauche droite
+			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.LEFT], new Rectangle(603, 211, 1, 200), new Vector2(560,361)));// Deuxieme porte (couloir1),droite gauche
+			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.DOWN_LEFT], new Rectangle(817, 211, 1, 200), new Vector2(825,361)));// Troisieme porte (couloir1)gauche droite
+            _rooms[(int)Rooms.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(820, 211, 1, 200), new Vector2(750, 361)));// quatrieme porte (salle2)droite gauche
+            _rooms[(int)Rooms.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.DOWN_RIGHT], new Rectangle(1165, 211, 1, 200), new Vector2(1172, 361)));// cinquieme porte (salle2)gauche droite
 		}
 
 		/// <summary>
@@ -67,6 +73,7 @@ namespace FriendShip
 
 			_rooms [(int)Rooms.LEFT].Texture = machines;
 			_rooms [(int)Rooms.RIGHT].Texture = pilotage;
+            _rooms[(int)Rooms.DOWN_LEFT].Texture = machines;
 
 			var cireman = Content.Load<Texture2D>("Players/cireman");
 			var player = new Player (this, cireman, _rooms[(int)Rooms.LEFT]);
