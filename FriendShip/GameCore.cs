@@ -50,7 +50,7 @@ namespace FriendShip
 			_rooms[RoomType.HALL_1] = new Room(this, new Vector2(601, 211 + 73), new Vector2(), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.ROOM_2] = new Room(this, new Vector2(819, 211), new Vector2(), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.HALL_2] = new Room(this, new Vector2(1167, 211 + 73), new Vector2(), RoomMovementType.HORIZONTAL);
-            _rooms[RoomType.ROOM_3] = new Room(this, new Vector2(1385, 211), new Vector2(), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.ROOM_3] = new Room(this, new Vector2(1385, 211), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
 
 			_rooms[RoomType.ROOM_1].Exits.Add(
 				new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(600, 211, 1, 200), Direction.RIGHT, new Vector2(605,348)));
@@ -109,7 +109,24 @@ namespace FriendShip
 				{ Direction.DOWN, Keys.Down },
 				{ Direction.TRAP, Keys.End },
 			};
-			var player = new Player (this, captainTextures, _rooms[RoomType.ROOM_1], player1Controls);
+			var player1 = new Player (this, captainTextures, _rooms[RoomType.ROOM_1], player1Controls);
+
+
+			var mecano = Content.Load<Texture2D>("Players/mecano");
+			var mecanoRun = Content.Load<Texture2D>("Players/mecano_run");
+			var mecanoTextures = new Dictionary<PlayerState, MyTexture2D>
+			{
+				{PlayerState.STILL, new MyTexture2D(mecano, 1)},
+				{PlayerState.WALK, new MyTexture2D(mecanoRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
+			};
+			var player2Controls = new Dictionary<Direction, Keys> {
+				{ Direction.LEFT, Keys.A },
+				{ Direction.RIGHT, Keys.D },
+				{ Direction.UP, Keys.W },
+				{ Direction.DOWN, Keys.S },
+				{ Direction.TRAP, Keys.Q },
+			};
+			var player2 = new Player (this, mecanoTextures, _rooms[RoomType.ROOM_3], player2Controls);
 		}
 
 		/// <summary>
