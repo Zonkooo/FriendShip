@@ -60,6 +60,7 @@
     <Compile Include="Events\AllToCale.cs" />
     <Compile Include="TemporaryEffect.cs" />
     <Compile Include="SoundManager.cs" />
+    <Compile Include="Events\FixEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
