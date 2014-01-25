@@ -57,12 +57,12 @@ namespace FriendShip
 			_rooms[RoomType.HALL_1].Exits.Add(new RoomLink(_rooms[RoomType.ROOM_2], new Rectangle(817, 211, 1, 200), new Vector2(825,348)));
             _rooms[RoomType.ROOM_2].Exits.Add(new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(820, 211, 1, 200), new Vector2(750, 348)));
             _rooms[RoomType.ROOM_2].Exits.Add(new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1165, 211, 1, 200), new Vector2(1172, 348)));
-            _rooms[RoomType.HALL_2].Exits.Add(new RoomLink(_rooms[RoomType.ROOM_2], new Rectangle(1167, 211, 1, 200), new Vector2(1120, 348)));
+            _rooms[RoomType.HALL_2].Exits.Add(new RoomLink(_rooms[RoomType.ROOM_2], new Rectangle(1168, 211, 1, 200), new Vector2(1120, 348)));
             _rooms[RoomType.HALL_2].Exits.Add(new RoomLink(_rooms[RoomType.ROOM_3], new Rectangle(1385, 211, 1, 200), new Vector2(1395, 348)));
-            _rooms[RoomType.ROOM_3].Exits.Add(new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1387, 211, 1, 200), new Vector2(1330, 348)));
+            _rooms[RoomType.ROOM_3].Exits.Add(new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1388, 211, 1, 200), new Vector2(1330, 348)));
 
-			Walls.Add (new Wall (new Rectangle (10/*that's the only important thing*/, 0, 1, 1080)));
-			Walls.Add (new Wall (new Rectangle (1900/*that's the only important thing*/, 0, 1, 1080)));
+			Walls.Add (new Wall (new Rectangle (253/*that's the only important thing*/, 0, 1, 1080)));
+			Walls.Add (new Wall (new Rectangle (1904/*that's the only important thing*/, 0, 1, 1080)));
 		}
 
 		/// <summary>
