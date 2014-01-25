@@ -56,7 +56,16 @@ namespace FriendShip
             Position = Position + Delta;
 
 			//check collision with room exits
-			var boundingBox = new Rectangle ((int)Position.X, (int)Position.Y, 31, 56);
+			var boundingBox = GetBoundingBox();
+			foreach(var wall in _game.Walls)
+			{
+				if(wall.Collides(boundingBox))
+				{
+					//cancel move
+					Position = Position - Delta;
+					break;
+				}
+			}
 			foreach(var exit in currentRoom.Exits)
 			{
 				if (exit.Collides (boundingBox))
@@ -70,6 +79,11 @@ namespace FriendShip
 
             base.Update(gameTime);
         }
+
+		private Rectangle GetBoundingBox()
+		{
+			return new Rectangle ((int)Position.X, (int)Position.Y, 31, 56);
+		}
 
 		public override void Draw (GameTime gameTime)
 		{

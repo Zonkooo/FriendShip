@@ -29,6 +29,7 @@ namespace FriendShip
 		public Texture2D OneWhitePixel;
 
 		private List<Room> _rooms = new List<Room>();
+		public List<Wall> Walls = new List<Wall>();
 
 		public GameCore()
 		{
@@ -54,6 +55,9 @@ namespace FriendShip
 			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.DOWN_LEFT], new Rectangle(817, 211, 1, 200), new Vector2(825,361)));// Troisieme porte (couloir1)gauche droite
             _rooms[(int)Rooms.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(820, 211, 1, 200), new Vector2(750, 361)));// quatrieme porte (salle2)droite gauche
             _rooms[(int)Rooms.DOWN_LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.DOWN_RIGHT], new Rectangle(1165, 211, 1, 200), new Vector2(1172, 361)));// cinquieme porte (salle2)gauche droite
+
+			Walls.Add (new Wall (new Rectangle (10/*that's the only important thing*/, 0, 1, 1080)));
+			Walls.Add (new Wall (new Rectangle (1900/*that's the only important thing*/, 0, 1, 1080)));
 		}
 
 		/// <summary>
@@ -116,7 +120,8 @@ namespace FriendShip
 			if(spriteBatch != null)
 			{
 				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				//spriteBatch.Draw(levelMgr.SpecialDisplay, new Vector2(-(float)Math.Cos(-GameCore.Angle), -(float)Math.Sin(-GameCore.Angle)) * 18, Color.White);
+				foreach (var wall in Walls)
+					DrawHitBox (wall._boundingBox);
 				spriteBatch.End();
 			}
 		}
@@ -126,7 +131,7 @@ namespace FriendShip
 		/// </summary>
 		public void DrawHitBox(Rectangle r)
 		{
-			spriteBatch.Draw(OneWhitePixel, r, new Color(255, 0, 0, 8));
+			spriteBatch.Draw(OneWhitePixel, r, new Color(255, 0, 255));
 		}
 	}
 }
