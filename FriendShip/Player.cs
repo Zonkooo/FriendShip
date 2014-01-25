@@ -113,6 +113,13 @@ namespace FriendShip
 				}
 			}
 
+			//check traps
+			if (currentRoom.CheckTraps (Position))
+			{
+				Visible = false; //TODO
+				//currentState = PlayerState.HIT;
+			}
+
 			if (Position != prevPos)
 				currentState = PlayerState.WALK;
 			else
@@ -124,10 +131,8 @@ namespace FriendShip
 				{
 					this.currentRoom.PlayerLeaves ();
 					this.currentRoom = exit.NextRoom;
-					bool trapTriggered = this.currentRoom.PlayerEnters ();
+					this.currentRoom.PlayerEnters ();
 					this.Position = exit.SpawPoint;
-					if (trapTriggered)
-						Visible = false; //TODO : play damage animation
 				}
 			}
 
@@ -138,7 +143,7 @@ namespace FriendShip
 
 		void LayTrap ()
 		{
-			currentRoom.AddTrap ();
+			currentRoom.AddTrap (new Trap(Position));
 		}
 
 		private Rectangle GetBoundingBox()

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
+using System;
 
 namespace FriendShip
 {
@@ -25,8 +26,7 @@ namespace FriendShip
 		public List<RoomLink> Exits { get; private set;}
 		private int nbPlayersInRoom = 0;
 		private bool _lightOn { get { return nbPlayersInRoom > 0; } }
-		private bool hasTrap = false;
-		private bool trapEnabled = false;
+		private List<Trap> _traps = new List<Trap> ();
 
 		/// <summary> the position where the player should spawn at the begining of the game </summary>
 		public Vector2 SpawnPosition {get; private set;}
@@ -47,29 +47,39 @@ namespace FriendShip
 		}
 
 		/// <returns>true if a trap was triggered</returns>
-		public bool PlayerEnters()
+		public void PlayerEnters()
 		{
 			nbPlayersInRoom++;
-			if (hasTrap && trapEnabled)
-			{
-				hasTrap = false;
-				trapEnabled = false;
-				return true;
-			}
-			return false;
 		}
 
 		public void PlayerLeaves()
 		{
 			nbPlayersInRoom--;
-			if (nbPlayersInRoom == 0 && hasTrap)
-				trapEnabled = true;
+			if (nbPlayersInRoom == 0 && _traps.Count > 0)
+				foreach (var trap in _traps)
+					trap.Enable ();
 		}
 
-		public void AddTrap()
+		public void AddTrap(Trap trap)
 		{
-			hasTrap = true;
-			trapEnabled = false;
+			_traps.Add (trap);
+		}
+
+		public bool CheckTraps(Vector2 playerPos)
+		{
+			foreach (var trap in _traps)
+			{
+				if (trap.Enabled)
+				{
+					//check distance
+					if (Math.Abs (trap.Position.X - playerPos.X) < 5 && Math.Abs (trap.Position.Y - playerPos.Y) < 5)
+					{
+						_traps.Remove (trap);
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 
 		public override void Draw (GameTime gameTime)

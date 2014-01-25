@@ -54,6 +54,7 @@
     <Compile Include="GameCore.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="MyTexture2D.cs" />
+    <Compile Include="Trap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
