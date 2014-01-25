@@ -23,6 +23,7 @@ namespace FriendShip
 		STILL,
 		WALK,
 		HIT,
+		DEAD,
 	}
 
 	public class Player : DrawableGameComponent
@@ -34,6 +35,7 @@ namespace FriendShip
 		private PlayerState currentState = PlayerState.STILL;
 		private double hitTime;
 		private bool flipHorizontally = true;
+		public int life = 3;
 
 		private Dictionary<Direction, Keys> controls;
 		private Dictionary<PlayerState, MyTexture2D> _textures;
@@ -129,8 +131,14 @@ namespace FriendShip
 			//check traps
 			if (currentRoom.CheckTraps (Position))
 			{
-				currentState = PlayerState.HIT;
-				hitTime = 500;
+				life--;
+				if (life == 0)
+					Death ();
+				else
+				{
+					currentState = PlayerState.HIT;
+					hitTime = 500;
+				}
 			}
 
 			foreach(var exit in currentRoom.Exits)
@@ -152,6 +160,14 @@ namespace FriendShip
 		void LayTrap ()
 		{
 			currentRoom.AddTrap (new Trap(Position));
+		}
+
+		void Death ()
+		{
+			//TODO play death anim
+			currentState = PlayerState.DEAD;
+			Enabled = false;
+			currentRoom.PlayerLeaves ();
 		}
 
 		private Rectangle GetBoundingBox()
