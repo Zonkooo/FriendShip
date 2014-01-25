@@ -46,9 +46,9 @@ namespace FriendShip
            // _rooms.Add(new Room(this, new Vector2(1167, 211)));// hall 2
             _rooms.Add(new Room(this, new Vector2(1385, 211), new Vector2()));//room 3
 
-            _rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(357, 10, 1, 200), new Vector2()));
-            _rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.LEFT], new Rectangle(576, 10, 1, 200), new Vector2()));
-            _rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(924, 10, 1, 200), new Vector2()));
+			_rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(357, 211, 1, 200), new Vector2()));
+			_rooms[(int)Rooms.RIGHT].Exits.Add(new RoomLink(_rooms[(int)Rooms.LEFT], new Rectangle(576, 211, 1, 200), new Vector2()));
+			_rooms[(int)Rooms.LEFT].Exits.Add(new RoomLink(_rooms[(int)Rooms.RIGHT], new Rectangle(924, 211, 1, 200), new Vector2()));
 		}
 
 		/// <summary>
@@ -62,10 +62,11 @@ namespace FriendShip
 
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
 
-			foreach(var room in _rooms)
-			{
-				room.Texture = OneWhitePixel;
-			}
+			var machines = Content.Load<Texture2D>("Rooms/machines");
+			var pilotage = Content.Load<Texture2D>("Rooms/pilotage");
+
+			_rooms [(int)Rooms.LEFT].Texture = machines;
+			_rooms [(int)Rooms.RIGHT].Texture = pilotage;
 
 			var cireman = Content.Load<Texture2D>("Players/cireman");
 			var player = new Player (this, cireman, _rooms[(int)Rooms.LEFT]);
