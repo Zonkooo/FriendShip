@@ -23,7 +23,6 @@ namespace FriendShip
 
 		public Vector2 Position;
 		private Room currentRoom;
-		public readonly List<Direction> Directions = new List<Direction>();
 
 		private Dictionary<Direction, Keys> controls;
 		private Texture2D _texture;
@@ -49,35 +48,35 @@ namespace FriendShip
         {
             KeyboardState currentKeyState = Keyboard.GetState();
 
-            var Delta = new Vector2();
-			Directions.Clear ();
+			var delta = new Vector2();
+			var directions = new List<Direction>();
 
 			if (currentKeyState.IsKeyDown (controls [Direction.LEFT]))
 			{
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
-					Delta.X = -moveSpeed;
-				Directions.Add (Direction.LEFT);
+					delta.X = -moveSpeed;
+				directions.Add (Direction.LEFT);
 			}
 			if (currentKeyState.IsKeyDown (controls [Direction.RIGHT]))
 			{
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
-					Delta.X = moveSpeed;
-				Directions.Add (Direction.RIGHT);
+					delta.X = moveSpeed;
+				directions.Add (Direction.RIGHT);
 			}
 			if (currentKeyState.IsKeyDown (controls [Direction.UP]))
 			{
 				if(currentRoom.MoveType == RoomMovementType.VERTICAL)
-					Delta.Y = -moveSpeed;
-				Directions.Add (Direction.UP);
+					delta.Y = -moveSpeed;
+				directions.Add (Direction.UP);
 			}
 			if (currentKeyState.IsKeyDown (controls [Direction.DOWN]))
 			{
 				if(currentRoom.MoveType == RoomMovementType.VERTICAL)
-					Delta.Y = moveSpeed;
-				Directions.Add (Direction.DOWN);
+					delta.Y = moveSpeed;
+				directions.Add (Direction.DOWN);
 			}
 
-            Position = Position + Delta;
+            Position = Position + delta;
 
 			//check collision with room exits
 			var boundingBox = GetBoundingBox();
@@ -86,13 +85,13 @@ namespace FriendShip
 				if(wall.Collides(boundingBox))
 				{
 					//cancel move
-					Position = Position - Delta;
+					Position = Position - delta;
 					break;
 				}
 			}
 			foreach(var exit in currentRoom.Exits)
 			{
-				if (exit.Collides (boundingBox))
+				if (exit.Collides (boundingBox, directions))
 				{
 					this.currentRoom.PlayerLeaves ();
 					this.currentRoom = exit.NextRoom;

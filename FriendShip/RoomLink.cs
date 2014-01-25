@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Collections.Generic;
 
 namespace FriendShip
 {
@@ -13,18 +14,19 @@ namespace FriendShip
 		public Room NextRoom { get; private set; }
 		private Rectangle _triggerZone;
 		public Vector2 SpawPoint { get; private set;}
-		//TODO condition on key
+		private Direction _direction;
 
-		public RoomLink(Room nextRoom, Rectangle trigger, Vector2 reappearancePoint)
+		public RoomLink(Room nextRoom, Rectangle trigger, Direction direction, Vector2 reappearancePoint)
 		{
 			NextRoom = nextRoom;
 			_triggerZone = trigger;
 			SpawPoint = reappearancePoint;
+			_direction = direction;
 		}
 
-		public bool Collides(Rectangle player)
+		public bool Collides(Rectangle player, List<Direction> directionsPressed)
 		{
-			if(player.Intersects(_triggerZone)) //&& right key pressed
+			if(player.Intersects(_triggerZone) && directionsPressed.Contains(_direction))
 			{
 				return true;
 			}
