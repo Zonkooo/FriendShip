@@ -68,6 +68,16 @@
       <Name>cuisine</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Players\capitaine.png">
+      <Importer>TextureImporter</Importer>
+      <Name>capitaine</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Players\capitaine_run.png">
+      <Importer>TextureImporter</Importer>
+      <Name>capitaine_run</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
