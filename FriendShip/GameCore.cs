@@ -86,20 +86,20 @@ namespace FriendShip
 			_rooms[RoomType.BRIDGE] = new Room(this, new Vector2(1385, 211), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
             //Etage 2
             _rooms[RoomType.LADDER_1] = new Room(this, new Vector2(393, 415), new Vector2(), RoomMovementType.VERTICAL);
-            _rooms[RoomType.HALL_3] = new Room(this, new Vector2(496, 443), new Vector2(), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.HALL_3] = new Room(this, new Vector2(494, 443), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.LADDER_2] = new Room(this, new Vector2(667, 415), new Vector2(), RoomMovementType.VERTICAL);
-            _rooms[RoomType.HALL_4] = new Room(this, new Vector2(768, 443), new Vector2(), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.HALL_4] = new Room(this, new Vector2(766, 443), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.LADDER_3] = new Room(this, new Vector2(960, 415), new Vector2(), RoomMovementType.VERTICAL);
-            _rooms[RoomType.HALL_5] = new Room(this, new Vector2(1063, 443), new Vector2(), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.HALL_5] = new Room(this, new Vector2(1061, 443), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.LADDER_4] = new Room(this, new Vector2(1267, 415), new Vector2(), RoomMovementType.VERTICAL);
-            _rooms[RoomType.HALL_6] = new Room(this, new Vector2(1370, 443), new Vector2(), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.HALL_6] = new Room(this, new Vector2(1368, 443), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.LADDER_5] = new Room(this, new Vector2(1597, 415), new Vector2(), RoomMovementType.VERTICAL);
             //Etage 3
-            _rooms[RoomType.CALE] = new Room (this, new Vector2 (253, 660), new Vector2(427,290), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.HALL_7] = new Room(this, new Vector2(601, 660+74), new Vector2(), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.CHAMBRE] = new Room(this, new Vector2(819, 660), new Vector2(), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.HALL_8] = new Room(this, new Vector2(1167, 660 + 73), new Vector2(), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.MACHINE] = new Room(this, new Vector2(1385, 660), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.CALE] = new Room (this, new Vector2 (253, 590), new Vector2(427,290), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.HALL_7] = new Room(this, new Vector2(601, 590 + 74), new Vector2(), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.CHAMBRE] = new Room(this, new Vector2(819, 590), new Vector2(), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.HALL_8] = new Room(this, new Vector2(1167, 590 + 74), new Vector2(), RoomMovementType.HORIZONTAL);
+            _rooms[RoomType.MACHINE] = new Room(this, new Vector2(1385, 590), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
 
             //Les portes Etage 1
 			_rooms[RoomType.COMMANDS].Exits.Add(new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(600, 211, 1, 200), Direction.RIGHT, new Vector2(605, 290)));
@@ -111,11 +111,14 @@ namespace FriendShip
             _rooms[RoomType.HALL_2].Exits.Add(new RoomLink(_rooms[RoomType.BRIDGE], new Rectangle(1385, 211, 1, 200), Direction.RIGHT, new Vector2(1395, 290)));
             _rooms[RoomType.BRIDGE].Exits.Add(new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1388, 211, 1, 200), Direction.LEFT, new Vector2(1330, 290)));
             //Portes étage 2
-            _rooms[RoomType.COMMANDS].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_1], new Rectangle(393, 390, 100, 1), Direction.DOWN, new Vector2(393, 410)));
-            _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.COMMANDS], new Rectangle(393, 393, 100, 1), Direction.UP, new Vector2(393, 290)));
+            _rooms[RoomType.COMMANDS].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_1], new Rectangle(393, 390, 100, 1), Direction.DOWN, new Vector2(420, 410)));
+            _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.COMMANDS], new Rectangle(393, 393, 100, 1), Direction.UP, new Vector2(420, 290)));
             _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.HALL_3], new Rectangle(446, 211+232, 1, 130), Direction.RIGHT, new Vector2(500, 445)));
-            _rooms[RoomType.HALL_3].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_1], new Rectangle(449, 211+232, 1, 130), Direction.LEFT, new Vector2(420, 443)));
-            _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.CALE], new Rectangle(393, 211+384, 100, 1), Direction.DOWN, new Vector2(393, 620)));
+            _rooms[RoomType.HALL_3].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_1], new Rectangle(495, 211+232, 1, 130), Direction.LEFT, new Vector2(420, 443)));
+            _rooms[RoomType.LADDER_1].Exits.Add(new RoomLink(_rooms[RoomType.CALE], new Rectangle(393, 211+384, 100, 1), Direction.DOWN, new Vector2(393, 671)));
+            _rooms[RoomType.CALE].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_1], new Rectangle(393, 770, 100, 1), Direction.UP, new Vector2(420, 470)));
+            _rooms[RoomType.HALL_3].Exits.Add(new RoomLink(_rooms[RoomType.LADDER_2], new Rectangle(663, 443, 1, 130), Direction.RIGHT, new Vector2(680, 443)));
+            _rooms[RoomType.LADDER_2].Exits.Add(new RoomLink(_rooms[RoomType.HALL_3], new Rectangle(682, 443, 1, 130), Direction.LEFT, new Vector2(600, 443)));
 
 
 
