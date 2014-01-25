@@ -13,13 +13,13 @@ namespace FriendShip
 {
 	enum RoomType
 	{
-		ROOM_1,
+		PILOTAGE,
 		HALL_1,
-        ROOM_2,
+        MACHINES,
         HALL_2,
-        ROOM_3,
+        CUISINE,
 
-        //étage_2
+        //ï¿½tage_2
         LADDER_1,
         HALL_3,
         LADDER_2,
@@ -57,31 +57,31 @@ namespace FriendShip
 
 			Content.RootDirectory = "Content";
 
-			_rooms[RoomType.ROOM_1] = new Room (this, new Vector2 (253, 211), new Vector2(427,290), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.PILOTAGE] = new Room (this, new Vector2 (253, 211), new Vector2(427,290), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.HALL_1] = new Room(this, new Vector2(601, 284), new Vector2(), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.ROOM_2] = new Room(this, new Vector2(819, 211), new Vector2(), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.MACHINES] = new Room(this, new Vector2(819, 211), new Vector2(), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.HALL_2] = new Room(this, new Vector2(1167, 211 + 73), new Vector2(), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.ROOM_3] = new Room(this, new Vector2(1385, 211), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.CUISINE] = new Room(this, new Vector2(1385, 211), new Vector2(1600, 348), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.LADDER_1] = new Room(this, new Vector2(393, 415), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.HALL_3] = new Room(this, new Vector2(499, 443), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.LADDER_2] = new Room(this, new Vector2(671, 415), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.HALL_4] = new Room(this, new Vector2(499, 443), new Vector2(), RoomMovementType.HORIZONTAL);
 
-			_rooms[RoomType.ROOM_1].Exits.Add(
+			_rooms[RoomType.PILOTAGE].Exits.Add(
                 new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(600, 211, 1, 200), Direction.RIGHT, new Vector2(605, 290)));
 			_rooms[RoomType.HALL_1].Exits.Add(
-                new RoomLink(_rooms[RoomType.ROOM_1], new Rectangle(603, 211, 1, 200), Direction.LEFT, new Vector2(560, 290)));
+                new RoomLink(_rooms[RoomType.PILOTAGE], new Rectangle(603, 211, 1, 200), Direction.LEFT, new Vector2(560, 290)));
 			_rooms[RoomType.HALL_1].Exits.Add(
-                new RoomLink(_rooms[RoomType.ROOM_2], new Rectangle(817, 211, 1, 200), Direction.RIGHT, new Vector2(825, 290)));
-            _rooms[RoomType.ROOM_2].Exits.Add(
+                new RoomLink(_rooms[RoomType.MACHINES], new Rectangle(817, 211, 1, 200), Direction.RIGHT, new Vector2(825, 290)));
+            _rooms[RoomType.MACHINES].Exits.Add(
                 new RoomLink(_rooms[RoomType.HALL_1], new Rectangle(820, 211, 1, 200), Direction.LEFT, new Vector2(750, 290)));
-            _rooms[RoomType.ROOM_2].Exits.Add(
+            _rooms[RoomType.MACHINES].Exits.Add(
                 new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1165, 211, 1, 200), Direction.RIGHT, new Vector2(1172, 290)));
             _rooms[RoomType.HALL_2].Exits.Add(
-                new RoomLink(_rooms[RoomType.ROOM_2], new Rectangle(1168, 211, 1, 200), Direction.LEFT, new Vector2(1120, 290)));
+                new RoomLink(_rooms[RoomType.MACHINES], new Rectangle(1168, 211, 1, 200), Direction.LEFT, new Vector2(1120, 290)));
             _rooms[RoomType.HALL_2].Exits.Add(
-                new RoomLink(_rooms[RoomType.ROOM_3], new Rectangle(1385, 211, 1, 200), Direction.RIGHT, new Vector2(1395, 290)));
-            _rooms[RoomType.ROOM_3].Exits.Add(
+                new RoomLink(_rooms[RoomType.CUISINE], new Rectangle(1385, 211, 1, 200), Direction.RIGHT, new Vector2(1395, 290)));
+            _rooms[RoomType.CUISINE].Exits.Add(
                 new RoomLink(_rooms[RoomType.HALL_2], new Rectangle(1388, 211, 1, 200), Direction.LEFT, new Vector2(1330, 290)));
 
             //Etage 2
@@ -107,11 +107,11 @@ namespace FriendShip
 			var couloir1 = Content.Load<Texture2D>("Rooms/couloir1");
 			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
 
-			_rooms [RoomType.ROOM_1].Texture = pilotage;
+			_rooms [RoomType.PILOTAGE].Texture = pilotage;
 			_rooms [RoomType.HALL_1].Texture = couloir1;
-            _rooms[RoomType.ROOM_2].Texture = machines;
+            _rooms[RoomType.MACHINES].Texture = machines;
 			_rooms[RoomType.HALL_2].Texture = couloir1;
-			_rooms[RoomType.ROOM_3].Texture = cuisine;
+			_rooms[RoomType.CUISINE].Texture = cuisine;
 
 			var cire = Content.Load<Texture2D>("Players/cireman");
 
@@ -130,7 +130,7 @@ namespace FriendShip
 				{ Direction.DOWN, Keys.Down },
 				{ Direction.TRAP, Keys.End },
 			};
-			var player1 = new Player (this, captainTextures, _rooms[RoomType.ROOM_1], player1Controls);
+			var player1 = new Player (this, captainTextures, _rooms[RoomType.PILOTAGE], player1Controls);
 
 
 			var mecano = Content.Load<Texture2D>("Players/mecano");
@@ -148,7 +148,7 @@ namespace FriendShip
 				{ Direction.DOWN, Keys.S },
 				{ Direction.TRAP, Keys.Q },
 			};
-			var player2 = new Player (this, mecanoTextures, _rooms[RoomType.ROOM_3], player2Controls);
+			var player2 = new Player (this, mecanoTextures, _rooms[RoomType.CUISINE], player2Controls);
 		}
 
 		/// <summary>
