@@ -143,7 +143,7 @@ namespace FriendShip
 
 			_rooms [RoomType.COMMANDS].Texture = pilotage;
 			_rooms [RoomType.HALL_1].Texture = couloir1;
-            _rooms[RoomType.KITCHEN].Texture = machines;
+			_rooms[RoomType.MACHINE].Texture = machines;
 			_rooms[RoomType.HALL_2].Texture = couloir1;
 			_rooms[RoomType.BRIDGE].Texture = cuisine;
 			_rooms[RoomType.KITCHEN].Texture = cuisine;
