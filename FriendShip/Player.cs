@@ -32,6 +32,7 @@ namespace FriendShip
 		public Vector2 Position;
 		private Room currentRoom;
 		private PlayerState currentState = PlayerState.STILL;
+		private double hitTime;
 		private bool flipHorizontally = true;
 
 		private Dictionary<Direction, Keys> controls;
@@ -57,6 +58,12 @@ namespace FriendShip
 		bool trapKeyWasDown = false;
         public override void Update(GameTime gameTime)
         {
+			if(hitTime > 0)
+			{
+				hitTime -= gameTime.ElapsedGameTime.TotalMilliseconds;
+				return;
+			}
+
             KeyboardState currentKeyState = Keyboard.GetState();
 			var prevPos = Position;
 
@@ -113,17 +120,18 @@ namespace FriendShip
 				}
 			}
 
-			//check traps
-			if (currentRoom.CheckTraps (Position))
-			{
-				Visible = false; //TODO
-				//currentState = PlayerState.HIT;
-			}
 
 			if (Position != prevPos)
 				currentState = PlayerState.WALK;
 			else
-				currentState = PlayerState.STILL;
+			currentState = PlayerState.STILL;
+
+			//check traps
+			if (currentRoom.CheckTraps (Position))
+			{
+				currentState = PlayerState.HIT;
+				hitTime = 500;
+			}
 
 			foreach(var exit in currentRoom.Exits)
 			{

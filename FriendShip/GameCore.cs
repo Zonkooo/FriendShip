@@ -95,12 +95,15 @@ namespace FriendShip
 			_rooms[RoomType.HALL_2].Texture = couloir1;
 			_rooms[RoomType.ROOM_3].Texture = cuisine;
 
+			var cire = Content.Load<Texture2D>("Players/cireman");
+
 			var captain = Content.Load<Texture2D>("Players/capitaine");
 			var captainRun = Content.Load<Texture2D>("Players/capitaine_run");
 			var captainTextures = new Dictionary<PlayerState, MyTexture2D>
 			{
 				{PlayerState.STILL, new MyTexture2D(captain, 1)},
 				{PlayerState.WALK, new MyTexture2D(captainRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
+				{PlayerState.HIT, new MyTexture2D(cire, 1)},
 			};
 			var player1Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.Left },
@@ -118,6 +121,7 @@ namespace FriendShip
 			{
 				{PlayerState.STILL, new MyTexture2D(mecano, 1)},
 				{PlayerState.WALK, new MyTexture2D(mecanoRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
+				{PlayerState.HIT, new MyTexture2D(cire, 1)},
 			};
 			var player2Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.A },
