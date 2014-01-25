@@ -11,16 +11,21 @@ namespace FriendShip
 
 	public class Player : DrawableGameComponent
 	{
+		public const int moveSpeed = 5;
+
 		public Vector2 Position;
 		private Texture2D _texture;
 		private GameCore _game;
-        public const int moveSpeed = 5;
+		private Room currentRoom;
 
-		public Player (GameCore game, Texture2D texture)
+		public Player (GameCore game, Texture2D texture, Room startRoom)
 			: base(game)
 		{
 			_game = game;
 			_texture = texture;
+
+			Position = startRoom.SpawnPosition;
+			currentRoom = startRoom;
 
 			Visible = true;
 			Enabled = true;
@@ -44,8 +49,20 @@ namespace FriendShip
                 Delta.Y = moveSpeed;
             Position = Position + Delta;
 
-            //base.Update(gameTime);
+			//check collision with room exits
+			var boundingBox = new Rectangle ((int)Position.X, (int)Position.Y, 31, 56);
+			foreach(var exit in currentRoom.Exits)
+			{
+				if (exit.Collides (boundingBox))
+				{
+					this.currentRoom = exit.NextRoom;
+					this.Position = exit.SpawPoint;
+				}
+			}
+
+            base.Update(gameTime);
         }
+
 		public override void Draw (GameTime gameTime)
 		{
 			if (_game.spriteBatch != null)

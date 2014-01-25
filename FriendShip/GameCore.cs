@@ -43,8 +43,8 @@ namespace FriendShip
 			_rooms.Add(new Room (this, new Vector2 (10, 10), new Vector2 (10, 10)));
 			_rooms.Add(new Room (this, new Vector2 (100, 10), new Vector2 (100, 10)));
 
-			_rooms [(int)Rooms.LEFT].Exits.Add (new RoomLink (_rooms [(int)Rooms.RIGHT], new Rectangle (69, 10, 1, 30)));
-			_rooms [(int)Rooms.RIGHT].Exits.Add (new RoomLink (_rooms [(int)Rooms.LEFT], new Rectangle (100, 10, 1, 30)));
+			_rooms [(int)Rooms.LEFT].Exits.Add (new RoomLink (_rooms [(int)Rooms.RIGHT], new Rectangle (69, 10, 1, 30), new Vector2(102, 10)));
+			_rooms [(int)Rooms.RIGHT].Exits.Add (new RoomLink (_rooms [(int)Rooms.LEFT], new Rectangle (100, 10, 1, 30), new Vector2(68-31, 10)));
 		}
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace FriendShip
 			}
 
 			var cireman = Content.Load<Texture2D>("Players/cireman");
-			var player = new Player (this, cireman);
+			var player = new Player (this, cireman, _rooms[(int)Rooms.LEFT]);
 			player.Position = new Vector2 (10, 40);
 
 		}

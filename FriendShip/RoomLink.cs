@@ -12,13 +12,14 @@ namespace FriendShip
 	{
 		public Room NextRoom { get; private set; }
 		private Rectangle _triggerZone;
-		private Vector2 _spawPoint;
+		public Vector2 SpawPoint { get; private set;}
 		//TODO condition on key
 
-		public RoomLink(Room nextRoom, Rectangle trigger)
+		public RoomLink(Room nextRoom, Rectangle trigger, Vector2 reappearancePoint)
 		{
 			NextRoom = nextRoom;
 			_triggerZone = trigger;
+			SpawPoint = reappearancePoint;
 		}
 
 		public bool Collides(Rectangle player)
