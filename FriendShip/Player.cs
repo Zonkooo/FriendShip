@@ -18,23 +18,32 @@ namespace FriendShip
 		TRAP,
 	}
 
+	public enum PlayerState
+	{
+		STILL,
+		WALK,
+		HIT,
+	}
+
 	public class Player : DrawableGameComponent
 	{
 		public const int moveSpeed = 5;
 
 		public Vector2 Position;
 		private Room currentRoom;
+		private PlayerState currentState = PlayerState.STILL;
+		private bool flipHorizontally = false;
 
 		private Dictionary<Direction, Keys> controls;
-		private Texture2D _texture;
+		private Dictionary<PlayerState, Texture2D> _textures;
 		private GameCore _game;
 
-		public Player (GameCore game, Texture2D texture, Room startRoom, Dictionary<Direction, Keys> controls)
+		public Player (GameCore game, Dictionary<PlayerState, Texture2D> textures, Room startRoom, Dictionary<Direction, Keys> controls)
 			: base(game)
 		{
 			this.controls = controls;
 			_game = game;
-			_texture = texture;
+			_textures = textures;
 
 			Position = startRoom.SpawnPosition;
 			currentRoom = startRoom;
@@ -49,6 +58,7 @@ namespace FriendShip
         public override void Update(GameTime gameTime)
         {
             KeyboardState currentKeyState = Keyboard.GetState();
+			var prevPos = Position;
 
 			var delta = new Vector2();
 			var directions = new List<Direction>();
@@ -58,12 +68,14 @@ namespace FriendShip
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
 					delta.X = -moveSpeed;
 				directions.Add (Direction.LEFT);
+				flipHorizontally = true;
 			}
 			if (currentKeyState.IsKeyDown (controls [Direction.RIGHT]))
 			{
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
 					delta.X = moveSpeed;
 				directions.Add (Direction.RIGHT);
+				flipHorizontally = false;
 			}
 			if (currentKeyState.IsKeyDown (controls [Direction.UP]))
 			{
@@ -100,6 +112,12 @@ namespace FriendShip
 					break;
 				}
 			}
+
+			if (Position != prevPos)
+				currentState = PlayerState.WALK;
+			else
+				currentState = PlayerState.STILL;
+
 			foreach(var exit in currentRoom.Exits)
 			{
 				if (exit.Collides (boundingBox, directions))
@@ -132,7 +150,7 @@ namespace FriendShip
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				_game.spriteBatch.Draw(_texture, Position, Color.White);
+				_game.spriteBatch.Draw(_textures[currentState], Position, null, Color.White, 0f, new Vector2(), new Vector2(1), flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
 				_game.spriteBatch.End();
 			}
