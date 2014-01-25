@@ -47,9 +47,9 @@ namespace FriendShip
 			Content.RootDirectory = "Content";
 
 			_rooms[RoomType.ROOM_1] = new Room (this, new Vector2 (253, 211), new Vector2(427,348), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.HALL_1] = new Room(this, new Vector2(601, 211), new Vector2(), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.HALL_1] = new Room(this, new Vector2(601, 211 + 73), new Vector2(), RoomMovementType.HORIZONTAL);
 			_rooms[RoomType.ROOM_2] = new Room(this, new Vector2(819, 211), new Vector2(), RoomMovementType.HORIZONTAL);
-			_rooms[RoomType.HALL_2] = new Room(this, new Vector2(1167, 211), new Vector2(), RoomMovementType.HORIZONTAL);
+			_rooms[RoomType.HALL_2] = new Room(this, new Vector2(1167, 211 + 73), new Vector2(), RoomMovementType.HORIZONTAL);
             _rooms[RoomType.ROOM_3] = new Room(this, new Vector2(1385, 211), new Vector2(), RoomMovementType.HORIZONTAL);
 
 			_rooms[RoomType.ROOM_1].Exits.Add(
@@ -86,12 +86,14 @@ namespace FriendShip
 
 			var machines = Content.Load<Texture2D>("Rooms/machines");
 			var pilotage = Content.Load<Texture2D>("Rooms/pilotage");
+			var couloir1 = Content.Load<Texture2D>("Rooms/couloir1");
+			var cuisine = Content.Load<Texture2D>("Rooms/cuisine");
 
 			_rooms [RoomType.ROOM_1].Texture = machines;
-			_rooms [RoomType.HALL_1].Texture = pilotage;
+			_rooms [RoomType.HALL_1].Texture = couloir1;
             _rooms[RoomType.ROOM_2].Texture = machines;
-            _rooms[RoomType.HALL_2].Texture = pilotage;
-            _rooms[RoomType.ROOM_3].Texture = machines;
+			_rooms[RoomType.HALL_2].Texture = couloir1;
+			_rooms[RoomType.ROOM_3].Texture = cuisine;
 
 			var cireman = Content.Load<Texture2D>("Players/cireman");
 			var player1Controls = new Dictionary<Direction, Keys> {
