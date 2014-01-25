@@ -116,16 +116,15 @@ namespace FriendShip
 
 			InitHelper.LoadAndSetRoomTextures (_rooms, Content);
 
-			var cire = Content.Load<Texture2D>("Players/cireman");
-
 			var captain = Content.Load<Texture2D>("Players/capitaine");
 			var captainRun = Content.Load<Texture2D>("Players/capitaine_run");
 			var captainDead = Content.Load<Texture2D>("Players/capitaine_mort");
+			var captainDmg = Content.Load<Texture2D>("Players/capitaine_degats");
 			var captainTextures = new Dictionary<PlayerState, MyTexture2D>
 			{
 				{PlayerState.STILL, new MyTexture2D(captain, 1)},
 				{PlayerState.WALK, new MyTexture2D(captainRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
-				{PlayerState.HIT, new MyTexture2D(cire, 1)},
+				{PlayerState.HIT, new MyTexture2D(captainDmg, 9, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
 				{PlayerState.DEAD, new MyTexture2D(captainDead, 1)},
 			};
 			var player1Controls = new Dictionary<Direction, Keys> {
