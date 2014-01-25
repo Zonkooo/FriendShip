@@ -93,6 +93,36 @@
       <Name>mecano_degats</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Rooms\chambre.png">
+      <Importer>TextureImporter</Importer>
+      <Name>chambre</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\echelle_court_droite.png">
+      <Importer>TextureImporter</Importer>
+      <Name>echelle_court_droite</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\echelle_court_gauche.png">
+      <Importer>TextureImporter</Importer>
+      <Name>echelle_court_gauche</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\echelle_court_milieu.png">
+      <Importer>TextureImporter</Importer>
+      <Name>echelle_court_milieu</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\echelle_long.png">
+      <Importer>TextureImporter</Importer>
+      <Name>echelle_long</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Rooms\entrepot.png">
+      <Importer>TextureImporter</Importer>
+      <Name>entrepot</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
