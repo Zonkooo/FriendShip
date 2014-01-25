@@ -119,8 +119,8 @@ namespace FriendShip
 			rooms[RoomType.HALL_4].Texture = content.Load<Texture2D> ("Rooms/couloir_m2");
 			rooms[RoomType.HALL_5].Texture = content.Load<Texture2D> ("Rooms/couloir_m3");
 			rooms[RoomType.HALL_6].Texture = content.Load<Texture2D> ("Rooms/couloir_m4");
-			rooms[RoomType.HALL_7].Texture = content.Load<Texture2D> ("Rooms/couloir_bas_droite");
-			rooms[RoomType.HALL_8].Texture = content.Load<Texture2D> ("Rooms/couloir_bas_gauche");
+			rooms[RoomType.HALL_7].Texture = content.Load<Texture2D> ("Rooms/couloir_bas_gauche");
+			rooms[RoomType.HALL_8].Texture = content.Load<Texture2D> ("Rooms/couloir_bas_droite");
 
 			rooms [RoomType.LADDER_1].Texture = echelleLeft;
 			rooms [RoomType.LADDER_3].Texture = echelleMid;
