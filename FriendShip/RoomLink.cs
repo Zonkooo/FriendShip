@@ -12,6 +12,7 @@ namespace FriendShip
 	{
 		public Room NextRoom { get; private set; }
 		private Rectangle _triggerZone;
+		private Vector2 _spawPoint;
 		//TODO condition on key
 
 		public RoomLink(Room nextRoom, Rectangle trigger)
