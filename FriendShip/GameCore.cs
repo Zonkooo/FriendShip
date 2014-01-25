@@ -217,6 +217,8 @@ namespace FriendShip
 			Players.Add(new Player (this, mecanoTextures, _rooms[RoomType.BRIDGE], player2Controls));
 		}
 
+		private TimeSpan _deathCounter = TimeSpan.FromMinutes(2);
+
 		/// <summary>
 		/// Allows the game to run logic such as updating the world,
 		/// checking for collisions, gathering input, and playing audio.
@@ -229,13 +231,18 @@ namespace FriendShip
 				this.Exit();
 			}
 
+			if (ended)
+				return;
+
+			_deathCounter -= gameTime.ElapsedGameTime;
+
 			if (health < 0) //ship explodes
 				EndGame(GameEndings.EXPLODE);
 			if (derive < 0) //lost
 				EndGame(GameEndings.DERIVE);
 			if (Players.Count (p => p.Enabled) == 0) //everyone is dead
 				EndGame(GameEndings.ALL_DEAD);
-			if(/*timer runs out*/false)
+			if(_deathCounter < TimeSpan.Zero)
 			{
 				if(Players.Count (p => p.Enabled) == 1)
 					EndGame(GameEndings.WIN);
@@ -249,15 +256,13 @@ namespace FriendShip
 		bool ended = false;
 		private void EndGame(GameEndings ending)
 		{
-			if (!ended)
+			foreach (var component in Components)
 			{
-				foreach (var component in Components)
-				{
-					var c = component as GameComponent;
-					if (c != null)
-						c.Enabled = false;
-				}
+				var c = component as GameComponent;
+				if (c != null)
+					c.Enabled = false;
 			}
+			ended = true;
 		}
 
 		/// <summary>
@@ -276,6 +281,9 @@ namespace FriendShip
 
 				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 40, (int)(health*1000), 40), Color.IndianRed); //barre de vie
 				spriteBatch.Draw(OneWhitePixel, new Rectangle(400, 90, (int)(derive*1000), 40), Color.CornflowerBlue); //barre de dérive
+
+				//timer
+				spriteBatch.DrawString(font, _deathCounter.ToString("mm\\:ss"), new Vector2(40, 40), Color.White); //barre de dérive
 
 				foreach(var @event in Events)
 				{
