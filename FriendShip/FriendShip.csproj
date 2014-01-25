@@ -29,6 +29,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
+    <ReferencePath>..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\</ReferencePath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
