@@ -253,6 +253,31 @@
       <Name>fond</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="lose_screen.png">
+      <Importer>TextureImporter</Importer>
+      <Name>lose_screen</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="win_cap.png">
+      <Importer>TextureImporter</Importer>
+      <Name>win_cap</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="win_cireman.png">
+      <Importer>TextureImporter</Importer>
+      <Name>win_cireman</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="win_cuistot.png">
+      <Importer>TextureImporter</Importer>
+      <Name>win_cuistot</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="win_mecano.png">
+      <Importer>TextureImporter</Importer>
+      <Name>win_mecano</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
