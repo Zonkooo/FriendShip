@@ -36,9 +36,15 @@ namespace FriendShip
 			}
 		}
 
-		public override void DrawText (SpriteBatch sb)
+		public override void Draw (GameTime gameTime)
 		{
-			sb.DrawString (_game.font, _text, new Vector2 (600, 20), Color.Crimson);
+			var sb = _game.spriteBatch;
+			if (sb != null)
+			{
+				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				sb.DrawString (_game.font, _text, new Vector2 (600, 20), Color.Crimson);
+				sb.End ();
+			}
 		}
 	}
 
@@ -68,9 +74,15 @@ namespace FriendShip
 			}
 		}
 
-		public override void DrawText (SpriteBatch sb)
+		public override void Draw (GameTime gameTime)
 		{
-			sb.DrawString (_game.font, _text, new Vector2 (600, 20), Color.Crimson);
+			var sb = _game.spriteBatch;
+			if (sb != null)
+			{
+				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				sb.DrawString (_game.font, _text, new Vector2 (600, 20), Color.Crimson);
+				sb.End ();
+			}
 		}
 	}
 }

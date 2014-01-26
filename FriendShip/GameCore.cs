@@ -62,6 +62,11 @@ namespace FriendShip
 	/// </summary>
 	public class GameCore : Game
 	{
+		//events stuff
+		public Texture2D bonusTrap;
+		public MyTexture2D leak;
+
+
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
 		public Texture2D OneWhitePixel;
@@ -132,6 +137,8 @@ namespace FriendShip
 			Cling = Content.Load<Texture2D>("clig");
 			_backGnd = Content.Load<Texture2D>("Interface/fond");
 			font = Content.Load<SpriteFont>("font");
+
+			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
 
 			var bg = new TemporaryEffect (this, new Vector2 (), new MyTexture2D (_backGnd, 1), 1E20 /*beaucoup*/);
 			bg.DrawOrder = -10;
@@ -334,12 +341,6 @@ namespace FriendShip
 
 					//timer
 					spriteBatch.DrawString (font, _deathCounter.ToString ("mm\\:ss"), new Vector2 (900, 950), Color.White);
-
-					foreach (var @event in Events)
-					{
-						if (@event.Enabled)
-							@event.DrawText (spriteBatch);
-					}
 
 					foreach (var wall in Walls)
 						DrawHitBox (wall._boundingBox);

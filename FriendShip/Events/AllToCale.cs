@@ -32,17 +32,26 @@ namespace FriendShip
 					break;
 				}
 			}
-
+			_game.leak.Update (gameTime.ElapsedGameTime.TotalMilliseconds);
 			if (missingPlayer)
 				_game.health -= 0.0003f;
 			else
+			{
 				this.Enabled = false;
+				this.Visible = false;
+			}
 		}
 
-		public override void DrawText (SpriteBatch sb)
+		public override void Draw (GameTime gameTime)
 		{
-			sb.DrawString (_game.font, _text, new Vector2 (410, 50), Color.White);
+			var sb = _game.spriteBatch;
+			if (sb != null)
+			{
+				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				sb.DrawString (_game.font, _text, new Vector2 (410, 50), Color.White);
+				sb.Draw (_game.leak.Texture, new Vector2 (330, 670), _game.leak.GetRectangle (), Color.White);
+				sb.End ();
+			}
 		}
 	}
-
 }

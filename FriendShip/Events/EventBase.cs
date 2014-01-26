@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace FriendShip
 {
-	public abstract class EventBase : GameComponent
+	public abstract class EventBase : DrawableGameComponent
 	{
 		public string _text;
 		protected GameCore _game;
@@ -22,13 +22,14 @@ namespace FriendShip
 			_text = text;
 			_game.Components.Add (this);
 			Enabled = false;
+			Visible = false;
+			DrawOrder = 150;
 		}
 
 		public virtual void Enable()
 		{
 			Enabled = true;
+			Visible = true;
 		}
-
-		public abstract void DrawText (SpriteBatch sb);
 	}
 }

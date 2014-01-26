@@ -41,10 +41,16 @@ namespace FriendShip
 				_game.derive = Math.Min(_game.derive + 0.0005f, 1f);
 		}
 
-		public override void DrawText (SpriteBatch sb)
+		public override void Draw (GameTime gameTime)
 		{
-			if(missingPlayer)
-				sb.DrawString (_game.font, _text, new Vector2 (410, 100), Color.Crimson);
+			var sb = _game.spriteBatch;
+			if (sb != null)
+			{
+				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				if (missingPlayer)
+					sb.DrawString (_game.font, _text, new Vector2 (410, 100), Color.Crimson);
+				sb.End ();
+			}
 		}
 	}
 }
