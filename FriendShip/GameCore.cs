@@ -75,7 +75,7 @@ namespace FriendShip
 
 		public MyTexture2D chrono;
 		public Texture2D support;
-		public Texture2D warning;
+		public MyTexture2D warning;
 		public Texture2D action;
 
 		public GraphicsDeviceManager graphics;
@@ -135,7 +135,7 @@ namespace FriendShip
 
 			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
 			kohl = Content.Load<Texture2D>("charbon");
-			warning = Content.Load<Texture2D>("warning");
+			warning = new MyTexture2D(Content.Load<Texture2D>("warning"), 2, new double[]{150, 150});
 			action = Content.Load<Texture2D>("action");
 
 			txtCharb = Content.Load<Texture2D>("Text/texte_charbon");
@@ -363,6 +363,8 @@ namespace FriendShip
 
 			if(spriteBatch != null)
 			{
+				warning.Update (gameTime.ElapsedGameTime.TotalMilliseconds);
+
 				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 				if (ended)
 					spriteBatch.Draw (_gameOverTex [_ending.Value], new Vector2 (), Color.White);
@@ -375,9 +377,9 @@ namespace FriendShip
 					spriteBatch.Draw (OneWhitePixel, new Rectangle (1020, 930, (int)(derive * barLength), 41), Color.CornflowerBlue); //barre de dérive
 
 					if(health < 0.3)
-						spriteBatch.Draw (warning, new Vector2(600, 870), Color.White);
+						spriteBatch.Draw (warning.Texture, new Vector2(600, 870), warning.GetRectangle(), Color.White);
 					if(derive < 0.3)
-						spriteBatch.Draw (warning, new Vector2(1250, 870), Color.White);
+						spriteBatch.Draw (warning.Texture, new Vector2(1250, 870), warning.GetRectangle(), Color.White);
 
 					spriteBatch.Draw (chrono.Texture, new Vector2(890, 820), chrono.GetRectangle(), Color.White);
 
