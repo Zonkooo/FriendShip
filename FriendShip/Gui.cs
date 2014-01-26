@@ -67,10 +67,10 @@ namespace FriendShip
 				_game.spriteBatch.Draw (_fishHud, posFish, Color.White);
 				_game.spriteBatch.Draw(_cookHud, posCook, Color.White);
 
-				var yHeartOffset = 70;
+				var yHeartOffset = 110;
 				var xHeartSpacing = 45;
-				var xOffsetBig = 140;
-				var xOffsetSmall = 20;
+				var xOffsetBig = 150;
+				var xOffsetSmall = 26;
 
 				//player1
 				var cap = _game.Players [PlayerType.CAP];
