@@ -254,7 +254,7 @@ namespace FriendShip
 			{
 				if (Players.Count (p => p.Value.Enabled) == 1)
 				{
-					switch(Players.Keys.First())
+					switch (Players.First (p => p.Value.Enabled).Key)
 					{
 					case PlayerType.CAP:
 						EndGame (GameEndings.WIN_CAP);
