@@ -14,7 +14,6 @@ namespace FriendShip
 	public class FixEngine : EventBase
 	{
 		private readonly Room _target;
-		bool isFixed = false;
 
 		public FixEngine (GameCore game, string text)
 			:base(game, text)
@@ -33,8 +32,11 @@ namespace FriendShip
 		{
 			if (_target.Actionned)
 			{
-				isFixed = true;
 				Enabled = false;
+			}
+			else
+			{
+				_game.health -= 0.0005f;
 			}
 		}
 

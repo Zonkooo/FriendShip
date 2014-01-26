@@ -34,7 +34,7 @@ namespace FriendShip
 			}
 
 			if (missingPlayer)
-				_game.health -= 0.0001f;
+				_game.health -= 0.0003f;
 			else
 				this.Enabled = false;
 		}
