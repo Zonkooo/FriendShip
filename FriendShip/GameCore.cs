@@ -43,7 +43,18 @@ namespace FriendShip
 		DERIVE,
 		SHARE_GOLD,
 		ALL_DEAD,
-		WIN,
+		WIN_CAP,
+		WIN_COOK,
+		WIN_MECA,
+		WIN_FISH,
+	}
+
+	public enum PlayerType
+	{
+		CAP,
+		COOK,
+		MECA,
+		FISH
 	}
 
 	/// <summary>
@@ -63,7 +74,7 @@ namespace FriendShip
 
 		public Dictionary<RoomType, Room> _rooms = new Dictionary<RoomType, Room>();
 		public List<Wall> Walls = new List<Wall>();
-		public List<Player> Players = new List<Player>();
+		public Dictionary<PlayerType, Player> Players = new Dictionary<PlayerType, Player>();
 		public List<EventBase> Events = new List<EventBase>();
 
 		//ship related properties
@@ -115,11 +126,14 @@ namespace FriendShip
 			var bg = new TemporaryEffect (this, new Vector2 (), new MyTexture2D (_backGnd, 1), 1E20 /*beaucoup*/);
 			bg.DrawOrder = -10;
 
-			_gameOverTex[GameEndings.WIN] = Content.Load<Texture2D>("game_over");
+			_gameOverTex[GameEndings.WIN_CAP] = Content.Load<Texture2D>("win_cap");
+			_gameOverTex[GameEndings.WIN_COOK] = Content.Load<Texture2D>("win_cuistot");
+			_gameOverTex[GameEndings.WIN_FISH] = Content.Load<Texture2D>("win_cireman");
+			_gameOverTex[GameEndings.WIN_MECA] = Content.Load<Texture2D>("win_mecano");
 			_gameOverTex[GameEndings.ALL_DEAD] = Content.Load<Texture2D>("game_over");
 			_gameOverTex[GameEndings.EXPLODE] = Content.Load<Texture2D>("game_over");
 			_gameOverTex[GameEndings.DERIVE] = Content.Load<Texture2D>("game_over");
-			_gameOverTex[GameEndings.SHARE_GOLD] = Content.Load<Texture2D>("game_over");
+			_gameOverTex[GameEndings.SHARE_GOLD] = Content.Load<Texture2D>("lose_screen");
 
 			InitHelper.LoadAndSetRoomTextures (_rooms, Content);
 
@@ -143,7 +157,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.PageDown },
 			};
 
-			Players.Add(new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls));
+			Players[PlayerType.CAP] = new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls);
 
 			var mecano = Content.Load<Texture2D>("Players/mecano");
 			var mecanoRun = Content.Load<Texture2D>("Players/mecano_run");
@@ -164,7 +178,7 @@ namespace FriendShip
 				{ Direction.TRAP, Keys.E },
 				{ Direction.ACTION, Keys.A },
 			};
-			Players.Add(new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls));
+			Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls);
 
             var cuisto = Content.Load<Texture2D>("Players/cuisto");
             var cuistoRun = Content.Load<Texture2D>("Players/cuisto_run");
@@ -185,7 +199,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.NumPad7},
 			};
 
-            Players.Add(new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls));
+			Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls);
 
             var cireman = Content.Load<Texture2D>("Players/cireman");
             var ciremanRun = Content.Load<Texture2D>("Players/cireman_run");
@@ -206,7 +220,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.I},
 			};
 
-            Players.Add(new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls));
+			Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls);
 
 			SoundManager.Play ();
 		}
@@ -234,12 +248,28 @@ namespace FriendShip
 				EndGame(GameEndings.EXPLODE);
 			if (derive < 0) //lost
 				EndGame(GameEndings.DERIVE);
-			if (Players.Count (p => p.Enabled) == 0) //everyone is dead
+			if (Players.Count (p => p.Value.Enabled) == 0) //everyone is dead
 				EndGame(GameEndings.ALL_DEAD);
 			if(_deathCounter < TimeSpan.Zero)
 			{
-				if(Players.Count (p => p.Enabled) == 1)
-					EndGame(GameEndings.WIN);
+				if (Players.Count (p => p.Value.Enabled) == 1)
+				{
+					switch(Players.Keys.First())
+					{
+					case PlayerType.CAP:
+						EndGame (GameEndings.WIN_CAP);
+						break;
+					case PlayerType.COOK:
+						EndGame (GameEndings.WIN_COOK);
+						break;
+					case PlayerType.FISH:
+						EndGame (GameEndings.WIN_FISH);
+						break;
+					case PlayerType.MECA:
+						EndGame (GameEndings.WIN_MECA);
+						break;
+					}
+				}
 				else
 					EndGame(GameEndings.SHARE_GOLD);
 			}

@@ -73,23 +73,23 @@ namespace FriendShip
 				var xOffsetSmall = 20;
 
 				//player1
-				var cap = _game.Players [1];
+				var cap = _game.Players [PlayerType.CAP];
 				for (int i = 0; i < cap.life; i++)
 					_game.spriteBatch.Draw(_heart, posCap + new Vector2(xOffsetBig + xHeartSpacing*i, yHeartOffset), Color.White);
 
 				//player2
-				var meca = _game.Players [1];
-				for (int i = 0; i < cap.life; i++)
+				var meca = _game.Players [PlayerType.MECA];
+				for (int i = 0; i < meca.life; i++)
 					_game.spriteBatch.Draw(_heart, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*i, yHeartOffset), Color.White);
 
 				//player3
-				var cook = _game.Players [1];
-				for (int i = 0; i < cap.life; i++)
+				var cook = _game.Players [PlayerType.COOK];
+				for (int i = 0; i < cook.life; i++)
 					_game.spriteBatch.Draw(_heart, posCook + new Vector2(xOffsetBig + xHeartSpacing*i, yHeartOffset), Color.White);
 
 				//player4
-				var fish = _game.Players [1];
-				for (int i = 0; i < cap.life; i++)
+				var fish = _game.Players [PlayerType.FISH];
+				for (int i = 0; i < fish.life; i++)
 					_game.spriteBatch.Draw(_heart, posFish + new Vector2(xOffsetSmall + xHeartSpacing*i, yHeartOffset), Color.White);
 
 				_game.spriteBatch.End();

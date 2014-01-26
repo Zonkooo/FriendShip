@@ -24,7 +24,7 @@ namespace FriendShip
 		public override void Update (GameTime gameTime)
 		{
 			bool missingPlayer = false;
-			foreach(var player in _game.Players)
+			foreach(var player in _game.Players.Values)
 			{
 				if (player.Enabled && player.currentRoom != _target)
 				{
