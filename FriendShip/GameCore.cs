@@ -186,12 +186,13 @@ namespace FriendShip
 
             var cuisto = Content.Load<Texture2D>("Players/cuisto");
             var cuistoRun = Content.Load<Texture2D>("Players/cuisto_run");
+			var cuistoDegat = Content.Load<Texture2D>("Players/cuistot_degats");
             var cuistoDead = Content.Load<Texture2D>("Players/cuisto_mort");
             var cuistoTextures = new Dictionary<PlayerState, MyTexture2D>
 			{
 				{PlayerState.STILL, new MyTexture2D(cuisto, 1)},
 				{PlayerState.WALK, new MyTexture2D(cuistoRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
-                {PlayerState.HIT, new MyTexture2D(mecanoDegats, 9, new double[]{60, 60, 60, 60, 60, 60, 1000.0/12, 1000.0/12, 1000.0/12})},
+				{PlayerState.HIT, new MyTexture2D(cuistoDegat, 9, new double[]{60, 60, 60, 60, 60, 60, 1000.0/12, 1000.0/12, 1000.0/12})},
 				{PlayerState.DEAD, new MyTexture2D(cuistoDead, 1)},
 			};
             var player3Controls = new Dictionary<Direction, Keys> {
@@ -207,12 +208,13 @@ namespace FriendShip
 
             var cireman = Content.Load<Texture2D>("Players/cireman");
             var ciremanRun = Content.Load<Texture2D>("Players/cireman_run");
+			var ciremanDegat = Content.Load<Texture2D>("Players/cireman_degats");
             var ciremanDead = Content.Load<Texture2D>("Players/cireman_mort");
             var ciremanTextures = new Dictionary<PlayerState, MyTexture2D>
 			{
 				{PlayerState.STILL, new MyTexture2D(cireman, 1)},
 				{PlayerState.WALK, new MyTexture2D(ciremanRun, 4, new []{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12})},
-                {PlayerState.HIT, new MyTexture2D(mecanoDegats, 9, new double[]{60, 60, 60, 60, 60, 60, 1000.0/12, 1000.0/12, 1000.0/12})},
+				{PlayerState.HIT, new MyTexture2D(ciremanDegat, 9, new double[]{60, 60, 60, 60, 60, 60, 1000.0/12, 1000.0/12, 1000.0/12})},
 				{PlayerState.DEAD, new MyTexture2D(ciremanDead, 1)},
 			};
             var player4Controls = new Dictionary<Direction, Keys> {
