@@ -65,6 +65,7 @@ namespace FriendShip
 		//events stuff
 		public Texture2D bonusTrap;
 		public MyTexture2D leak;
+		public Texture2D kohl;
 
 		public MyTexture2D chrono;
 		public Texture2D support;
@@ -114,12 +115,14 @@ namespace FriendShip
 			Events.Add (new GetFood (this));
 			Events.Add (new FixEngine (this, "Go fix the engine !"));
 			Events.Add (new GetTrap (this));
+			Events.Add (new CarryKohl (this));
 
 			_eventTriggers = new []{
 				TimeSpan.FromSeconds(120 - 8),
 				TimeSpan.FromSeconds(120 - 15),
 				TimeSpan.FromSeconds(120 - 25),
 				TimeSpan.FromSeconds(120 - 33),
+				TimeSpan.FromSeconds(120 - 40),
 			};
 		}
 
@@ -138,6 +141,7 @@ namespace FriendShip
 			font = Content.Load<SpriteFont>("font");
 
 			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
+			kohl = Content.Load<Texture2D>("jet_eau");
 
 			chrono = new MyTexture2D(Content.Load<Texture2D>("Interface/chrnometre_anime"), 21, new double[]{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000});
 			support = Content.Load<Texture2D>("Interface/interface_barre");

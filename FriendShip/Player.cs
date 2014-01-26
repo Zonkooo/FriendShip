@@ -184,6 +184,8 @@ namespace FriendShip
 			}
 		}
 
+		public bool hasKohl;
+
 		void Death ()
 		{
 			//TODO play death anim
@@ -204,6 +206,8 @@ namespace FriendShip
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
 				_game.spriteBatch.Draw(_textures[currentState].Texture, Position, _textures[currentState].GetRectangle(), Color.White, 0f, new Vector2(), new Vector2(1), flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+				if(hasKohl)
+					_game.spriteBatch.Draw(_game.kohl, Position, Color.White);
 
 				_game.spriteBatch.End();
 			}
