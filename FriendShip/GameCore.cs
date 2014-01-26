@@ -76,6 +76,10 @@ namespace FriendShip
 		public List<Wall> Walls = new List<Wall>();
 		public Dictionary<PlayerType, Player> Players = new Dictionary<PlayerType, Player>();
 		public List<EventBase> Events = new List<EventBase>();
+		private TimeSpan[] _eventTriggers = new []{
+			TimeSpan.FromSeconds(112),
+			TimeSpan.FromSeconds(80),
+		};
 
 		//ship related properties
 		public float health = 1.0f;
@@ -104,7 +108,7 @@ namespace FriendShip
 
 			Events.Add (new MustDriveShip (this, "Someone must drive this ship !"));
 			Events.Add (new AllToCale (this));
-//			Events [0].Enabled = true;
+			Events.Add (new FixEngine (this, "Go fix the engine !"));
 		}
 
 		/// <summary>
@@ -242,7 +246,16 @@ namespace FriendShip
 			if (ended)
 				return;
 
+			var prevTime = _deathCounter;
 			_deathCounter -= gameTime.ElapsedGameTime;
+
+			for (int i = 0; i < _eventTriggers.Length; i++)
+			{
+				if(prevTime >= _eventTriggers[i] && _eventTriggers[i] > _deathCounter) //time goes backwards
+				{
+					Events [i + 1].Enable (); //miam les index out of bounds
+				}
+			}
 
 			if (health < 0) //ship explodes
 				EndGame(GameEndings.EXPLODE);
