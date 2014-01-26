@@ -70,7 +70,7 @@ namespace FriendShip
 			{
 				Visible = false;
 				Enabled = false;
-				_target.ActionnedBy.nbTraps = Math.Min (_target.ActionnedBy.nbTraps + 1, 3);
+				_target.ActionnedBy.nbTraps = Math.Min (_target.ActionnedBy.nbTraps + 1, 4);
 			}
 		}
 

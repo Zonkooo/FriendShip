@@ -37,7 +37,7 @@ namespace FriendShip
 		private double hitTime;
 		private bool flipHorizontally = true;
 		public int life = 3;
-		public int nbTraps = 3;
+		public int nbTraps = 4;
 
 		private Dictionary<Direction, Keys> controls;
 		private Dictionary<PlayerState, MyTexture2D> _textures;

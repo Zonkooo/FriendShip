@@ -87,6 +87,7 @@ namespace FriendShip
 
 				var yHeartOffset = 110;
 				var xHeartSpacing = 45;
+				var xHBombSpacing = 30;
 				var xOffsetBig = 150;
 				var xOffsetSmall = 26;
 				var yOffsetBomb = 26;
@@ -96,28 +97,28 @@ namespace FriendShip
 				for (int i = 0; i < cap.life; i++)
 					_game.spriteBatch.Draw(_heart, posCap + new Vector2(xOffsetBig + xHeartSpacing*i, yHeartOffset), Color.White);
 				for (int i = 0; i < cap.nbTraps; i++)
-					_game.spriteBatch.Draw(_bomb, posCap + new Vector2(xOffsetBig + xHeartSpacing*i - 10, yHeartOffset + yOffsetBomb), Color.White);
+					_game.spriteBatch.Draw(_bomb, posCap + new Vector2(xOffsetBig + xHBombSpacing*i - 10, yHeartOffset + yOffsetBomb), Color.White);
 
 				//player2
 				var meca = _game.Players [PlayerType.MECA];
 				for (int i = 0; i < meca.life; i++)
 					_game.spriteBatch.Draw(_heart, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*(2-i), yHeartOffset), Color.White);
 				for (int i = 0; i < meca.nbTraps; i++)
-					_game.spriteBatch.Draw(_bomb, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*(2-i) + 30, yHeartOffset + yOffsetBomb), Color.White);
+					_game.spriteBatch.Draw(_bomb, posMeca + new Vector2(30 + xOffsetSmall + xHBombSpacing*(2-i) + 30, yHeartOffset + yOffsetBomb), Color.White);
 
 				//player3
 				var cook = _game.Players [PlayerType.COOK];
 				for (int i = 0; i < cook.life; i++)
 					_game.spriteBatch.Draw(_heart, posCook + new Vector2(xOffsetBig + xHeartSpacing*i, yHeartOffset), Color.White);
 				for (int i = 0; i < cook.nbTraps; i++)
-					_game.spriteBatch.Draw(_bomb, posCook + new Vector2(xOffsetBig + xHeartSpacing*i - 10, yHeartOffset + yOffsetBomb), Color.White);
+					_game.spriteBatch.Draw(_bomb, posCook + new Vector2(xOffsetBig + xHBombSpacing*i - 10, yHeartOffset + yOffsetBomb), Color.White);
 
 				//player4
 				var fish = _game.Players [PlayerType.FISH];
 				for (int i = 0; i < fish.life; i++)
 					_game.spriteBatch.Draw(_heart, posFish + new Vector2(xOffsetSmall + xHeartSpacing*(2-i), yHeartOffset), Color.White);
 				for (int i = 0; i < fish.nbTraps; i++)
-					_game.spriteBatch.Draw(_bomb, posFish + new Vector2(xOffsetSmall + xHeartSpacing*(2-i) + 30, yHeartOffset + yOffsetBomb), Color.White);
+					_game.spriteBatch.Draw(_bomb, posFish + new Vector2(30 + xOffsetSmall + xHBombSpacing*(2-i) + 30, yHeartOffset + yOffsetBomb), Color.White);
 
 				_game.spriteBatch.End();
 			}
