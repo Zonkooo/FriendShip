@@ -312,7 +312,7 @@ namespace FriendShip
 					spriteBatch.Draw (OneWhitePixel, new Rectangle (1070, 900, (int)(derive * 450), 100), Color.CornflowerBlue); //barre de dérive
 
 					//timer
-					spriteBatch.DrawString (font, _deathCounter.ToString ("mm\\:ss"), new Vector2 (950, 950), Color.White);
+					spriteBatch.DrawString (font, _deathCounter.ToString ("mm\\:ss"), new Vector2 (900, 950), Color.White);
 
 					foreach (var @event in Events)
 					{
