@@ -278,6 +278,26 @@
       <Name>win_mecano</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Interface\cap_dead.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cap_dead</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\cuisto_dead.png">
+      <Importer>TextureImporter</Importer>
+      <Name>cuisto_dead</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\mecano_dead.png">
+      <Importer>TextureImporter</Importer>
+      <Name>mecano_dead</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\pecheur_dead.png">
+      <Importer>TextureImporter</Importer>
+      <Name>pecheur_dead</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
