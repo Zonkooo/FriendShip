@@ -59,7 +59,6 @@
     <Compile Include="Events\MustDriveShip.cs" />
     <Compile Include="Events\AllToCale.cs" />
     <Compile Include="TemporaryEffect.cs" />
-    <Compile Include="SoundManager.cs" />
     <Compile Include="Events\FixEngine.cs" />
     <Compile Include="InitHelper.cs" />
     <Compile Include="Gui.cs" />

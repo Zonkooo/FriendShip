@@ -74,7 +74,6 @@ namespace FriendShip
 		public Texture2D OneWhitePixel;
 		public Texture2D Cling;
 		public SpriteFont font;
-		public SoundManager SoundManager;
 
 		private Dictionary<GameEndings, Texture2D> _gameOverTex = new Dictionary<GameEndings, Texture2D> ();
 		public Texture2D _backGnd;
@@ -132,8 +131,6 @@ namespace FriendShip
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-
-			SoundManager = new SoundManager (this);
 
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
 			Cling = Content.Load<Texture2D>("clig");
@@ -246,8 +243,6 @@ namespace FriendShip
 			};
 
 			Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls, PlayerIndex.Four);
-
-			SoundManager.Play ();
 		}
 
 		private TimeSpan _deathCounter = TimeSpan.FromMinutes(2);
