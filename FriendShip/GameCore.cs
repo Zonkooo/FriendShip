@@ -117,13 +117,21 @@ namespace FriendShip
 			Events.Add (new FixEngine (this, "Go fix the engine !"));
 			Events.Add (new GetTrap (this));
 			Events.Add (new CarryKohl (this));
+			Events.Add (new GetTrap (this));
+			Events.Add (new AllToCale (this));
+			Events.Add (new GetTrap (this));
+			Events.Add (new FixEngine (this, "Go fix the engine !"));
 
 			_eventTriggers = new []{
-				TimeSpan.FromSeconds(120 - 8),
-				TimeSpan.FromSeconds(120 - 15),
-				TimeSpan.FromSeconds(120 - 25),
-				TimeSpan.FromSeconds(120 - 33),
-				TimeSpan.FromSeconds(120 - 40),
+				TimeSpan.FromSeconds(120 - 8),  //goto cale
+				TimeSpan.FromSeconds(120 - 15), //+life
+				TimeSpan.FromSeconds(120 - 25), //fix engine
+				TimeSpan.FromSeconds(120 - 33), //+trap
+				TimeSpan.FromSeconds(120 - 40), //coal
+				TimeSpan.FromSeconds(120 - 47), //+trap
+				TimeSpan.FromSeconds(120 - 60),  //goto cale
+				TimeSpan.FromSeconds(120 - 70), //+trap
+				TimeSpan.FromSeconds(120 - 80), //fix engine
 			};
 		}
 
