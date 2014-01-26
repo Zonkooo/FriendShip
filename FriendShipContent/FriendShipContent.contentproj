@@ -383,6 +383,11 @@
       <Name>lumieres</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="credits.png">
+      <Importer>TextureImporter</Importer>
+      <Name>credits</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">

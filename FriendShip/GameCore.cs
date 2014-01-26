@@ -77,6 +77,7 @@ namespace FriendShip
 		public Texture2D support;
 		public MyTexture2D warning;
 		public Texture2D action;
+		public Texture2D credits;
 
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
@@ -137,6 +138,7 @@ namespace FriendShip
 			kohl = Content.Load<Texture2D>("charbon");
 			warning = new MyTexture2D(Content.Load<Texture2D>("warning"), 2, new double[]{150, 150});
 			action = Content.Load<Texture2D>("action");
+			credits = Content.Load<Texture2D>("credits");
 
 			txtCharb = Content.Load<Texture2D>("Text/texte_charbon");
 			txtCook = Content.Load<Texture2D>("Text/texte_cuisine");
@@ -285,6 +287,8 @@ namespace FriendShip
 
 		private TimeSpan _deathCounter = TimeSpan.FromMinutes(2);
 
+		double endGameTime = 5000;
+
 		bool splash = true;
 		Texture2D splashScreen;
 
@@ -335,7 +339,12 @@ namespace FriendShip
 			}
 
 			if (ended)
+			{
+				endGameTime -= gameTime.ElapsedGameTime.TotalMilliseconds;
+				if (endGameTime < 0)
+					_gameOverTex [_ending.Value] = credits; //foohaa
 				return;
+			}
 
 			var prevTime = _deathCounter;
 			_deathCounter -= gameTime.ElapsedGameTime;
