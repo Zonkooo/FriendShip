@@ -12,10 +12,11 @@ namespace FriendShip
 {
 	public abstract class EventBase : DrawableGameComponent
 	{
-		public string _text;
+		public Texture2D _text;
 		protected GameCore _game;
+		protected Vector2 basePos = new Vector2 (485, 60+55);
 
-		public EventBase (GameCore game, string text)
+		public EventBase (GameCore game, Texture2D text)
 			: base(game)
 		{
 			_game = game;

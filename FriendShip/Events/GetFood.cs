@@ -15,7 +15,7 @@ namespace FriendShip
 		private readonly Room _target;
 
 		public GetFood (GameCore game)
-			:base(game, "Premier a la cantine gagne 1 pv")
+			:base(game, game.txtCook)
 		{
 			_target = _game._rooms [RoomType.KITCHEN];
 		}
@@ -42,7 +42,7 @@ namespace FriendShip
 			if (sb != null)
 			{
 				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				sb.DrawString (_game.font, _text, new Vector2 (600, 20), Color.Crimson);
+				sb.Draw (_text, basePos - new Vector2(0, 55), Color.White);
 				sb.End ();
 			}
 		}
@@ -53,7 +53,7 @@ namespace FriendShip
 		private readonly Room _target;
 
 		public GetTrap (GameCore game)
-			:base(game, "Premier a la chambre gagne 1 bombe")
+			:base(game, game.txtDodo)
 		{
 			_target = _game._rooms [RoomType.CHAMBRE];
 		}
@@ -80,7 +80,7 @@ namespace FriendShip
 			if (sb != null)
 			{
 				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				sb.DrawString (_game.font, _text, new Vector2 (600, 20), Color.Crimson);
+				sb.Draw (_text, basePos - new Vector2(0, 55), Color.White);
 				sb.End ();
 			}
 		}

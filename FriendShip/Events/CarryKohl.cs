@@ -18,7 +18,7 @@ namespace FriendShip
 		private int nbCarried = 0;
 
 		public CarryKohl (GameCore game)
-			:base(game, "deplacez 5 charbons du cul !")
+			:base(game, game.txtCharb)
 		{
 			_source = _game._rooms [RoomType.BRIDGE];
 			_cible = _game._rooms [RoomType.MACHINE];
@@ -65,7 +65,7 @@ namespace FriendShip
 			if (sb != null)
 			{
 				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				sb.DrawString (_game.font, _text, new Vector2 (600, 20), Color.Crimson);
+				sb.Draw (_text, basePos, Color.White);
 				sb.End ();
 			}
 		}

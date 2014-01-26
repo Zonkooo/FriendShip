@@ -16,8 +16,8 @@ namespace FriendShip
 		private readonly Room _target;
 		bool missingPlayer;
 
-		public MustDriveShip (GameCore game, string text)
-			:base(game, text)
+		public MustDriveShip (GameCore game)
+			:base(game, game.txtPilot)
 		{
 			_target = _game._rooms [RoomType.COMMANDS];
 			Visible = true;
@@ -48,7 +48,7 @@ namespace FriendShip
 			if (sb != null && missingPlayer)
 			{
 				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
-					sb.DrawString (_game.font, _text, new Vector2 (410, 100), Color.Crimson);
+				sb.Draw (_text, basePos - new Vector2(0, 110), Color.White);
 				sb.End ();
 			}
 		}

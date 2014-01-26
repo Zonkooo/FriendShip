@@ -15,8 +15,8 @@ namespace FriendShip
 	{
 		private readonly Room _target;
 
-		public FixEngine (GameCore game, string text)
-			:base(game, text)
+		public FixEngine (GameCore game)
+			:base(game, game.txtSdm)
 		{
 			_target = _game._rooms [RoomType.MACHINE];
 		}
@@ -46,7 +46,7 @@ namespace FriendShip
 			if (sb != null)
 			{
 				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				sb.DrawString (_game.font, _text, new Vector2 (410, 100), Color.Crimson);
+				sb.Draw (_text, basePos, Color.White);
 				sb.End ();
 			}
 		}

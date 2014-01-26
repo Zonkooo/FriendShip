@@ -16,7 +16,7 @@ namespace FriendShip
 		private readonly Room _target;
 
 		public AllToCale (GameCore game)
-			:base(game, "Everyone in the storage room !")
+			:base(game, game.txtFuite)
 		{
 			_target = _game._rooms [RoomType.CALE];
 		}
@@ -45,10 +45,10 @@ namespace FriendShip
 		public override void Draw (GameTime gameTime)
 		{
 			var sb = _game.spriteBatch;
-			if (sb != null)
+			if (sb != null && _text != null)
 			{
 				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				sb.DrawString (_game.font, _text, new Vector2 (410, 50), Color.White);
+				sb.Draw (_text, basePos, Color.White);
 				sb.Draw (_game.leak.Texture, new Vector2 (330, 670), _game.leak.GetRectangle (), Color.White);
 				sb.End ();
 			}

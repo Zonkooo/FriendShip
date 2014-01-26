@@ -66,6 +66,12 @@ namespace FriendShip
 		public Texture2D bonusTrap;
 		public MyTexture2D leak;
 		public Texture2D kohl;
+		public Texture2D txtCharb;
+		public Texture2D txtCook;
+		public Texture2D txtDodo;
+		public Texture2D txtFuite;
+		public Texture2D txtPilot;
+		public Texture2D txtSdm;
 
 		public MyTexture2D chrono;
 		public Texture2D support;
@@ -111,29 +117,6 @@ namespace FriendShip
 
 			Walls.Add (new Wall (new Rectangle (253/*that's the only important thing*/, 0, 1, 1080)));
 			Walls.Add (new Wall (new Rectangle (1732/*that's the only important thing*/, 0, 1, 1080)));
-
-			Events.Add (new MustDriveShip (this, "Someone must drive this ship !"));
-			Events.Add (new AllToCale (this));
-			Events.Add (new GetFood (this));
-			Events.Add (new FixEngine (this, "Go fix the engine !"));
-			Events.Add (new GetTrap (this));
-			Events.Add (new CarryKohl (this));
-			Events.Add (new GetTrap (this));
-			Events.Add (new AllToCale (this));
-			Events.Add (new GetTrap (this));
-			Events.Add (new FixEngine (this, "Go fix the engine !"));
-
-			_eventTriggers = new []{
-				TimeSpan.FromSeconds(120 - 8),  //goto cale
-				TimeSpan.FromSeconds(120 - 15), //+life
-				TimeSpan.FromSeconds(120 - 25), //fix engine
-				TimeSpan.FromSeconds(120 - 33), //+trap
-				TimeSpan.FromSeconds(120 - 40), //coal
-				TimeSpan.FromSeconds(120 - 47), //+trap
-				TimeSpan.FromSeconds(120 - 60),  //goto cale
-				TimeSpan.FromSeconds(120 - 70), //+trap
-				TimeSpan.FromSeconds(120 - 80), //fix engine
-			};
 		}
 
 		/// <summary>
@@ -154,6 +137,37 @@ namespace FriendShip
 			kohl = Content.Load<Texture2D>("charbon");
 			warning = Content.Load<Texture2D>("warning");
 			action = Content.Load<Texture2D>("action");
+
+			txtCharb = Content.Load<Texture2D>("Text/texte_charbon");
+			txtCook = Content.Load<Texture2D>("Text/texte_cuisine");
+			txtDodo = Content.Load<Texture2D>("Text/texte_dortoir");
+			txtFuite = Content.Load<Texture2D>("Text/texte_fuite");
+			txtPilot = Content.Load<Texture2D>("Text/texte_pilotage");
+			txtSdm = Content.Load<Texture2D>("Text/texte_sdm");
+
+			//must be after txt textures init
+			Events.Add (new MustDriveShip (this));
+			Events.Add (new AllToCale (this));
+			Events.Add (new GetFood (this));
+			Events.Add (new FixEngine (this));
+			Events.Add (new GetTrap (this));
+			Events.Add (new CarryKohl (this));
+			Events.Add (new GetTrap (this));
+			Events.Add (new AllToCale (this));
+			Events.Add (new GetTrap (this));
+			Events.Add (new FixEngine (this));
+
+			_eventTriggers = new []{
+				TimeSpan.FromSeconds(120 - 8),  //goto cale
+				TimeSpan.FromSeconds(120 - 15), //+life
+				TimeSpan.FromSeconds(120 - 25), //fix engine
+				TimeSpan.FromSeconds(120 - 33), //+trap
+				TimeSpan.FromSeconds(120 - 40), //coal
+				TimeSpan.FromSeconds(120 - 47), //+trap
+				TimeSpan.FromSeconds(120 - 60),  //goto cale
+				TimeSpan.FromSeconds(120 - 70), //+trap
+				TimeSpan.FromSeconds(120 - 80), //fix engine
+			};
 
 			chrono = new MyTexture2D(Content.Load<Texture2D>("Interface/chrnometre_anime"), 21, new double[]{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000});
 			support = Content.Load<Texture2D>("Interface/interface_barre");
