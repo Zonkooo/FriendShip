@@ -141,7 +141,7 @@ namespace FriendShip
 			font = Content.Load<SpriteFont>("font");
 
 			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
-			kohl = Content.Load<Texture2D>("jet_eau");
+			kohl = Content.Load<Texture2D>("charbon");
 
 			chrono = new MyTexture2D(Content.Load<Texture2D>("Interface/chrnometre_anime"), 21, new double[]{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000});
 			support = Content.Load<Texture2D>("Interface/interface_barre");

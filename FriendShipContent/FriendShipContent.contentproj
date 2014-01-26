@@ -333,6 +333,11 @@
       <Name>interface_barre</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="charbon.png">
+      <Importer>TextureImporter</Importer>
+      <Name>charbon</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
