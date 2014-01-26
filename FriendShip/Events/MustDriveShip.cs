@@ -20,6 +20,7 @@ namespace FriendShip
 			:base(game, text)
 		{
 			_target = _game._rooms [RoomType.COMMANDS];
+			Visible = true;
 			Enabled = true; //always enabled
 		}
 
@@ -44,10 +45,9 @@ namespace FriendShip
 		public override void Draw (GameTime gameTime)
 		{
 			var sb = _game.spriteBatch;
-			if (sb != null)
+			if (sb != null && missingPlayer)
 			{
 				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				if (missingPlayer)
 					sb.DrawString (_game.font, _text, new Vector2 (410, 100), Color.Crimson);
 				sb.End ();
 			}

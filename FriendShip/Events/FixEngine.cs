@@ -19,7 +19,6 @@ namespace FriendShip
 			:base(game, text)
 		{
 			_target = _game._rooms [RoomType.MACHINE];
-			Enabled = false;
 		}
 
 		public override void Enable ()
@@ -33,6 +32,7 @@ namespace FriendShip
 			if (_target.Actionned)
 			{
 				Enabled = false;
+				Visible = false;
 			}
 			else
 			{
