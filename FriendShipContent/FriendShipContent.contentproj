@@ -323,6 +323,16 @@
       <Name>jet_eau</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Interface\chrnometre_anime.png">
+      <Importer>TextureImporter</Importer>
+      <Name>chrnometre_anime</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Interface\interface_barre.png">
+      <Importer>TextureImporter</Importer>
+      <Name>interface_barre</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
