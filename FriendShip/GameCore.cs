@@ -278,9 +278,8 @@ namespace FriendShip
 					spriteBatch.Draw (_gameOverTex [_ending.Value], new Vector2 (), Color.White);
 				else
 				{
-
-					spriteBatch.Draw (OneWhitePixel, new Rectangle (400, 40, (int)(health * 1000), 40), Color.IndianRed); //barre de vie
-					spriteBatch.Draw (OneWhitePixel, new Rectangle (400, 90, (int)(derive * 1000), 40), Color.CornflowerBlue); //barre de dérive
+					spriteBatch.Draw (OneWhitePixel, new Rectangle (400, 900, (int)(health * 450), 100), Color.IndianRed); //barre de vie
+					spriteBatch.Draw (OneWhitePixel, new Rectangle (1070, 900, (int)(derive * 450), 100), Color.CornflowerBlue); //barre de dérive
 
 					//timer
 					spriteBatch.DrawString (font, _deathCounter.ToString ("mm\\:ss"), new Vector2 (40, 40), Color.White); //barre de dérive
