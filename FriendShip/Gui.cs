@@ -20,6 +20,11 @@ namespace FriendShip
 		Texture2D _fishHud;
 		Texture2D _mecaHud;
 
+		Texture2D _cookHudDead;
+		Texture2D  _capHudDead;
+		Texture2D _fishHudDead;
+		Texture2D _mecaHudDead;
+
 		Texture2D _heart;
 		Texture2D _bomb;
 
@@ -38,12 +43,25 @@ namespace FriendShip
 			_fishHud = _game.Content.Load<Texture2D> ("Interface/pecheur");
 			_mecaHud = _game.Content.Load<Texture2D> ("Interface/mecano");
 
+			_cookHudDead = _game.Content.Load<Texture2D> ( "Interface/cuisto_dead");
+			_capHudDead = _game.Content.Load<Texture2D> (     "Interface/cap_dead");
+			_fishHudDead = _game.Content.Load<Texture2D> ("Interface/pecheur_dead");
+			_mecaHudDead = _game.Content.Load<Texture2D> ( "Interface/mecano_dead");
+
 			_heart = _game.Content.Load<Texture2D> ("Interface/coeur");
 			_bomb = _game.Content.Load<Texture2D> ("Interface/bombe");
 		}
 
 		public override void Update (GameTime gameTime)
 		{
+			if (!_game.Players [PlayerType.CAP].Enabled)
+				_capHud = _capHudDead;
+			if (!_game.Players [PlayerType.COOK].Enabled)
+				_cookHud = _cookHudDead;
+			if (!_game.Players [PlayerType.MECA].Enabled)
+				_mecaHud = _mecaHudDead;
+			if (!_game.Players [PlayerType.FISH].Enabled)
+				_fishHud = _fishHudDead;
 		}
 
 		void Suicide ()
