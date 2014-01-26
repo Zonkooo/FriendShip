@@ -76,10 +76,7 @@ namespace FriendShip
 		public List<Wall> Walls = new List<Wall>();
 		public Dictionary<PlayerType, Player> Players = new Dictionary<PlayerType, Player>();
 		public List<EventBase> Events = new List<EventBase>();
-		private TimeSpan[] _eventTriggers = new []{
-			TimeSpan.FromSeconds(112),
-			TimeSpan.FromSeconds(80),
-		};
+		private TimeSpan[] _eventTriggers;
 
 		//ship related properties
 		public float health = 1.0f;
@@ -108,7 +105,16 @@ namespace FriendShip
 
 			Events.Add (new MustDriveShip (this, "Someone must drive this ship !"));
 			Events.Add (new AllToCale (this));
+			Events.Add (new GetFood (this));
 			Events.Add (new FixEngine (this, "Go fix the engine !"));
+			Events.Add (new GetTrap (this));
+
+			_eventTriggers = new []{
+				TimeSpan.FromSeconds(120 - 8),
+				TimeSpan.FromSeconds(120 - 15),
+				TimeSpan.FromSeconds(120 - 25),
+				TimeSpan.FromSeconds(120 - 33),
+			};
 		}
 
 		/// <summary>

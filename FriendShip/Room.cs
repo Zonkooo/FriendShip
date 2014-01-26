@@ -121,9 +121,11 @@ namespace FriendShip
 		}
 
 		public bool Actionned;
+		public Player ActionnedBy;
 		public void EnableAction ()
 		{
 			Actionned = false;
+			ActionnedBy = null;
 		}
 	}
 }

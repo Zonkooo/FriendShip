@@ -111,6 +111,7 @@ namespace FriendShip
 			if (currentKeyState.IsKeyDown (controls [Direction.ACTION]) || pad.Buttons.A == ButtonState.Pressed)
 			{
 				currentRoom.Actionned = true;
+				currentRoom.ActionnedBy = this;
 			}
 
 			if (currentKeyState.IsKeyDown (controls [Direction.TRAP]) || pad.Buttons.X == ButtonState.Pressed)

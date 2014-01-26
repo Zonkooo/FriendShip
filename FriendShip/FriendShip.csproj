@@ -63,6 +63,7 @@
     <Compile Include="Events\FixEngine.cs" />
     <Compile Include="InitHelper.cs" />
     <Compile Include="Gui.cs" />
+    <Compile Include="Events\GetFood.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
