@@ -66,6 +66,8 @@ namespace FriendShip
 		public Texture2D bonusTrap;
 		public MyTexture2D leak;
 
+		public MyTexture2D chrono;
+		public Texture2D support;
 
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
@@ -139,6 +141,10 @@ namespace FriendShip
 			font = Content.Load<SpriteFont>("font");
 
 			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
+
+			chrono = new MyTexture2D(Content.Load<Texture2D>("Interface/chrnometre_anime"), 21, new double[]{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000});
+			support = Content.Load<Texture2D>("Interface/interface_barre");
+
 
 			var bg = new TemporaryEffect (this, new Vector2 (), new MyTexture2D (_backGnd, 1), 1E20 /*beaucoup*/);
 			bg.DrawOrder = -10;
@@ -263,6 +269,7 @@ namespace FriendShip
 
 			var prevTime = _deathCounter;
 			_deathCounter -= gameTime.ElapsedGameTime;
+			chrono.Update (gameTime.ElapsedGameTime.TotalMilliseconds);
 
 			for (int i = 0; i < _eventTriggers.Length; i++)
 			{
@@ -336,11 +343,16 @@ namespace FriendShip
 					spriteBatch.Draw (_gameOverTex [_ending.Value], new Vector2 (), Color.White);
 				else
 				{
-					spriteBatch.Draw (OneWhitePixel, new Rectangle (400 + (int)((1-health) * 500), 930, (int)(health * 500), 41), Color.IndianRed); //barre de vie
-					spriteBatch.Draw (OneWhitePixel, new Rectangle (1020, 930, (int)(derive * 500), 41), Color.CornflowerBlue); //barre de dérive
+					spriteBatch.Draw (support, new Vector2(385, 893), Color.White);
+
+					var barLength = 495;
+					spriteBatch.Draw (OneWhitePixel, new Rectangle (400 + (int)((1-health) * barLength), 930, (int)(health * barLength), 41), Color.IndianRed); //barre de vie
+					spriteBatch.Draw (OneWhitePixel, new Rectangle (1020, 930, (int)(derive * barLength), 41), Color.CornflowerBlue); //barre de dérive
+
+					spriteBatch.Draw (chrono.Texture, new Vector2(890, 820), chrono.GetRectangle(), Color.White);
 
 					//timer
-					spriteBatch.DrawString (font, _deathCounter.ToString ("mm\\:ss"), new Vector2 (900, 950), Color.White);
+					//spriteBatch.DrawString (font, _deathCounter.ToString ("mm\\:ss"), new Vector2 (900, 950), Color.White);
 
 					foreach (var wall in Walls)
 						DrawHitBox (wall._boundingBox);
