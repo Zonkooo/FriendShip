@@ -46,7 +46,7 @@ namespace FriendShip
 			_game.Components.Add (this);
 			this.Enabled = true;
 			this.Visible = true;
-			DrawOrder = 100;
+			DrawOrder = 300;
 		}
 
 		/// <returns>true if a trap was triggered</returns>
