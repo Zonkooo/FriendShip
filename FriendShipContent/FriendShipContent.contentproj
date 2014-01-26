@@ -308,6 +308,21 @@
       <Name>cuistot_degats</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="action.png">
+      <Importer>TextureImporter</Importer>
+      <Name>action</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="bonus piege.png">
+      <Importer>TextureImporter</Importer>
+      <Name>bonus piege</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="jet_eau.png">
+      <Importer>TextureImporter</Importer>
+      <Name>jet_eau</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
