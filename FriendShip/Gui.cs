@@ -101,9 +101,9 @@ namespace FriendShip
 				//player2
 				var meca = _game.Players [PlayerType.MECA];
 				for (int i = 0; i < meca.life; i++)
-					_game.spriteBatch.Draw(_heart, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*i, yHeartOffset), Color.White);
+					_game.spriteBatch.Draw(_heart, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*(2-i), yHeartOffset), Color.White);
 				for (int i = 0; i < meca.nbTraps; i++)
-					_game.spriteBatch.Draw(_bomb, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*i + 30, yHeartOffset + yOffsetBomb), Color.White);
+					_game.spriteBatch.Draw(_bomb, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*(2-i) + 30, yHeartOffset + yOffsetBomb), Color.White);
 
 				//player3
 				var cook = _game.Players [PlayerType.COOK];
@@ -115,9 +115,9 @@ namespace FriendShip
 				//player4
 				var fish = _game.Players [PlayerType.FISH];
 				for (int i = 0; i < fish.life; i++)
-					_game.spriteBatch.Draw(_heart, posFish + new Vector2(xOffsetSmall + xHeartSpacing*i, yHeartOffset), Color.White);
+					_game.spriteBatch.Draw(_heart, posFish + new Vector2(xOffsetSmall + xHeartSpacing*(2-i), yHeartOffset), Color.White);
 				for (int i = 0; i < fish.nbTraps; i++)
-					_game.spriteBatch.Draw(_bomb, posFish + new Vector2(xOffsetSmall + xHeartSpacing*i + 30, yHeartOffset + yOffsetBomb), Color.White);
+					_game.spriteBatch.Draw(_bomb, posFish + new Vector2(xOffsetSmall + xHeartSpacing*(2-i) + 30, yHeartOffset + yOffsetBomb), Color.White);
 
 				_game.spriteBatch.End();
 			}
