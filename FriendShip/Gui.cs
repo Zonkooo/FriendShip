@@ -20,7 +20,8 @@ namespace FriendShip
 		Texture2D _fishHud;
 		Texture2D _mecaHud;
 
-		Vector2 _position;
+		Texture2D _heart;
+		Texture2D _bomb;
 
 		public Gui (GameCore game)
 			:base(game)
@@ -36,6 +37,9 @@ namespace FriendShip
 			_capHud = _game.Content.Load<Texture2D> ("Interface/cap");
 			_fishHud = _game.Content.Load<Texture2D> ("Interface/pecheur");
 			_mecaHud = _game.Content.Load<Texture2D> ("Interface/mecano");
+
+			_heart = _game.Content.Load<Texture2D> ("Interface/coeur");
+			_bomb = _game.Content.Load<Texture2D> ("Interface/bombe");
 		}
 
 		public override void Update (GameTime gameTime)
@@ -53,10 +57,40 @@ namespace FriendShip
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
-				_game.spriteBatch.Draw(_capHud,  new Vector2(60, 4), Color.White);
-				_game.spriteBatch.Draw(_mecaHud, new Vector2(1550, 4), Color.White);
-				_game.spriteBatch.Draw(_fishHud, new Vector2(1550, 850), Color.White);
-				_game.spriteBatch.Draw(_cookHud, new Vector2(60, 850), Color.White);
+				var posCap = new Vector2 (60, 4);
+				var posMeca = new Vector2 (1550, 4);
+				var posFish = new Vector2 (1550, 850);
+				var posCook = new Vector2 (60, 850);
+
+				_game.spriteBatch.Draw (_capHud, posCap, Color.White);
+				_game.spriteBatch.Draw (_mecaHud, posMeca, Color.White);
+				_game.spriteBatch.Draw (_fishHud, posFish, Color.White);
+				_game.spriteBatch.Draw(_cookHud, posCook, Color.White);
+
+				var yHeartOffset = 70;
+				var xHeartSpacing = 45;
+				var xOffsetBig = 140;
+				var xOffsetSmall = 20;
+
+				//player1
+				var cap = _game.Players [1];
+				for (int i = 0; i < cap.life; i++)
+					_game.spriteBatch.Draw(_heart, posCap + new Vector2(xOffsetBig + xHeartSpacing*i, yHeartOffset), Color.White);
+
+				//player2
+				var meca = _game.Players [1];
+				for (int i = 0; i < cap.life; i++)
+					_game.spriteBatch.Draw(_heart, posMeca + new Vector2(xOffsetSmall + xHeartSpacing*i, yHeartOffset), Color.White);
+
+				//player3
+				var cook = _game.Players [1];
+				for (int i = 0; i < cap.life; i++)
+					_game.spriteBatch.Draw(_heart, posCook + new Vector2(xOffsetBig + xHeartSpacing*i, yHeartOffset), Color.White);
+
+				//player4
+				var fish = _game.Players [1];
+				for (int i = 0; i < cap.life; i++)
+					_game.spriteBatch.Draw(_heart, posFish + new Vector2(xOffsetSmall + xHeartSpacing*i, yHeartOffset), Color.White);
 
 				_game.spriteBatch.End();
 			}
