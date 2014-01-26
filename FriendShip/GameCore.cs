@@ -69,6 +69,7 @@ namespace FriendShip
 
 		public MyTexture2D chrono;
 		public Texture2D support;
+		public Texture2D warning;
 
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
@@ -142,6 +143,7 @@ namespace FriendShip
 
 			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
 			kohl = Content.Load<Texture2D>("charbon");
+			warning = Content.Load<Texture2D>("warning");
 
 			chrono = new MyTexture2D(Content.Load<Texture2D>("Interface/chrnometre_anime"), 21, new double[]{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000});
 			support = Content.Load<Texture2D>("Interface/interface_barre");
@@ -347,6 +349,11 @@ namespace FriendShip
 					var barLength = 495;
 					spriteBatch.Draw (OneWhitePixel, new Rectangle (400 + (int)((1-health) * barLength), 930, (int)(health * barLength), 41), Color.IndianRed); //barre de vie
 					spriteBatch.Draw (OneWhitePixel, new Rectangle (1020, 930, (int)(derive * barLength), 41), Color.CornflowerBlue); //barre de dérive
+
+					if(health < 0.3)
+						spriteBatch.Draw (warning, new Vector2(600, 870), Color.White);
+					if(derive < 0.3)
+						spriteBatch.Draw (warning, new Vector2(1250, 870), Color.White);
 
 					spriteBatch.Draw (chrono.Texture, new Vector2(890, 820), chrono.GetRectangle(), Color.White);
 

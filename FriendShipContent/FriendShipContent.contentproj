@@ -338,6 +338,11 @@
       <Name>charbon</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="warning.png">
+      <Importer>TextureImporter</Importer>
+      <Name>warning</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
