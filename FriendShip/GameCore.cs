@@ -86,6 +86,8 @@ namespace FriendShip
 
 			InitHelper.InitRooms (this, _rooms);
 
+			new Gui (this);
+
 			Walls.Add (new Wall (new Rectangle (253/*that's the only important thing*/, 0, 1, 1080)));
 			Walls.Add (new Wall (new Rectangle (1732/*that's the only important thing*/, 0, 1, 1080)));
 
