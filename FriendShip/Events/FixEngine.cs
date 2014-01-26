@@ -40,7 +40,7 @@ namespace FriendShip
 
 		public override void DrawText (SpriteBatch sb)
 		{
-//				sb.DrawString (_game.font, _text, new Vector2 (410, 100), Color.Crimson);
+			sb.DrawString (_game.font, _text, new Vector2 (410, 100), Color.Crimson);
 		}
 	}
 }
