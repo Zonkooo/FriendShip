@@ -42,10 +42,12 @@ namespace FriendShip
 		private Dictionary<Direction, Keys> controls;
 		private Dictionary<PlayerState, MyTexture2D> _textures;
 		private GameCore _game;
+		private PlayerIndex myIndex;
 
-		public Player (GameCore game, Dictionary<PlayerState, MyTexture2D> textures, Room startRoom, Dictionary<Direction, Keys> controls)
+		public Player (GameCore game, Dictionary<PlayerState, MyTexture2D> textures, Room startRoom, Dictionary<Direction, Keys> controls, PlayerIndex myIndex)
 			: base(game)
 		{
+			this.myIndex = myIndex;
 			this.controls = controls;
 			_game = game;
 			_textures = textures;
@@ -73,44 +75,45 @@ namespace FriendShip
 			}
 
             KeyboardState currentKeyState = Keyboard.GetState();
+			GamePadState pad = GamePad.GetState (myIndex);
 			var prevPos = Position;
 
 			var delta = new Vector2();
 			var directions = new List<Direction>();
 
-			if (currentKeyState.IsKeyDown (controls [Direction.LEFT]))
+			if (currentKeyState.IsKeyDown (controls [Direction.LEFT]) || pad.ThumbSticks.Left.X < -0.6f)
 			{
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
 					delta.X = -moveSpeed;
 				directions.Add (Direction.LEFT);
 				flipHorizontally = false;
 			}
-			if (currentKeyState.IsKeyDown (controls [Direction.RIGHT]))
+			if (currentKeyState.IsKeyDown (controls [Direction.RIGHT]) || pad.ThumbSticks.Left.X > 0.6f)
 			{
 				if (currentRoom.MoveType == RoomMovementType.HORIZONTAL)
 					delta.X = moveSpeed;
 				directions.Add (Direction.RIGHT);
 				flipHorizontally = true;
 			}
-			if (currentKeyState.IsKeyDown (controls [Direction.UP]))
+			if (currentKeyState.IsKeyDown (controls [Direction.UP]) || pad.ThumbSticks.Left.Y > 0.6f)
 			{
 				if(currentRoom.MoveType == RoomMovementType.VERTICAL)
 					delta.Y = -moveSpeed;
 				directions.Add (Direction.UP);
 			}
-			if (currentKeyState.IsKeyDown (controls [Direction.DOWN]))
+			if (currentKeyState.IsKeyDown (controls [Direction.DOWN]) || pad.ThumbSticks.Left.Y < -0.6f)
 			{
 				if(currentRoom.MoveType == RoomMovementType.VERTICAL)
 					delta.Y = moveSpeed;
 				directions.Add (Direction.DOWN);
 			}
 
-			if (currentKeyState.IsKeyDown (controls [Direction.ACTION]))
+			if (currentKeyState.IsKeyDown (controls [Direction.ACTION]) || pad.Buttons.A == ButtonState.Pressed)
 			{
 				currentRoom.Actionned = true;
 			}
 
-			if (currentKeyState.IsKeyDown (controls [Direction.TRAP]))
+			if (currentKeyState.IsKeyDown (controls [Direction.TRAP]) || pad.Buttons.X == ButtonState.Pressed)
 			{
 				if (!trapKeyWasDown)
 					LayTrap ();

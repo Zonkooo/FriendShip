@@ -161,7 +161,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.PageDown },
 			};
 
-			Players[PlayerType.CAP] = new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls);
+			Players[PlayerType.CAP] = new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls, PlayerIndex.One);
 
 			var mecano = Content.Load<Texture2D>("Players/mecano");
 			var mecanoRun = Content.Load<Texture2D>("Players/mecano_run");
@@ -182,7 +182,7 @@ namespace FriendShip
 				{ Direction.TRAP, Keys.E },
 				{ Direction.ACTION, Keys.A },
 			};
-			Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls);
+			Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls, PlayerIndex.Two);
 
             var cuisto = Content.Load<Texture2D>("Players/cuisto");
             var cuistoRun = Content.Load<Texture2D>("Players/cuisto_run");
@@ -204,7 +204,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.NumPad7},
 			};
 
-			Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls);
+			Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls, PlayerIndex.Three);
 
             var cireman = Content.Load<Texture2D>("Players/cireman");
             var ciremanRun = Content.Load<Texture2D>("Players/cireman_run");
@@ -226,7 +226,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.I},
 			};
 
-			Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls);
+			Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls, PlayerIndex.Four);
 
 			SoundManager.Play ();
 		}
