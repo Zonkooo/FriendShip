@@ -343,6 +343,36 @@
       <Name>warning</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Texts\texte_charbon.png">
+      <Importer>TextureImporter</Importer>
+      <Name>texte_charbon</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Texts\texte_cuisine.png">
+      <Importer>TextureImporter</Importer>
+      <Name>texte_cuisine</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Texts\texte_dortoir.png">
+      <Importer>TextureImporter</Importer>
+      <Name>texte_dortoir</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Texts\texte_fuite.png">
+      <Importer>TextureImporter</Importer>
+      <Name>texte_fuite</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Texts\texte_pilotage.png">
+      <Importer>TextureImporter</Importer>
+      <Name>texte_pilotage</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Texts\texte_sdm.png">
+      <Importer>TextureImporter</Importer>
+      <Name>texte_sdm</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
@@ -353,6 +383,9 @@
     </Folder>
     <Folder Include="Interface\">
       <Name>Interface</Name>
+    </Folder>
+    <Folder Include="Texts\">
+      <Name>New Folder</Name>
     </Folder>
   </ItemGroup>
 </Project>
