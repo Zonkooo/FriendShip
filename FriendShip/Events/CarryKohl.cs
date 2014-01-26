@@ -52,6 +52,10 @@ namespace FriendShip
 			{
 				Enabled = false;
 				Visible = false;
+				foreach(var player in _game.Players.Values)
+				{
+					player.hasKohl = false;
+				}
 			}
 		}
 
