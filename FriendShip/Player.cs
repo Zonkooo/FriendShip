@@ -37,6 +37,7 @@ namespace FriendShip
 		private double hitTime;
 		private bool flipHorizontally = true;
 		public int life = 3;
+		public int nbTraps = 3;
 
 		private Dictionary<Direction, Keys> controls;
 		private Dictionary<PlayerState, MyTexture2D> _textures;
@@ -172,7 +173,11 @@ namespace FriendShip
 
 		void LayTrap ()
 		{
-			currentRoom.AddTrap (new Trap(Position));
+			if (nbTraps > 0)
+			{
+				nbTraps--;
+				currentRoom.AddTrap (new Trap (Position));
+			}
 		}
 
 		void Death ()
