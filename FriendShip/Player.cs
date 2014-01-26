@@ -63,6 +63,7 @@ namespace FriendShip
 			DrawOrder = 200;
 		}
 
+		double showActionSprite;
 		bool trapKeyWasDown = false;
         public override void Update(GameTime gameTime)
         {
@@ -73,6 +74,7 @@ namespace FriendShip
 
 				return;
 			}
+			showActionSprite -= gameTime.ElapsedGameTime.TotalMilliseconds;
 
             KeyboardState currentKeyState = Keyboard.GetState();
 			GamePadState pad = GamePad.GetState (myIndex);
@@ -110,8 +112,9 @@ namespace FriendShip
 
 			if (currentKeyState.IsKeyDown (controls [Direction.ACTION]) || pad.Buttons.A == ButtonState.Pressed)
 			{
-				currentRoom.Actionned = true;
 				currentRoom.ActionnedBy = this;
+				if(currentRoom.Action())
+					showActionSprite = 300;
 			}
 
 			if (currentKeyState.IsKeyDown (controls [Direction.TRAP]) || pad.Buttons.X == ButtonState.Pressed)
@@ -204,6 +207,9 @@ namespace FriendShip
 			if (_game.spriteBatch != null)
 			{
 				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+
+				if(showActionSprite > 0.0)
+					_game.spriteBatch.Draw(_game.action, Position - new Vector2(0, 21), Color.White);
 
 				_game.spriteBatch.Draw(_textures[currentState].Texture, Position, _textures[currentState].GetRectangle(), Color.White, 0f, new Vector2(), new Vector2(1), flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 				if(hasKohl)

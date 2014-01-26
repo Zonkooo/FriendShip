@@ -47,6 +47,8 @@ namespace FriendShip
 			this.Enabled = true;
 			this.Visible = true;
 			DrawOrder = 300;
+
+			Actionned = true;
 		}
 
 		/// <returns>true if a trap was triggered</returns>
@@ -120,7 +122,17 @@ namespace FriendShip
 			base.Draw (gameTime);
 		}
 
-		public bool Actionned;
+		public bool Action()
+		{
+			if (!this.Actionned)
+			{
+				this.Actionned = true;
+				return true;
+			}
+			return false;
+		}
+
+		public bool Actionned { get; private set;}
 		public Player ActionnedBy;
 		public void EnableAction ()
 		{

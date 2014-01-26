@@ -70,6 +70,7 @@ namespace FriendShip
 		public MyTexture2D chrono;
 		public Texture2D support;
 		public Texture2D warning;
+		public Texture2D action;
 
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
@@ -152,6 +153,7 @@ namespace FriendShip
 			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
 			kohl = Content.Load<Texture2D>("charbon");
 			warning = Content.Load<Texture2D>("warning");
+			action = Content.Load<Texture2D>("action");
 
 			chrono = new MyTexture2D(Content.Load<Texture2D>("Interface/chrnometre_anime"), 21, new double[]{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000});
 			support = Content.Load<Texture2D>("Interface/interface_barre");
@@ -249,7 +251,7 @@ namespace FriendShip
 			};
             var player4Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.K },
-				{ Direction.RIGHT, Keys.M},
+				{ Direction.RIGHT, Keys.OemSemicolon},
 				{ Direction.UP, Keys.O },
 				{ Direction.DOWN, Keys.L },
 				{ Direction.TRAP, Keys.P },
