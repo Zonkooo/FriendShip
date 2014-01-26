@@ -181,6 +181,8 @@ namespace FriendShip
 
 			var bg = new TemporaryEffect (this, new Vector2 (), new MyTexture2D (_backGnd, 1), 1E20 /*beaucoup*/);
 			bg.DrawOrder = -10;
+			var fg = new TemporaryEffect (this, new Vector2 (), new MyTexture2D (Content.Load<Texture2D>("lumieres"), 1), 1E20 /*			beaucoup*/);
+			fg.DrawOrder = 1000;
 
 			_gameOverTex[GameEndings.WIN_CAP] = Content.Load<Texture2D>("win_cap");
 			_gameOverTex[GameEndings.WIN_COOK] = Content.Load<Texture2D>("win_cuistot");

@@ -373,6 +373,16 @@
       <Name>texte_sdm</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="comment_jouer.png">
+      <Importer>TextureImporter</Importer>
+      <Name>comment_jouer</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="lumieres.png">
+      <Importer>TextureImporter</Importer>
+      <Name>lumieres</Name>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Players\">
@@ -385,7 +395,7 @@
       <Name>Interface</Name>
     </Folder>
     <Folder Include="Texts\">
-      <Name>New Folder</Name>
+      <Name>Texts</Name>
     </Folder>
   </ItemGroup>
 </Project>
