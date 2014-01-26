@@ -156,6 +156,9 @@ namespace FriendShip
 			Events.Add (new AllToCale (this));
 			Events.Add (new GetTrap (this));
 			Events.Add (new FixEngine (this));
+			Events.Add (new GetFood (this));
+			Events.Add (new FixEngine (this));
+			Events.Add (new AllToCale (this));
 
 			_eventTriggers = new []{
 				TimeSpan.FromSeconds(120 - 8),  //goto cale
@@ -167,6 +170,9 @@ namespace FriendShip
 				TimeSpan.FromSeconds(120 - 60),  //goto cale
 				TimeSpan.FromSeconds(120 - 70), //+trap
 				TimeSpan.FromSeconds(120 - 80), //fix engine
+				TimeSpan.FromSeconds(120 - 90), //+life
+				TimeSpan.FromSeconds(120 - 94), //fix engine
+				TimeSpan.FromSeconds(120 - 110), //goto cale
 			};
 
 			chrono = new MyTexture2D(Content.Load<Texture2D>("Interface/chrnometre_anime"), 21, new double[]{1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000});
