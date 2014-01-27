@@ -62,7 +62,8 @@ namespace FriendShip
 	/// </summary>
 	public class GameCore : Game
     {
-        public float Scale = 1f;
+	    private readonly int _players;
+	    public float Scale = 1f;
 
 		//events stuff
 		public Texture2D bonusTrap;
@@ -100,8 +101,9 @@ namespace FriendShip
 		public float health = 1.0f;
 		public float derive = 1.0f;
 
-		public GameCore(int resolution)
+		public GameCore(int resolution, int players)
 		{
+		    _players = Math.Max(Math.Min(players, 1), 4);
 		    Scale = resolution/1080f;
 
 			graphics = new GraphicsDeviceManager(this)
@@ -241,7 +243,8 @@ namespace FriendShip
 				{ Direction.TRAP, Keys.E },
 				{ Direction.ACTION, Keys.A },
 			};
-			Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls, PlayerIndex.Two);
+            if(_players > 1)
+			    Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls, PlayerIndex.Two);
 
             var cuisto = Content.Load<Texture2D>("Players/cuisto");
             var cuistoRun = Content.Load<Texture2D>("Players/cuisto_run");
@@ -263,7 +266,8 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.NumPad7},
 			};
 
-			Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls, PlayerIndex.Three);
+            if (_players > 2)
+                Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls, PlayerIndex.Three);
 
             var cireman = Content.Load<Texture2D>("Players/cireman");
             var ciremanRun = Content.Load<Texture2D>("Players/cireman_run");
@@ -285,7 +289,8 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.I},
 			};
 
-			Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls, PlayerIndex.Four);
+            if (_players > 3)
+                Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls, PlayerIndex.Four);
 		}
 
 		private TimeSpan _deathCounter = TimeSpan.FromMinutes(2);

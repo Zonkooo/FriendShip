@@ -9,7 +9,7 @@ namespace FriendShip
 		/// </summary>
 		static void Main(string[] args)
 		{
-            int players;
+            int players = 4;
             int resolution = 1080;
 		    try
 		    {
@@ -27,7 +27,7 @@ namespace FriendShip
 		        throw;
 		    }
 
-		    using (GameCore game = new GameCore(resolution))
+		    using (GameCore game = new GameCore(resolution, players))
 			{
 				game.Run();
 			}
