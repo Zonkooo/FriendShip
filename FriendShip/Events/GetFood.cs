@@ -41,7 +41,7 @@ namespace FriendShip
 			var sb = _game.spriteBatch;
 			if (sb != null)
 			{
-				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 				sb.Draw (_text, basePos - new Vector2(0, 55), Color.White);
 				sb.End ();
 			}
@@ -79,7 +79,7 @@ namespace FriendShip
 			var sb = _game.spriteBatch;
 			if (sb != null)
 			{
-				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 				sb.Draw (_text, basePos - new Vector2(0, 55), Color.White);
 				sb.End ();
 			}

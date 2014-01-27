@@ -206,7 +206,7 @@ namespace FriendShip
 		{
 			if (_game.spriteBatch != null)
 			{
-				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 
 				if(showActionSprite > 0.0)
 					_game.spriteBatch.Draw(_game.action, Position - new Vector2(0, 21), Color.White);

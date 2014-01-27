@@ -73,7 +73,7 @@ namespace FriendShip
 		{
 			if (_game.spriteBatch != null)
 			{
-				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 
 				var posCap = new Vector2 (60, 4);
 				var posMeca = new Vector2 (1550, 4);

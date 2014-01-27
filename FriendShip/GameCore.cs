@@ -61,7 +61,9 @@ namespace FriendShip
 	/// This is the main type for your game
 	/// </summary>
 	public class GameCore : Game
-	{
+    {
+        public float Scale = 1f;
+
 		//events stuff
 		public Texture2D bonusTrap;
 		public MyTexture2D leak;
@@ -98,17 +100,18 @@ namespace FriendShip
 		public float health = 1.0f;
 		public float derive = 1.0f;
 
-		public GameCore()
+		public GameCore(int resolution)
 		{
+		    Scale = resolution/1080f;
+
 			graphics = new GraphicsDeviceManager(this)
 			{
-				PreferredBackBufferHeight = 1080,
-				PreferredBackBufferWidth = 1920,
-                IsFullScreen = true,
+				PreferredBackBufferHeight = resolution,
+				PreferredBackBufferWidth = (resolution*16)/9,
 			};
-            //graphics.CreateDevice();
-            //graphics.ApplyChanges();'
-			//IsMouseVisible = true;
+
+		    if (resolution == 1080)
+		        graphics.IsFullScreen = true;
 
 			Content.RootDirectory = "Content";
 
@@ -417,7 +420,7 @@ namespace FriendShip
 			{
 				if (spriteBatch != null)
 				{
-					spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+					spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(Scale));
 					spriteBatch.Draw (splashScreen, new Vector2(), Color.White);
 					spriteBatch.End();
 				}
@@ -430,7 +433,7 @@ namespace FriendShip
 			{
 				warning.Update (gameTime.ElapsedGameTime.TotalMilliseconds);
 
-				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(Scale));
 				if (ended)
 					spriteBatch.Draw (_gameOverTex [_ending.Value], new Vector2 (), Color.White);
 				else

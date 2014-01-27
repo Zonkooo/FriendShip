@@ -47,7 +47,7 @@ namespace FriendShip
 			var sb = _game.spriteBatch;
 			if (sb != null && _text != null)
 			{
-				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 				sb.Draw (_text, basePos, Color.White);
 				sb.Draw (_game.leak.Texture, new Vector2 (330, 670), _game.leak.GetRectangle (), Color.White);
 				sb.End ();

@@ -47,7 +47,7 @@ namespace FriendShip
 			var sb = _game.spriteBatch;
 			if (sb != null && missingPlayer)
 			{
-				sb.Begin (SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 				sb.Draw (_text, basePos - new Vector2(0, 110), Color.White);
 				sb.End ();
 			}
