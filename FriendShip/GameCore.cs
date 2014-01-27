@@ -132,7 +132,7 @@ namespace FriendShip
 			OneWhitePixel = Content.Load<Texture2D>("onewhitepixel");
 			Cling = Content.Load<Texture2D>("clig");
 			_backGnd = Content.Load<Texture2D>("Interface/fond");
-			font = Content.Load<SpriteFont>("font");
+			//font = Content.Load<SpriteFont>("font");
 
 			leak = new MyTexture2D(Content.Load<Texture2D>("jet_eau"), 4, new double[]{1000.0/12, 1000.0/12, 1000.0/12, 1000.0/12});
 			kohl = Content.Load<Texture2D>("charbon");
