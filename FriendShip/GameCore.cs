@@ -214,7 +214,7 @@ namespace FriendShip
 				{ Direction.UP, Keys.Up },
 				{ Direction.DOWN, Keys.Down },
 				{ Direction.TRAP, Keys.NumPad0 },
-				{ Direction.ACTION, Keys.PageDown },
+				{ Direction.ACTION, Keys.RightControl },
 			};
 
 			Players[PlayerType.CAP] = new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls, PlayerIndex.One);
@@ -275,7 +275,7 @@ namespace FriendShip
 			};
             var player4Controls = new Dictionary<Direction, Keys> {
 				{ Direction.LEFT, Keys.K },
-				{ Direction.RIGHT, Keys.OemSemicolon},
+				{ Direction.RIGHT, Keys.M},
 				{ Direction.UP, Keys.O },
 				{ Direction.DOWN, Keys.L },
 				{ Direction.TRAP, Keys.P },
