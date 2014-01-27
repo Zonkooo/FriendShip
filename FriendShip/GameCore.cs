@@ -329,7 +329,8 @@ namespace FriendShip
 			if(splash)
 			{
 				//anything stops the splash screen
-			    if (Keyboard.GetState().GetPressedKeys().Length > 0
+			    if (gameTime.TotalGameTime.TotalSeconds > 1
+                    &&(Keyboard.GetState().GetPressedKeys().Length > 0
 			        || GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
 			        || GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed
 			        || GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed
@@ -355,7 +356,7 @@ namespace FriendShip
 			        || GamePad.GetState(PlayerIndex.Four).Buttons.A == ButtonState.Pressed
 			        || GamePad.GetState(PlayerIndex.Four).Buttons.B == ButtonState.Pressed
 			        || GamePad.GetState(PlayerIndex.Four).Buttons.X == ButtonState.Pressed
-			        || GamePad.GetState(PlayerIndex.Four).Buttons.Y == ButtonState.Pressed)
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.Y == ButtonState.Pressed))
 			    {
                     MediaPlayer.Play(_song);
                     splash = false;
