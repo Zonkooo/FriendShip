@@ -81,6 +81,7 @@ namespace FriendShip
 		public MyTexture2D warning;
 		public Texture2D action;
 		public Texture2D credits;
+        private Song _song;
 
 		public GraphicsDeviceManager graphics;
 		public SpriteBatch spriteBatch;
@@ -291,6 +292,8 @@ namespace FriendShip
 
             if (_players > 3)
                 Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls, PlayerIndex.Four);
+
+		    _song = Content.Load<Song>("musique_off");
 		}
 
 		private TimeSpan _deathCounter = TimeSpan.FromMinutes(2);
@@ -310,35 +313,39 @@ namespace FriendShip
 			if(splash)
 			{
 				//anything stops the splash screen
-				if (Keyboard.GetState ().GetPressedKeys ().Length > 0
-				    || GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.One).Buttons.Start == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.One).Buttons.A == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.One).Buttons.B == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.One).Buttons.X == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.One).Buttons.Y == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Two).Buttons.Back == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Two).Buttons.Start == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Two).Buttons.A == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Two).Buttons.B == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Two).Buttons.X == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Two).Buttons.Y == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Three).Buttons.Back == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Three).Buttons.Back == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Three).Buttons.Start == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Three).Buttons.A == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Three).Buttons.B == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Three).Buttons.X == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Three).Buttons.Y == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Four).Buttons.Back == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Four).Buttons.Back == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Four).Buttons.Start == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Four).Buttons.A == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Four).Buttons.B == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Four).Buttons.X == ButtonState.Pressed
-				    || GamePad.GetState (PlayerIndex.Four).Buttons.Y == ButtonState.Pressed)
-					splash = false;
-				return;
+			    if (Keyboard.GetState().GetPressedKeys().Length > 0
+			        || GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.One).Buttons.X == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.One).Buttons.Y == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Two).Buttons.Back == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Two).Buttons.Start == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Two).Buttons.A == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Two).Buttons.B == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Two).Buttons.X == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Two).Buttons.Y == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Three).Buttons.Back == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Three).Buttons.Back == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Three).Buttons.Start == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Three).Buttons.A == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Three).Buttons.B == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Three).Buttons.X == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Three).Buttons.Y == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.Back == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.Back == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.Start == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.A == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.B == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.X == ButtonState.Pressed
+			        || GamePad.GetState(PlayerIndex.Four).Buttons.Y == ButtonState.Pressed)
+			    {
+                    MediaPlayer.Play(_song);
+                    splash = false;
+			    }
+
+			    return;
 			}
 
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape) || GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
