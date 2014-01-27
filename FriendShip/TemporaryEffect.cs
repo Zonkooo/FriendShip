@@ -46,7 +46,7 @@ namespace FriendShip
 		{
 			if (_game.spriteBatch != null)
 			{
-				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 				_game.spriteBatch.Draw(_tex.Texture, _position, _tex.GetRectangle(), Color.White);
 				_game.spriteBatch.End();
 			}

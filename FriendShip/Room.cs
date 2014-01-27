@@ -104,7 +104,7 @@ namespace FriendShip
 		{
 			if (_game.spriteBatch != null)
 			{
-				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				_game.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Matrix.CreateScale(_game.Scale));
 
                 if (Texture != null)
                 {
