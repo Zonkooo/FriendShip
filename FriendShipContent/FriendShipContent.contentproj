@@ -343,32 +343,32 @@
       <Name>warning</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Texts\texte_charbon.png">
+    <Compile Include="Text\texte_charbon.png">
       <Importer>TextureImporter</Importer>
       <Name>texte_charbon</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Texts\texte_cuisine.png">
+    <Compile Include="Text\texte_cuisine.png">
       <Importer>TextureImporter</Importer>
       <Name>texte_cuisine</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Texts\texte_dortoir.png">
+    <Compile Include="Text\texte_dortoir.png">
       <Importer>TextureImporter</Importer>
       <Name>texte_dortoir</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Texts\texte_fuite.png">
+    <Compile Include="Text\texte_fuite.png">
       <Importer>TextureImporter</Importer>
       <Name>texte_fuite</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Texts\texte_pilotage.png">
+    <Compile Include="Text\texte_pilotage.png">
       <Importer>TextureImporter</Importer>
       <Name>texte_pilotage</Name>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Texts\texte_sdm.png">
+    <Compile Include="Text\texte_sdm.png">
       <Importer>TextureImporter</Importer>
       <Name>texte_sdm</Name>
       <Processor>TextureProcessor</Processor>
@@ -399,8 +399,8 @@
     <Folder Include="Interface\">
       <Name>Interface</Name>
     </Folder>
-    <Folder Include="Texts\">
-      <Name>Texts</Name>
+    <Folder Include="Text\">
+      <Name>Text</Name>
     </Folder>
   </ItemGroup>
 </Project>
