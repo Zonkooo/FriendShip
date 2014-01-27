@@ -189,9 +189,8 @@ namespace FriendShip
 
 		public bool hasKohl;
 
-		void Death ()
+		public void Death ()
 		{
-			//TODO play death anim
 			currentState = PlayerState.DEAD;
 			Enabled = false;
 			currentRoom.PlayerLeaves ();

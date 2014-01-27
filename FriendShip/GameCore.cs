@@ -104,7 +104,7 @@ namespace FriendShip
 
 		public GameCore(int resolution, int players)
 		{
-		    _players = Math.Max(Math.Min(players, 1), 4);
+		    _players = Math.Min(Math.Max(players, 1), 4);
 		    Scale = resolution/1080f;
 
 			graphics = new GraphicsDeviceManager(this)
@@ -244,8 +244,14 @@ namespace FriendShip
 				{ Direction.TRAP, Keys.E },
 				{ Direction.ACTION, Keys.A },
 			};
-            if(_players > 1)
-			    Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls, PlayerIndex.Three);
+
+			Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls, PlayerIndex.Three);
+            
+            if (!(_players > 1))
+            {
+                Players[PlayerType.MECA].Death();
+                Players[PlayerType.MECA].Visible = false;
+            }
 
             var cuisto = Content.Load<Texture2D>("Players/cuisto");
             var cuistoRun = Content.Load<Texture2D>("Players/cuisto_run");
@@ -267,8 +273,13 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.NumPad7},
 			};
 
-            if (_players > 2)
-                Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls, PlayerIndex.One);
+            Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls, PlayerIndex.One);
+
+            if (!(_players > 2))
+            {
+                Players[PlayerType.COOK].Death();
+                Players[PlayerType.COOK].Visible = false;
+            }
 
             var cireman = Content.Load<Texture2D>("Players/cireman");
             var ciremanRun = Content.Load<Texture2D>("Players/cireman_run");
@@ -290,8 +301,13 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.I},
 			};
 
-            if (_players > 3)
-                Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls, PlayerIndex.Four);
+            Players[PlayerType.FISH] = new Player(this, ciremanTextures, _rooms[RoomType.BRIDGE], player4Controls, PlayerIndex.Four);
+
+            if (!(_players > 3))
+            {
+                Players[PlayerType.FISH].Death();
+                Players[PlayerType.FISH].Visible = false;
+            }
 
 		    _song = Content.Load<Song>("musique_off");
 		}
