@@ -222,7 +222,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.RightControl },
 			};
 
-			Players[PlayerType.CAP] = new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls, PlayerIndex.One);
+			Players[PlayerType.CAP] = new Player (this, captainTextures, _rooms[RoomType.COMMANDS], player1Controls, PlayerIndex.Two);
 
 			var mecano = Content.Load<Texture2D>("Players/mecano");
 			var mecanoRun = Content.Load<Texture2D>("Players/mecano_run");
@@ -244,7 +244,7 @@ namespace FriendShip
 				{ Direction.ACTION, Keys.A },
 			};
             if(_players > 1)
-			    Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls, PlayerIndex.Two);
+			    Players[PlayerType.MECA] = new Player (this, mecanoTextures, _rooms[RoomType.MACHINE], player2Controls, PlayerIndex.Three);
 
             var cuisto = Content.Load<Texture2D>("Players/cuisto");
             var cuistoRun = Content.Load<Texture2D>("Players/cuisto_run");
@@ -267,7 +267,7 @@ namespace FriendShip
 			};
 
             if (_players > 2)
-                Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls, PlayerIndex.Three);
+                Players[PlayerType.COOK] = new Player(this, cuistoTextures, _rooms[RoomType.KITCHEN], player3Controls, PlayerIndex.One);
 
             var cireman = Content.Load<Texture2D>("Players/cireman");
             var ciremanRun = Content.Load<Texture2D>("Players/cireman_run");
